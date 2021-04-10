@@ -6,11 +6,11 @@ using UnityEngine;
 public class ReactionTester : MonoBehaviour
 {
     // List all the reactions and their outputs as Strings in here
-    // We can make a larger class than tuples if reactions have 
-    // more than two reactants
-    private Dictionary<Tuple<String, String>, String> reactions = new Dictionary<Tuple<String, String>, String>
+    // We use a hashmap as a multiset, with each reactant mapping
+    // to its quantity in the reaction
+    private Dictionary<Dictionary<String, int>, String> reactions = new Dictionary<Dictionary<String, int>, String>
     {
-        { new Tuple<String, String>("reactant 1", "reactant 2"), "output"}
+        { new Dictionary<string, int>{ { "reactant 1" , 1}, { "reactant 2" , 2} }, "output"}
     };
 
     // Start is called before the first frame update
@@ -25,27 +25,16 @@ public class ReactionTester : MonoBehaviour
         
     }
 
-    public bool ReactionIsValid(String reactant1, String reactant2)
+    public bool ReactionIsValid(Dictionary<String, int> reactants)
     {
-        Tuple<String, String> pair1 = new Tuple<string, string>(reactant1, reactant2);
-        Tuple<String, String> pair2 = new Tuple<string, string>(reactant1, reactant2);
-        if (reactions.ContainsKey(pair1))
-        {
-            return true;
-        }
-        return reactions.ContainsKey(pair2);
+        return reactions.ContainsKey(reactants);
     }
 
-    public String CheckReaction(String reactant1, String reactant2)
+    public String CheckReaction(Dictionary<String, int> reactants)
     {
-        Tuple<String, String> pair1 = new Tuple<string, string>(reactant1, reactant2);
-        Tuple<String, String> pair2 = new Tuple<string, string>(reactant1, reactant2);
-        if (reactions.ContainsKey(pair1))
+        if (reactions.ContainsKey(reactants))
         {
-            return reactions[pair1];
-        } else if (reactions.ContainsKey(pair2))
-        {
-            return reactions[pair2];
+            return reactions[reactants];
         } else
         {
             return "Invalid Reaction";
