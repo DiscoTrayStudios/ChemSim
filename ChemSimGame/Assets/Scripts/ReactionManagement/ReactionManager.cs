@@ -6,6 +6,8 @@ using TMPro;
 public class ReactionManager : MonoBehaviour
 {
     public TextMeshProUGUI reactantListText;
+    public GameObject dialogueBox;
+    public TextMeshProUGUI dialogueText;
 
     private ReactionTester reactionTester;
     private Dictionary<string, int> currentReactantNames;
@@ -64,5 +66,50 @@ public class ReactionManager : MonoBehaviour
             text = text.Remove(text.Length - 3);
         }
         reactantListText.text = text;
+    }
+
+    public void ClearReactants()
+    {
+        currentReactantNames = new Dictionary<string, int>();
+        foreach (string name in reactantGameObjects.Keys)
+        {
+            foreach (GameObject obj in reactantGameObjects[name])
+            {
+                Destroy(obj);
+            }
+        }
+        reactantGameObjects = new Dictionary<string, ArrayList>();
+        numReactants = 0;
+        UpdateText();
+    }
+
+    public void TryToReact()
+    {
+        if (reactionTester.ReactionIsValid(currentReactantNames))
+        {
+            GameObject output = reactionTester.TryReaction(currentReactantNames);
+            if (output != null)
+            {
+                ClearReactants();
+                addReactant(output);
+            } else
+            {
+                ShowDialogue("That is not a valid reaction.");
+            }
+        } else
+        {
+            ShowDialogue("That is not a valid reaction.");
+        }
+    }
+
+    public void ShowDialogue(string text)
+    {
+        dialogueText.text = text;
+        dialogueBox.SetActive(true);
+    }
+
+    public void CloseDialogue()
+    {
+        dialogueBox.SetActive(false);
     }
 }
