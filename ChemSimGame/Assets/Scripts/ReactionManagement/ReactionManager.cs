@@ -40,7 +40,7 @@ public class ReactionManager : MonoBehaviour
         }
         currentReactantNames[reactantName] += 1;
         Vector3 position = new Vector3(-10 +(numReactants * 5), 0, 0);
-        GameObject reactantInstance = Instantiate(reactantObject, position, Quaternion.identity);
+        GameObject reactantInstance = Instantiate(reactantObject, position, reactantObject.transform.rotation);
         reactantGameObjects[reactantName].Add(reactantInstance);
         numReactants += 1;
         UpdateText();
