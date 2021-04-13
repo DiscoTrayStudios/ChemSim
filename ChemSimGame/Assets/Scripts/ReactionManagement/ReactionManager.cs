@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using TMPro;
 
@@ -10,16 +11,16 @@ public class ReactionManager : MonoBehaviour
     public TextMeshProUGUI dialogueText;
 
     private ReactionTester reactionTester;
-    private Dictionary<string, int> currentReactantNames;
-    private Dictionary<string, ArrayList> reactantGameObjects;
+    private GameObject reactant1;
+    private string reactant1Name;
+    private GameObject reactant2;
+    private string reactant2Name;
     private int numReactants;
 
     // Start is called before the first frame update
     void Start()
     {
         reactionTester = gameObject.GetComponent<ReactionTester>();
-        currentReactantNames = new Dictionary<string, int>();
-        reactantGameObjects = new Dictionary<string, ArrayList>();
         numReactants = 0;
         reactantListText.text = "";
     }
@@ -32,73 +33,75 @@ public class ReactionManager : MonoBehaviour
 
     public void addReactant(GameObject reactantObject)
     {
-        string reactantName = reactantObject.name;
-        if (!currentReactantNames.ContainsKey(reactantName))
+        if (reactant1 == null || reactant2 == null)
         {
-            currentReactantNames[reactantName] = 0;
-            reactantGameObjects[reactantName] = new ArrayList();
+            Vector3 position = new Vector3(-10 + (numReactants * 5), 0, 0);
+            GameObject reactantInstance = Instantiate(reactantObject, position, reactantObject.transform.rotation);
+            if (reactant1 == null)
+            {
+                reactant1 = reactantInstance;
+                reactant1Name = reactantObject.name;
+            } else
+            {
+                reactant2 = reactantInstance;
+                reactant2Name = reactantObject.name;
+            }
+            UpdateText();
+            numReactants += 1;
+        } else
+        {
+            ShowDialogue("You cannot add more than two reactants");
         }
-        currentReactantNames[reactantName] += 1;
-        Vector3 position = new Vector3(-10 +(numReactants * 5), 0, 0);
-        GameObject reactantInstance = Instantiate(reactantObject, position, reactantObject.transform.rotation);
-        reactantGameObjects[reactantName].Add(reactantInstance);
-        numReactants += 1;
-        UpdateText();
     }
 
     private void UpdateText()
     {
         string text = "";
-        foreach (string name in currentReactantNames.Keys)
+        if (reactant1 != null)
         {
-            if (currentReactantNames[name] > 0)
+            text += reactant1Name;
+            if (reactant2 != null)
             {
-                string nameText = name;
-                if (currentReactantNames[name] > 1)
-                {
-                    nameText = currentReactantNames[name] + " " + nameText;
-                }
-                text += nameText + " + ";
+                text += " + " + reactant2Name;
             }
-        }
-        if (text.EndsWith(" + "))
-        {
-            text = text.Remove(text.Length - 3);
         }
         reactantListText.text = text;
     }
 
     public void ClearReactants()
     {
-        currentReactantNames = new Dictionary<string, int>();
-        foreach (string name in reactantGameObjects.Keys)
-        {
-            foreach (GameObject obj in reactantGameObjects[name])
-            {
-                Destroy(obj);
-            }
-        }
-        reactantGameObjects = new Dictionary<string, ArrayList>();
+        Destroy(reactant1);
+        reactant1 = null;
+        Destroy(reactant2);
+        reactant2 = null;
         numReactants = 0;
         UpdateText();
     }
 
     public void TryToReact()
     {
-        if (reactionTester.ReactionIsValid(currentReactantNames))
+        if (reactant1 != null && reactant2 != null)
         {
-            GameObject output = reactionTester.TryReaction(currentReactantNames);
-            if (output != null)
+            if (reactionTester.ReactionIsValid(reactant1Name, reactant2Name))
             {
-                ClearReactants();
-                addReactant(output);
-            } else
+                GameObject output = reactionTester.TryReaction(reactant1Name, reactant2Name);
+                if (output != null)
+                {
+                    ClearReactants();
+                    addReactant(output);
+                }
+                else
+                {
+                    ShowDialogue("There is not a model saved for this reaction.");
+                }
+            }
+            else
             {
                 ShowDialogue("That is not a valid reaction.");
             }
-        } else
+        }else
         {
-            ShowDialogue("That is not a valid reaction.");
+            ShowDialogue("Please select two reactants.");
         }
     }
 

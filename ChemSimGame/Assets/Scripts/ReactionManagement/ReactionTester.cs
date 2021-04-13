@@ -7,17 +7,19 @@ public class ReactionTester : MonoBehaviour
 {
     // put each molecule in here as a public field
     public GameObject h2o;
+    public GameObject co2;
 
     // List all the reactions and their outputs as GameObjects in here
     // We use a hashmap as a multiset, with each reactant mapping
     // to its quantity in the reaction
-    private Dictionary<Dictionary<String, int>, GameObject> reactions; 
+    private Dictionary<Tuple<string, string>, GameObject> reactions; 
 
     // Start is called before the first frame update
     void Start()
     {
-        reactions = new Dictionary<Dictionary<String, int>, GameObject> {
-            { new Dictionary<string, int>{ { "reactant 1" , 1}, { "reactant 2" , 2} }, h2o}
+        reactions = new Dictionary<Tuple<string, string>, GameObject> {
+            { new Tuple<string, string>("reactant1", "reactant2"), h2o},
+            { new Tuple<string, string>(h2o.name, co2.name), h2o}, // Test reaction
         };
     }
 
@@ -27,16 +29,29 @@ public class ReactionTester : MonoBehaviour
         
     }
 
-    public bool ReactionIsValid(Dictionary<String, int> reactants)
+    public bool ReactionIsValid(string reactant1Name, string reactant2Name)
     {
-        return reactions.ContainsKey(reactants);
+        Tuple<string, string> pair1 = new Tuple<string, string>(reactant1Name, reactant2Name);
+        if (reactions.ContainsKey(pair1))
+        {
+            return true;
+        } else
+        {
+            Tuple<string, string> pair2 = new Tuple<string, string>(reactant2Name, reactant1Name);
+            return reactions.ContainsKey(pair2);
+        }
     }
 
-    public GameObject TryReaction(Dictionary<String, int> reactants)
+    public GameObject TryReaction(string reactant1Name, string reactant2Name)
     {
-        if (reactions.ContainsKey(reactants))
+
+        Tuple<string, string> pair1 = new Tuple<string, string>(reactant1Name, reactant2Name);
+        Tuple<string, string> pair2 = new Tuple<string, string>(reactant2Name, reactant1Name);
+        if (reactions.ContainsKey(pair1))
         {
-            return reactions[reactants];
+            return reactions[pair1];
+        } else if (reactions.ContainsKey(pair2)) {
+            return reactions[pair2];
         } else
         {
             return null;
