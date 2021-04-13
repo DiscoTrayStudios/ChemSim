@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2923,6 +2923,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   h2o: {fileID: 722344845549547934, guid: c8d0401ccf94ffe45a9f073abce1694a, type: 3}
+  co2: {fileID: 6608888123125091917, guid: 7c229af29ed41994cb3d2ed131eb115b, type: 3}
 --- !u!114 &1300517975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3877,7 +3878,7 @@ GameObject:
   - component: {fileID: 1809811278}
   - component: {fileID: 1809811281}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: CO2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
