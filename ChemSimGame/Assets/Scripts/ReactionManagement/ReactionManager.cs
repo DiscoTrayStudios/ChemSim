@@ -11,18 +11,40 @@ public class ReactionManager : MonoBehaviour
     public TextMeshProUGUI dialogueText;
 
     private ReactionTester reactionTester;
+<<<<<<< Updated upstream
     private GameObject reactant1;
     private string reactant1Name;
     private GameObject reactant2;
     private string reactant2Name;
+=======
+    private Dictionary<string, int> currentReactantNames;
+    private Dictionary<string, ArrayList> reactantGameObjects;
+    private Dictionary<string, Molecule> reactantValues;
+>>>>>>> Stashed changes
     private int numReactants;
+    private Molecule H2O;
+    private Molecule CO2;
 
     // Start is called before the first frame update
     void Start()
     {
+        H2O = new Molecule("H2O", -285.8, 69.9, -237.2);
+        CO2 = new Molecule("CO2", -393.5, 213.8, -394.4);
         reactionTester = gameObject.GetComponent<ReactionTester>();
+<<<<<<< Updated upstream
+=======
+        currentReactantNames = new Dictionary<string, int>();
+        reactantGameObjects = new Dictionary<string, ArrayList>();
+        reactantValues = new Dictionary<string, Molecule>();
+>>>>>>> Stashed changes
         numReactants = 0;
         reactantListText.text = "";
+        
+
+        reactantValues.Add("H2O", H2O);
+        reactantValues.Add("CO2", CO2);
+
+
     }
 
     // Update is called once per frame
@@ -115,4 +137,8 @@ public class ReactionManager : MonoBehaviour
     {
         dialogueBox.SetActive(false);
     }
+
+    public double getMoleculedH(string name){return reactantValues[name].get_dH();}
+    public double getMoleculedS(string name) { return reactantValues[name].get_dS(); }
+    public double getMoleculedG(string name) { return reactantValues[name].get_dG(); }
 }
