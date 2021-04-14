@@ -24,6 +24,7 @@ public class ReactionManager : MonoBehaviour
     private int numReactants;
     private Molecule H2O;
     private Molecule CO2;
+    private Molecule HCl;
     private bool ReactionDone = false;
 
     // Start is called before the first frame update
@@ -31,6 +32,7 @@ public class ReactionManager : MonoBehaviour
     {
         H2O = new Molecule("H2O", -285.8, 69.9, -237.2);
         CO2 = new Molecule("CO2", -393.5, 213.8, -394.4);
+        HCl = new Molecule("HCl", -92.3, 186.9, -95.3);
         reactionTester = gameObject.GetComponent<ReactionTester>();
         reactantValues = new Dictionary<string, Molecule>();
         numReactants = 0;
@@ -41,6 +43,7 @@ public class ReactionManager : MonoBehaviour
 
         reactantValues.Add("H2O", H2O);
         reactantValues.Add("CO2", CO2);
+        reactantValues.Add("HCl", HCl);
 
 
     }
