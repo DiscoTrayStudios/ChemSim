@@ -30,13 +30,11 @@ public class ReactionManager : MonoBehaviour
         reactionTester = gameObject.GetComponent<ReactionTester>();
         currentReactantNames = new Dictionary<string, int>();
         reactantGameObjects = new Dictionary<string, ArrayList>();
-        reactantValues = new Dictionary<string, Molecule>();
         numReactants = 0;
         if (!(reactantListText == null))
         {
             reactantListText.text = "";
         }
-
 
         reactantValues.Add("H2O", H2O);
         reactantValues.Add("CO2", CO2);
