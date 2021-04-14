@@ -30,6 +30,7 @@ public class ReactionManager : MonoBehaviour
         reactionTester = gameObject.GetComponent<ReactionTester>();
         currentReactantNames = new Dictionary<string, int>();
         reactantGameObjects = new Dictionary<string, ArrayList>();
+        reactantValues = new Dictionary<string, Molecule>();
         numReactants = 0;
         if (!(reactantListText == null))
         {
@@ -99,6 +100,9 @@ public class ReactionManager : MonoBehaviour
     {
         if (reactant1 != null && reactant2 != null)
         {
+            Debug.Log(1);
+            Debug.Log(reactant1);
+            Debug.Log(reactant2);
             if (reactionTester.ReactionIsValid(reactant1Name, reactant2Name))
             {
                 GameObject output = reactionTester.TryReaction(reactant1Name, reactant2Name);

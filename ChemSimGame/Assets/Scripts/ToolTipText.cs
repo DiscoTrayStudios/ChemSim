@@ -7,7 +7,7 @@ public class ToolTipText : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    public Vector3 offest;
+    public Vector3 offset;
     public Text text;
     private ReactionManager reaction;
     void Start()
