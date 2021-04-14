@@ -11,19 +11,22 @@ public class ReactionTester : MonoBehaviour
     public GameObject H2CO3;
     public GameObject HCl;
     public GameObject ClOH3;
+    public GameObject NaOH;
+    public GameObject NaCl;
 
     // List all the reactions and their outputs as GameObjects in here
     // We use a hashmap as a multiset, with each reactant mapping
     // to its quantity in the reaction
-    private Dictionary<Tuple<string, string>, GameObject> reactions; 
+    private Dictionary<Tuple<string, string>, List<GameObject>> reactions; 
 
     // Start is called before the first frame update
     void Start()
     {
-        reactions = new Dictionary<Tuple<string, string>, GameObject> {
-            { new Tuple<string, string>("reactant1", "reactant2"), h2o},
-            { new Tuple<string, string>(h2o.name, co2.name), H2CO3}, // Test reaction
-            { new Tuple<string, string>(h2o.name, HCl.name),  ClOH3}
+        reactions = new Dictionary<Tuple<string, string>, List<GameObject>> {
+            { new Tuple<string, string>("reactant1", "reactant2"), new List<GameObject>(){h2o } },
+            { new Tuple<string, string>(h2o.name, co2.name),  new List<GameObject>(){H2CO3 } }, // Test reaction
+            { new Tuple<string, string>(h2o.name, HCl.name),   new List<GameObject>(){ClOH3 } },
+            { new Tuple<string, string>(NaOH.name, HCl.name),  new List<GameObject>(){NaCl, h2o } }
         };
     }
 
@@ -46,7 +49,7 @@ public class ReactionTester : MonoBehaviour
         }
     }
 
-    public GameObject TryReaction(string reactant1Name, string reactant2Name)
+    public List<GameObject> TryReaction(string reactant1Name, string reactant2Name)
     {
 
         Tuple<string, string> pair1 = new Tuple<string, string>(reactant1Name, reactant2Name);

@@ -25,6 +25,7 @@ public class ReactionManager : MonoBehaviour
     private Molecule H2O;
     private Molecule CO2;
     private Molecule HCl;
+    private Molecule NaOH;
     private bool ReactionDone = false;
 
     // Start is called before the first frame update
@@ -33,6 +34,7 @@ public class ReactionManager : MonoBehaviour
         H2O = new Molecule("H2O", -285.8, 69.9, -237.2);
         CO2 = new Molecule("CO2", -393.5, 213.8, -394.4);
         HCl = new Molecule("HCl", -92.3, 186.9, -95.3);
+        NaOH = new Molecule("NaOH", -425.6, 64.5, -379.5);
         reactionTester = gameObject.GetComponent<ReactionTester>();
         reactantValues = new Dictionary<string, Molecule>();
         numReactants = 0;
@@ -44,6 +46,7 @@ public class ReactionManager : MonoBehaviour
         reactantValues.Add("H2O", H2O);
         reactantValues.Add("CO2", CO2);
         reactantValues.Add("HCl", HCl);
+        reactantValues.Add("NaOH", NaOH);
 
 
     }
@@ -118,7 +121,7 @@ public class ReactionManager : MonoBehaviour
             Debug.Log(reactant2);
             if (reactionTester.ReactionIsValid(reactant1Name, reactant2Name))
             {
-                GameObject output = reactionTester.TryReaction(reactant1Name, reactant2Name);
+                List<GameObject> output = reactionTester.TryReaction(reactant1Name, reactant2Name);
                 if (output != null)
                 {
                     DoReaction(output);
@@ -139,14 +142,19 @@ public class ReactionManager : MonoBehaviour
         }
     }
 
-    private void DoReaction(GameObject outputObject)
+    private void DoReaction(List<GameObject> outputObject)
     {
         Debug.Log(numReactants);
         Vector3 arrowPosition = new Vector3(0, 0, 5);
         reactionArrowInstance = Instantiate(reactionArrow, arrowPosition, reactionArrow.transform.rotation);
         Vector3 outputPosition = new Vector3(5, 0, 5);
-        reactionOutput = Instantiate(outputObject, outputPosition, outputObject.transform.rotation);
-        outputName = outputObject.name;
+        outputName = "";
+        foreach (GameObject molecule in outputObject)
+        {
+            reactionOutput = Instantiate(molecule, outputPosition, molecule.transform.rotation);
+            outputName += molecule.name + " + ";
+        }
+        outputName = outputName.Substring(0, outputName.Length-3);
     }
 
     public void ShowDialogue(string text)
