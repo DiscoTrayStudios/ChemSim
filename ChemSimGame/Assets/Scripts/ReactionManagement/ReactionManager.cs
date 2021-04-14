@@ -10,14 +10,16 @@ public class ReactionManager : MonoBehaviour
     public GameObject dialogueBox;
     public TextMeshProUGUI dialogueText;
     public GameObject reactionArrow;
+    private GameObject reactionArrowInstance;
 
     private ReactionTester reactionTester;
     private GameObject reactant1;
     private string reactant1Name;
     private GameObject reactant2;
     private string reactant2Name;
-    private Dictionary<string, int> currentReactantNames;
-    private Dictionary<string, ArrayList> reactantGameObjects;
+    private GameObject reactionOutput;
+    private string outputName;
+
     private Dictionary<string, Molecule> reactantValues;
     private int numReactants;
     private Molecule H2O;
@@ -30,8 +32,6 @@ public class ReactionManager : MonoBehaviour
         H2O = new Molecule("H2O", -285.8, 69.9, -237.2);
         CO2 = new Molecule("CO2", -393.5, 213.8, -394.4);
         reactionTester = gameObject.GetComponent<ReactionTester>();
-        currentReactantNames = new Dictionary<string, int>();
-        reactantGameObjects = new Dictionary<string, ArrayList>();
         reactantValues = new Dictionary<string, Molecule>();
         numReactants = 0;
         if (!(reactantListText == null))
@@ -83,7 +83,11 @@ public class ReactionManager : MonoBehaviour
             if (reactant2 != null)
             {
                 text += " + " + reactant2Name;
-            }
+            }   
+        }
+        if (reactionOutput != null)
+        {
+            text += " -> " + outputName;
         }
         reactantListText.text = text;
     }
@@ -94,6 +98,10 @@ public class ReactionManager : MonoBehaviour
         reactant1 = null;
         Destroy(reactant2);
         reactant2 = null;
+        Destroy(reactionOutput);
+        reactionOutput = null;
+        Destroy(reactionArrowInstance);
+        reactionArrowInstance = null;
         numReactants = 0;
         UpdateText();
     }
@@ -110,10 +118,8 @@ public class ReactionManager : MonoBehaviour
                 GameObject output = reactionTester.TryReaction(reactant1Name, reactant2Name);
                 if (output != null)
                 {
-                    ReactionDone = true;
-                    addReactant(reactionArrow);
-                    addReactant(output);
-                    ReactionDone = false;
+                    DoReaction(output);
+                    UpdateText();
                 }
                 else
                 {
@@ -128,6 +134,16 @@ public class ReactionManager : MonoBehaviour
         {
             ShowDialogue("Please select two reactants.");
         }
+    }
+
+    private void DoReaction(GameObject outputObject)
+    {
+        Debug.Log(numReactants);
+        Vector3 arrowPosition = new Vector3(0, 0, 5);
+        reactionArrowInstance = Instantiate(reactionArrow, arrowPosition, reactionArrow.transform.rotation);
+        Vector3 outputPosition = new Vector3(5, 0, 5);
+        reactionOutput = Instantiate(outputObject, outputPosition, outputObject.transform.rotation);
+        outputName = outputObject.name;
     }
 
     public void ShowDialogue(string text)

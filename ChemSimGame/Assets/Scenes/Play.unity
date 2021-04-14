@@ -2924,6 +2924,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   h2o: {fileID: 722344845549547934, guid: c8d0401ccf94ffe45a9f073abce1694a, type: 3}
   co2: {fileID: 6608888123125091917, guid: 7c229af29ed41994cb3d2ed131eb115b, type: 3}
+  H2CO3: {fileID: 8925060399929339539, guid: 2f4800717d308a84f9b268316ca2aa56, type: 3}
 --- !u!114 &1300517975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2939,6 +2940,7 @@ MonoBehaviour:
   reactantListText: {fileID: 1512832627}
   dialogueBox: {fileID: 987588911}
   dialogueText: {fileID: 939786932}
+  reactionArrow: {fileID: 256562302137616894, guid: cb7ad0a2bfd5154419e609fcac1046ce, type: 3}
 --- !u!4 &1300517976
 Transform:
   m_ObjectHideFlags: 0
@@ -4958,7 +4960,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 402e6777ff7846f43b61e17c1a2ccec6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offest: {x: 1, y: 1, z: -1}
+  offset: {x: 0, y: 0, z: 0}
   text: {fileID: 1936834628}
 --- !u!114 &1936834631
 MonoBehaviour:
@@ -4975,6 +4977,7 @@ MonoBehaviour:
   reactantListText: {fileID: 0}
   dialogueBox: {fileID: 0}
   dialogueText: {fileID: 0}
+  reactionArrow: {fileID: 0}
 --- !u!1 &1962860747
 GameObject:
   m_ObjectHideFlags: 0
