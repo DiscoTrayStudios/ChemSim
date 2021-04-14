@@ -8,6 +8,7 @@ public class ReactionTester : MonoBehaviour
     // put each molecule in here as a public field
     public GameObject h2o;
     public GameObject co2;
+    public GameObject H2CO3;
 
     // List all the reactions and their outputs as GameObjects in here
     // We use a hashmap as a multiset, with each reactant mapping
@@ -19,7 +20,7 @@ public class ReactionTester : MonoBehaviour
     {
         reactions = new Dictionary<Tuple<string, string>, GameObject> {
             { new Tuple<string, string>("reactant1", "reactant2"), h2o},
-            { new Tuple<string, string>(h2o.name, co2.name), h2o}, // Test reaction
+            { new Tuple<string, string>(h2o.name, co2.name), H2CO3}, // Test reaction
         };
     }
 

@@ -9,6 +9,7 @@ public class ReactionManager : MonoBehaviour
     public TextMeshProUGUI reactantListText;
     public GameObject dialogueBox;
     public TextMeshProUGUI dialogueText;
+    public GameObject reactionArrow;
 
     private ReactionTester reactionTester;
     private GameObject reactant1;
@@ -21,6 +22,7 @@ public class ReactionManager : MonoBehaviour
     private int numReactants;
     private Molecule H2O;
     private Molecule CO2;
+    private bool ReactionDone = false;
 
     // Start is called before the first frame update
     void Start()
@@ -51,9 +53,9 @@ public class ReactionManager : MonoBehaviour
 
     public void addReactant(GameObject reactantObject)
     {
-        if (reactant1 == null || reactant2 == null)
+        if (reactant1 == null || reactant2 == null || ReactionDone)
         {
-            Vector3 position = new Vector3(-10 + (numReactants * 5), 0, 0);
+            Vector3 position = new Vector3(-10 + (numReactants * 5), 0, 5);
             GameObject reactantInstance = Instantiate(reactantObject, position, reactantObject.transform.rotation);
             if (reactant1 == null)
             {
@@ -108,8 +110,10 @@ public class ReactionManager : MonoBehaviour
                 GameObject output = reactionTester.TryReaction(reactant1Name, reactant2Name);
                 if (output != null)
                 {
-                    ClearReactants();
+                    ReactionDone = true;
+                    addReactant(reactionArrow);
                     addReactant(output);
+                    ReactionDone = false;
                 }
                 else
                 {
