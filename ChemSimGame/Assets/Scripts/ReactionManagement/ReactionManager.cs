@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using TMPro;
 
@@ -8,20 +9,48 @@ public class ReactionManager : MonoBehaviour
     public TextMeshProUGUI reactantListText;
     public GameObject dialogueBox;
     public TextMeshProUGUI dialogueText;
+    public GameObject reactionArrow;
+    private GameObject reactionArrowInstance;
 
     private ReactionTester reactionTester;
-    private Dictionary<string, int> currentReactantNames;
-    private Dictionary<string, ArrayList> reactantGameObjects;
+    private GameObject reactant1;
+    private string reactant1Name;
+    private GameObject reactant2;
+    private string reactant2Name;
+    private GameObject reactionOutput;
+    private string outputName;
+    private List<GameObject>outputList;
+
+    private Dictionary<string, Molecule> reactantValues;
     private int numReactants;
+    private Molecule H2O;
+    private Molecule CO2;
+    private Molecule HCl;
+    private Molecule NaOH;
+    private bool ReactionDone = false;
 
     // Start is called before the first frame update
     void Start()
     {
+        H2O = new Molecule("H2O", -285.8, 69.9, -237.2);
+        CO2 = new Molecule("CO2", -393.5, 213.8, -394.4);
+        HCl = new Molecule("HCl", -92.3, 186.9, -95.3);
+        NaOH = new Molecule("NaOH", -425.6, 64.5, -379.5);
         reactionTester = gameObject.GetComponent<ReactionTester>();
-        currentReactantNames = new Dictionary<string, int>();
-        reactantGameObjects = new Dictionary<string, ArrayList>();
+        reactantValues = new Dictionary<string, Molecule>();
         numReactants = 0;
-        reactantListText.text = "";
+        if (!(reactantListText == null))
+        {
+            reactantListText.text = "";
+        }
+        outputList = new List<GameObject>();
+
+        reactantValues.Add("H2O", H2O);
+        reactantValues.Add("CO2", CO2);
+        reactantValues.Add("HCl", HCl);
+        reactantValues.Add("NaOH", NaOH);
+
+
     }
 
     // Update is called once per frame
@@ -32,74 +61,108 @@ public class ReactionManager : MonoBehaviour
 
     public void addReactant(GameObject reactantObject)
     {
-        string reactantName = reactantObject.name;
-        if (!currentReactantNames.ContainsKey(reactantName))
+        if (reactant1 == null || reactant2 == null || ReactionDone)
         {
-            currentReactantNames[reactantName] = 0;
-            reactantGameObjects[reactantName] = new ArrayList();
+            Vector3 position = new Vector3(-10 + (numReactants * 5), 0, 5);
+            GameObject reactantInstance = Instantiate(reactantObject, position, reactantObject.transform.rotation);
+            if (reactant1 == null)
+            {
+                reactant1 = reactantInstance;
+                reactant1Name = reactantObject.name;
+            } else
+            {
+                reactant2 = reactantInstance;
+                reactant2Name = reactantObject.name;
+            }
+            UpdateText();
+            numReactants += 1;
+        } else
+        {
+            ShowDialogue("You cannot add more than two reactants");
         }
-        currentReactantNames[reactantName] += 1;
-        Vector3 position = new Vector3(-10 +(numReactants * 5), 0, 0);
-        GameObject reactantInstance = Instantiate(reactantObject, position, reactantObject.transform.rotation);
-        reactantGameObjects[reactantName].Add(reactantInstance);
-        numReactants += 1;
-        UpdateText();
     }
 
     private void UpdateText()
     {
         string text = "";
-        foreach (string name in currentReactantNames.Keys)
+        if (reactant1 != null)
         {
-            if (currentReactantNames[name] > 0)
+            text += reactant1Name;
+            if (reactant2 != null)
             {
-                string nameText = name;
-                if (currentReactantNames[name] > 1)
-                {
-                    nameText = currentReactantNames[name] + " " + nameText;
-                }
-                text += nameText + " + ";
-            }
+                text += " + " + reactant2Name;
+            }   
         }
-        if (text.EndsWith(" + "))
+        if (reactionOutput != null)
         {
-            text = text.Remove(text.Length - 3);
+            text += " -> " + outputName;
         }
         reactantListText.text = text;
     }
 
     public void ClearReactants()
     {
-        currentReactantNames = new Dictionary<string, int>();
-        foreach (string name in reactantGameObjects.Keys)
+        Destroy(reactant1);
+        reactant1 = null;
+        Destroy(reactant2);
+        reactant2 = null;
+        foreach (GameObject g in outputList)
         {
-            foreach (GameObject obj in reactantGameObjects[name])
-            {
-                Destroy(obj);
-            }
+            Destroy(g);
         }
-        reactantGameObjects = new Dictionary<string, ArrayList>();
+        reactionOutput = null;
+        outputList.Clear();
+        Destroy(reactionArrowInstance);
+        reactionArrowInstance = null;
         numReactants = 0;
         UpdateText();
     }
 
     public void TryToReact()
     {
-        if (reactionTester.ReactionIsValid(currentReactantNames))
+        if (reactant1 != null && reactant2 != null)
         {
-            GameObject output = reactionTester.TryReaction(currentReactantNames);
-            if (output != null)
+            Debug.Log(1);
+            Debug.Log(reactant1);
+            Debug.Log(reactant2);
+            if (reactionTester.ReactionIsValid(reactant1Name, reactant2Name))
             {
-                ClearReactants();
-                addReactant(output);
-            } else
+                List<GameObject> output = reactionTester.TryReaction(reactant1Name, reactant2Name);
+                if (output != null)
+                {
+                    DoReaction(output);
+                    UpdateText();
+                }
+                else
+                {
+                    ShowDialogue("There is not a model saved for this reaction.");
+                }
+            }
+            else
             {
                 ShowDialogue("That is not a valid reaction.");
             }
-        } else
+        }else
         {
-            ShowDialogue("That is not a valid reaction.");
+            ShowDialogue("Please select two reactants.");
         }
+    }
+
+    private void DoReaction(List<GameObject> outputObject)
+    {
+        Debug.Log(numReactants);
+        Vector3 arrowPosition = new Vector3(0, 0, 5);
+        reactionArrowInstance = Instantiate(reactionArrow, arrowPosition, reactionArrow.transform.rotation);
+        Vector3 outputPosition = new Vector3(5, 0, 5);
+        outputName = "";
+        foreach (GameObject molecule in outputObject)
+        {
+            reactionOutput = Instantiate(molecule, outputPosition, molecule.transform.rotation);
+            outputName += molecule.name + " + ";
+            outputList.Add(reactionOutput);
+        }
+        outputName = outputName.Substring(0, outputName.Length-3);
+       
     }
 
     public void ShowDialogue(string text)
@@ -112,4 +175,8 @@ public class ReactionManager : MonoBehaviour
     {
         dialogueBox.SetActive(false);
     }
+
+    public double getMoleculedH(string name){return reactantValues[name].get_dH();}
+    public double getMoleculedS(string name) { return reactantValues[name].get_dS(); }
+    public double getMoleculedG(string name) { return reactantValues[name].get_dG(); }
 }
