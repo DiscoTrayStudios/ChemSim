@@ -19,6 +19,7 @@ public class ReactionManager : MonoBehaviour
     private string reactant2Name;
     private GameObject reactionOutput;
     private string outputName;
+    private List<GameObject>outputList;
 
     private Dictionary<string, Molecule> reactantValues;
     private int numReactants;
@@ -42,6 +43,7 @@ public class ReactionManager : MonoBehaviour
         {
             reactantListText.text = "";
         }
+        outputList = new List<GameObject>();
 
         reactantValues.Add("H2O", H2O);
         reactantValues.Add("CO2", CO2);
@@ -104,8 +106,12 @@ public class ReactionManager : MonoBehaviour
         reactant1 = null;
         Destroy(reactant2);
         reactant2 = null;
-        Destroy(reactionOutput);
+        foreach (GameObject g in outputList)
+        {
+            Destroy(g);
+        }
         reactionOutput = null;
+        outputList.Clear();
         Destroy(reactionArrowInstance);
         reactionArrowInstance = null;
         numReactants = 0;
@@ -153,8 +159,10 @@ public class ReactionManager : MonoBehaviour
         {
             reactionOutput = Instantiate(molecule, outputPosition, molecule.transform.rotation);
             outputName += molecule.name + " + ";
+            outputList.Add(reactionOutput);
         }
         outputName = outputName.Substring(0, outputName.Length-3);
+       
     }
 
     public void ShowDialogue(string text)
