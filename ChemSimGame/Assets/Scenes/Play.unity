@@ -2027,7 +2027,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1137101449}
   m_HandleRect: {fileID: 1137101448}
   m_Direction: 0
-  m_Value: 0.84499997
+  m_Value: 0.845
   m_Size: 0.20000002
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -3377,7 +3377,7 @@ MonoBehaviour:
   co2: {fileID: 6608888123125091917, guid: 7c229af29ed41994cb3d2ed131eb115b, type: 3}
   H2CO3: {fileID: 8925060399929339539, guid: 2f4800717d308a84f9b268316ca2aa56, type: 3}
   HCl: {fileID: 7515090717004062052, guid: 3af76bc312a13ac4ea26d4d797da084d, type: 3}
-  ClOH3: {fileID: 6055058740139546461, guid: 80c95477046bd1547b1a9aa1d2246a10, type: 3}
+  ClOH3: {fileID: 2321348931712087323, guid: 80c95477046bd1547b1a9aa1d2246a10, type: 3}
   NaOH: {fileID: 1807039884042494061, guid: 9846b70d300888b44aa906c301c6155f, type: 3}
   NaCl: {fileID: 78776813800201474, guid: 7083aaccd9da5b848af0830a3b2ffc1c, type: 3}
 --- !u!114 &1300517975
