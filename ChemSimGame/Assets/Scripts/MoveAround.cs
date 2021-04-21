@@ -20,6 +20,8 @@ public class MoveAround : MonoBehaviour
     private Vector3 originalPosition;
     private float x;
     private float y;
+
+    public bool reactant;
     void Start()
     {
         body = GetComponent<Rigidbody>();
@@ -70,7 +72,23 @@ public class MoveAround : MonoBehaviour
     private float Random()
     {
         System.Random random = new System.Random();
-        int num = random.Next(-10, 10);
+        int num;
+        if (reactant)
+        {
+             num = random.Next(1, 3);
+            if (num == 1)
+            {
+                num = random.Next(-10, -4);
+            }
+            else { num = random.Next(5, 11); }
+            
+        }
+        else
+        {
+            num = random.Next(-2, 3);
+            RightX = 9;
+            LeftX = 4;
+        }
         return num;
 
     }
