@@ -74,24 +74,12 @@ public class ReactionManager : MonoBehaviour
             {
                 reactant1 = reactantInstance;
                 reactant1Name = reactantObject.name;
-                if (reactantsMoving)
-                {
-                    reactant1.GetComponent<MoveAround>().isMoving = true;
-                } else
-                {
-                    reactant1.GetComponent<MoveAround>().isMoving = false;
-                }
+                reactant1.GetComponent<MoveAround>().isMoving = reactantsMoving;  
             } else
             {
                 reactant2 = reactantInstance;
                 reactant2Name = reactantObject.name;
-                if (reactantsMoving)
-                {
-                    reactant2.GetComponent<MoveAround>().isMoving = true;
-                } else
-                {
-                    reactant2.GetComponent<MoveAround>().isMoving = false;
-                }
+                reactant2.GetComponent<MoveAround>().isMoving = reactantsMoving;
             }
             UpdateText();
             numReactants += 1;
@@ -177,11 +165,13 @@ public class ReactionManager : MonoBehaviour
         foreach (GameObject molecule in outputObject)
         {
             reactionOutput = Instantiate(molecule, outputPosition, molecule.transform.rotation);
+            MoveAround moveScript = reactionOutput.GetComponent<MoveAround>();
+            moveScript.isMoving = reactantsMoving;
             outputName += molecule.name + " + ";
             outputList.Add(reactionOutput);
             if (molecule.name.Equals("H2O"))
             {
-                reactionOutput.GetComponent<MoveAround>().reactant = false;
+                moveScript.reactant = false;
             }
         }
         outputName = outputName.Substring(0, outputName.Length-3);
@@ -214,6 +204,10 @@ public class ReactionManager : MonoBehaviour
             {
                 reactant2.GetComponent<MoveAround>().StartMoving();
             }
+            foreach (GameObject output in outputList)
+            {
+                output.GetComponent<MoveAround>().StartMoving();
+            }
         }
         else
         {
@@ -225,6 +219,10 @@ public class ReactionManager : MonoBehaviour
             if (reactant2 != null)
             {
                 reactant2.GetComponent<MoveAround>().StopMoving();
+            }
+            foreach (GameObject output in outputList)
+            {
+                output.GetComponent<MoveAround>().StopMoving();
             }
         }
     }
