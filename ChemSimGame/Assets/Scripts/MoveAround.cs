@@ -20,10 +20,16 @@ public class MoveAround : MonoBehaviour
     private Vector3 originalPosition;
     private float x;
     private float y;
+    private System.Random random;
 
     public bool reactant;
     void Start()
     {
+        random = new System.Random();
+        RightX = -2;
+        LeftX = -16;
+        UpY = 6;
+        DownY = -2;
         body = GetComponent<Rigidbody>();
         originalx = transform.position.x;
         originaly = transform.position.y;
@@ -32,10 +38,7 @@ public class MoveAround : MonoBehaviour
         while (x == 00) { x = Random(); }
         y = Random();
         while (x == 00) { y = Random(); }
-        RightX = -2;
-        LeftX = -16;
-        UpY = 6;
-        DownY = -2;
+        
     }
 
     // Update is called once per frame
@@ -71,7 +74,6 @@ public class MoveAround : MonoBehaviour
 
     private float Random()
     {
-        System.Random random = new System.Random();
         int num;
         if (reactant)
         {
