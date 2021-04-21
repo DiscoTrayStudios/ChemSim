@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 93898721684679460}
   - component: {fileID: 4749456975780478789}
   - component: {fileID: 6532554744666078958}
+  - component: {fileID: -7607458135322204605}
+  - component: {fileID: -746461819778876876}
   m_Layer: 0
   m_Name: H2O
   m_TagString: Untagged
@@ -64,6 +66,40 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: -4.5, y: 4, z: -1.6}
+--- !u!114 &-7607458135322204605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 722344845549547934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d755ab4461a8fee4b88395a8ce5fac82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  x: 5
+  y: 5
+  RightX: 0
+  LeftX: -15
+  UpY: 6
+  DownY: -2
+--- !u!54 &-746461819778876876
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 722344845549547934}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 8
+  m_CollisionDetection: 0
 --- !u!1 &3782472315235107535
 GameObject:
   m_ObjectHideFlags: 0
