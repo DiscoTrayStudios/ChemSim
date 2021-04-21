@@ -28,6 +28,8 @@ public class ReactionManager : MonoBehaviour
     private Dictionary<string, Molecule> reactantValues;
     private int numReactants;
     private Molecule H2O;
+    private Molecule H2OL;
+    private Molecule H2OG;
     private Molecule CO2;
     private Molecule HCl;
     private Molecule NaOH;
@@ -36,7 +38,9 @@ public class ReactionManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        H2O = new Molecule("H2O", -285.8, 69.9, -237.2);
+        H2O = new Molecule("H2O", 0, 0, 0);
+        H2OL = new Molecule("H2O (L)", -285.8, 69.9, -237.2);
+        H2OG = new Molecule("H2O (G)", -45, 45, -45);
         CO2 = new Molecule("CO2", -393.5, 213.8, -394.4);
         HCl = new Molecule("HCl", -92.3, 186.9, -95.3);
         NaOH = new Molecule("NaOH", -425.6, 64.5, -379.5);
@@ -49,6 +53,8 @@ public class ReactionManager : MonoBehaviour
         }
         outputList = new List<GameObject>();
 
+        reactantValues.Add("H2O (L)", H2OL);
+        reactantValues.Add("H2O (G)", H2OG);
         reactantValues.Add("H2O", H2O);
         reactantValues.Add("CO2", CO2);
         reactantValues.Add("HCl", HCl);

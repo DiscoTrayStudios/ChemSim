@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,8 +21,9 @@ public class ToolTipText : MonoBehaviour
     {
     }
 
-    public void setText(string name) 
+    public void setText(TextMeshProUGUI label) 
     {
+        name = label.text;
         text.GetComponent<UnityEngine.UI.Text>().text = name + "\ndH = " + reaction.getMoleculedH(name) + "\ndS = " + reaction.getMoleculedS(name) + "\ndG = " + reaction.getMoleculedG(name);
     }
 }
