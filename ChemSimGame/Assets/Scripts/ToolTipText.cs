@@ -21,9 +21,14 @@ public class ToolTipText : MonoBehaviour
     {
     }
 
-    public void setText(TextMeshProUGUI label) 
+    public void setTextDrop(TextMeshProUGUI label) 
     {
         name = label.text;
+        text.GetComponent<UnityEngine.UI.Text>().text = name + "\ndH = " + reaction.getMoleculedH(name) + "\ndS = " + reaction.getMoleculedS(name) + "\ndG = " + reaction.getMoleculedG(name);
+    }
+
+    public void setTextButton(string name)
+    {
         text.GetComponent<UnityEngine.UI.Text>().text = name + "\ndH = " + reaction.getMoleculedH(name) + "\ndS = " + reaction.getMoleculedS(name) + "\ndG = " + reaction.getMoleculedG(name);
     }
 }

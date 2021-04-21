@@ -326,7 +326,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -114, y: -123.06}
+  m_AnchoredPosition: {x: -61, y: -123.06}
   m_SizeDelta: {x: 612.71, y: 75.8702}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &51966856
@@ -867,7 +867,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -312, y: 86}
+  m_AnchoredPosition: {x: -294.26, y: 88.504}
   m_SizeDelta: {x: 188.49, y: 34.0169}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &203900838
@@ -1876,7 +1876,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 1936834630}
           m_TargetAssemblyTypeName: ToolTipText, Assembly-CSharp
-          m_MethodName: setText
+          m_MethodName: setTextButton
           m_Mode: 5
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -1909,7 +1909,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 644877367}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
@@ -2176,7 +2176,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 1936834630}
           m_TargetAssemblyTypeName: ToolTipText, Assembly-CSharp
-          m_MethodName: setText
+          m_MethodName: setTextButton
           m_Mode: 5
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -2209,7 +2209,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 680605977}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
@@ -2332,7 +2332,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 427.7, y: 0}
+  m_AnchoredPosition: {x: 371, y: 0}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &730621940
@@ -2457,7 +2457,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 330, y: 0}
+  m_AnchoredPosition: {x: 272, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &744892243
@@ -3544,7 +3544,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 112, y: 139}
+  m_AnchoredPosition: {x: 60.067, y: 145.25}
   m_SizeDelta: {x: 188.51, y: 31.497}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1079128739
@@ -4535,7 +4535,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 1936834630}
           m_TargetAssemblyTypeName: ToolTipText, Assembly-CSharp
-          m_MethodName: setText
+          m_MethodName: setTextDrop
           m_Mode: 2
           m_Arguments:
             m_ObjectArgument: {fileID: 446694658}
@@ -5133,7 +5133,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -312, y: 137.00839}
+  m_AnchoredPosition: {x: -294.25, y: 139}
   m_SizeDelta: {x: 188.5, y: 37.4851}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1796477072
@@ -5278,7 +5278,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1809811276}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
@@ -5397,7 +5397,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 1936834630}
           m_TargetAssemblyTypeName: ToolTipText, Assembly-CSharp
-          m_MethodName: setText
+          m_MethodName: setTextButton
           m_Mode: 5
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -6258,7 +6258,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -96, y: 139}
+  m_AnchoredPosition: {x: -113, y: 111}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1936834628
