@@ -160,6 +160,10 @@ public class ReactionManager : MonoBehaviour
             reactionOutput = Instantiate(molecule, outputPosition, molecule.transform.rotation);
             outputName += molecule.name + " + ";
             outputList.Add(reactionOutput);
+            if (molecule.name.Equals("H2O"))
+            {
+                reactionOutput.GetComponent<MoveAround>().reactant = false;
+            }
         }
         outputName = outputName.Substring(0, outputName.Length-3);
        
