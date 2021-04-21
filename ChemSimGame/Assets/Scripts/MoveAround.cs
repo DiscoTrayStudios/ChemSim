@@ -6,6 +6,8 @@ public class MoveAround : MonoBehaviour
 {
     // Start is called before the first frame update
     
+    public bool isMoving = true;
+
     private float RightX;
     private float LeftX;
     private float UpY;
@@ -15,17 +17,19 @@ public class MoveAround : MonoBehaviour
     private Vector3 postion;
     private float originalx;
     private float originaly;
+    private Vector3 originalPosition;
     private float x;
     private float y;
     void Start()
     {
-        
+        body = GetComponent<Rigidbody>();
+        originalx = transform.position.x;
+        originaly = transform.position.y;
+        originalPosition = transform.position;
         x = Random();
         while (x == 00) { x = Random(); }
         y = Random();
         while (x == 00) { y = Random(); }
-        body = GetComponent<Rigidbody>();
-        body.velocity = new Vector3(x, y, 0);
         RightX = -2;
         LeftX = -16;
         UpY = 6;
@@ -35,28 +39,31 @@ public class MoveAround : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        postion = body.transform.position;
-        if (postion.x > RightX && body.velocity.x > 0)
+        if (isMoving)
         {
-            x = -x;
-        }
+            postion = body.transform.position;
+            if (postion.x > RightX && body.velocity.x > 0)
+            {
+                x = -x;
+            }
 
-        if (postion.x < LeftX && body.velocity.x < 0)
-        {
-            x = -x;
-        }
+            if (postion.x < LeftX && body.velocity.x < 0)
+            {
+                x = -x;
+            }
 
-        if (postion.y > UpY && body.velocity.y > 0)
-        {
-            y = -y;
-        }
+            if (postion.y > UpY && body.velocity.y > 0)
+            {
+                y = -y;
+            }
 
-        if (postion.y < DownY && body.velocity.y < 0)
-        {
-            y = -y;
-        }
+            if (postion.y < DownY && body.velocity.y < 0)
+            {
+                y = -y;
+            }
 
-        body.velocity = new Vector3(x, y, 0);
+            body.velocity = new Vector3(x, y, 0);
+        }
     }
 
 
@@ -66,5 +73,22 @@ public class MoveAround : MonoBehaviour
         int num = random.Next(-10, 10);
         return num;
 
+    }
+
+    public void StartMoving()
+    {
+        isMoving = true;
+        x = Random();
+        while (x == 00) { x = Random(); }
+        y = Random();
+        while (x == 00) { y = Random(); }
+        body.velocity = new Vector3(x, y, 0);
+    }
+
+    public void StopMoving()
+    {
+        isMoving = false;
+        body.velocity = new Vector3(0, 0, 0);
+        body.position = originalPosition;
     }
 }

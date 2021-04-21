@@ -12,6 +12,10 @@ public class ReactionManager : MonoBehaviour
     public GameObject reactionArrow;
     private GameObject reactionArrowInstance;
 
+    public TextMeshProUGUI motionSwitchText;
+
+    private bool reactantsMoving;
+
     private ReactionTester reactionTester;
     private GameObject reactant1;
     private string reactant1Name;
@@ -50,7 +54,8 @@ public class ReactionManager : MonoBehaviour
         reactantValues.Add("HCl", HCl);
         reactantValues.Add("NaOH", NaOH);
 
-
+        reactantsMoving = false;
+        motionSwitchText.text = "Start Motion";
     }
 
     // Update is called once per frame
@@ -69,10 +74,24 @@ public class ReactionManager : MonoBehaviour
             {
                 reactant1 = reactantInstance;
                 reactant1Name = reactantObject.name;
+                if (reactantsMoving)
+                {
+                    reactant1.GetComponent<MoveAround>().isMoving = true;
+                } else
+                {
+                    reactant1.GetComponent<MoveAround>().isMoving = false;
+                }
             } else
             {
                 reactant2 = reactantInstance;
                 reactant2Name = reactantObject.name;
+                if (reactantsMoving)
+                {
+                    reactant2.GetComponent<MoveAround>().isMoving = true;
+                } else
+                {
+                    reactant2.GetComponent<MoveAround>().isMoving = false;
+                }
             }
             UpdateText();
             numReactants += 1;
@@ -174,6 +193,36 @@ public class ReactionManager : MonoBehaviour
     public void CloseDialogue()
     {
         dialogueBox.SetActive(false);
+    }
+
+    // Causes molecules to start/stop moving
+    public void ChangeMotion()
+    {
+        reactantsMoving = !reactantsMoving;
+        if (reactantsMoving)
+        {
+            motionSwitchText.text = "Stop Motion";
+            if (reactant1 != null)
+            {
+                reactant1.GetComponent<MoveAround>().StartMoving();
+            }
+            if (reactant2 != null)
+            {
+                reactant2.GetComponent<MoveAround>().StartMoving();
+            }
+        }
+        else
+        {
+            motionSwitchText.text = "Start Motion";
+            if (reactant1 != null)
+            {
+                reactant1.GetComponent<MoveAround>().StopMoving();
+            }
+            if (reactant2 != null)
+            {
+                reactant2.GetComponent<MoveAround>().StopMoving();
+            }
+        }
     }
 
     public double getMoleculedH(string name){return reactantValues[name].get_dH();}

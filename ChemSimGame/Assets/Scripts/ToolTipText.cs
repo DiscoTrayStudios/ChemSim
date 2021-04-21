@@ -9,10 +9,10 @@ public class ToolTipText : MonoBehaviour
 
     public Vector3 offset;
     public Text text;
-    private ReactionManager reaction;
+    public ReactionManager reaction;
     void Start()
     {
-        reaction = GetComponent<ReactionManager>();
+       
     }
 
     // Update is called once per frame
