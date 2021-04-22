@@ -103,6 +103,7 @@ public class MoveAround : MonoBehaviour
         y = Random();
         while (x == 00) { y = Random(); }
         body.velocity = new Vector3(x, y, 0);
+        body.freezeRotation = false;
     }
 
     public void StopMoving()
@@ -110,5 +111,7 @@ public class MoveAround : MonoBehaviour
         isMoving = false;
         body.velocity = new Vector3(0, 0, 0);
         body.position = originalPosition;
+        body.freezeRotation = true;
+        body.rotation = Quaternion.identity;
     }
 }
