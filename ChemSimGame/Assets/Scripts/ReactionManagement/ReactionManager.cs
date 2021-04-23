@@ -33,6 +33,16 @@ public class ReactionManager : MonoBehaviour
     private Molecule CO2;
     private Molecule HCl;
     private Molecule NaOH;
+    private Molecule NH3;
+    private Molecule NH4;
+    private Molecule OH;
+    private Molecule H2SO4;
+    private Molecule Na2SO4Aq;
+    private Molecule Na2SO4S;
+    private Molecule Na;
+    private Molecule SO4;
+    private Molecule N2;
+    private Molecule H2;
     private bool ReactionDone = false;
 
     // Start is called before the first frame update
@@ -44,6 +54,16 @@ public class ReactionManager : MonoBehaviour
         CO2 = new Molecule("CO2", -393.5, 213.8, -394.4);
         HCl = new Molecule("HCl", -92.3, 186.9, -95.3);
         NaOH = new Molecule("NaOH", -425.6, 64.5, -379.5);
+        NH3 = new Molecule("NH3", -46.1, 192.5, -16.5);
+        NH4 = new Molecule("NH4+", -132.5, 113.4, -79.3);
+        OH = new Molecule("OH-", -229.9, -10.5, -157.3);
+        H2SO4 = new Molecule("H2SO4", -909.3, 20.1, -744.5);
+        Na2SO4Aq = new Molecule("Na2SO4 (Aq)", -1389.5, 138.1, -1268.4);
+        Na2SO4S = new Molecule("Na2SO4 (S)", -1384.5, 149.5, -1266.83);
+        Na = new Molecule("Na+", -240.1, 59.0, -261.9);
+        SO4 = new Molecule("SO42-", -909.3, 20.1, -744.6);
+        N2 = new Molecule("N2", 0, 191.5, 0);
+        H2 = new Molecule("H2", 0, 130.6, 0);
         reactionTester = gameObject.GetComponent<ReactionTester>();
         reactantValues = new Dictionary<string, Molecule>();
         numReactants = 0;
@@ -59,6 +79,16 @@ public class ReactionManager : MonoBehaviour
         reactantValues.Add("CO2", CO2);
         reactantValues.Add("HCl", HCl);
         reactantValues.Add("NaOH", NaOH);
+        reactantValues.Add("NH3", NH3);
+        reactantValues.Add("NH4+", NH4);
+        reactantValues.Add("OH-", OH);
+        reactantValues.Add("H2SO4", H2SO4);
+        reactantValues.Add("Na2SO4 (Aq)", Na2SO4Aq);
+        reactantValues.Add("Na2SO4 (S)", Na2SO4S);
+        reactantValues.Add("Na+", Na);
+        reactantValues.Add("SO42-", SO4);
+        reactantValues.Add("N2", N2);
+        reactantValues.Add("H2", H2);
 
         reactantsMoving = false;
         motionSwitchText.text = "Start Motion";
