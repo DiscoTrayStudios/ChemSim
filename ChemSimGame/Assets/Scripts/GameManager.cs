@@ -52,6 +52,15 @@ public class GameManager : MonoBehaviour
         NextScene("Play");
     }
 
+    public void Tutorial()
+    {
+        textBox.SetActive(false);
+        startButton.SetActive(false);
+        tutorialButton.SetActive(false);
+        creditsButton.SetActive(false);
+        NextScene("Tutorial");
+    }
+
         IEnumerator ColorLerp(Color endValue, float duration)
         {
             float time = 0;
