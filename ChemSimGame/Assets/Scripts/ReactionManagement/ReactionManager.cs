@@ -104,7 +104,7 @@ public class ReactionManager : MonoBehaviour
     {
         if (reactant1 == null || reactant2 == null || ReactionDone)
         {
-            Vector3 position = new Vector3(-10 + (numReactants * 5), 0, 5);
+            Vector3 position = new Vector3(-10 + (numReactants * 3), 0, 5);
             GameObject reactantInstance = Instantiate(reactantObject, position, reactantObject.transform.rotation);
             if (reactant1 == null)
             {
@@ -211,6 +211,7 @@ public class ReactionManager : MonoBehaviour
             {
                 moveScript.reactant = false;
             }
+            outputPosition.x+=3;
         }
         outputName = outputName.Substring(0, outputName.Length-3);
        
