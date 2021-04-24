@@ -147,8 +147,10 @@ public class ReactionManager : MonoBehaviour
     {
         Destroy(reactant1);
         reactant1 = null;
+        reactant1Name = null;
         Destroy(reactant2);
         reactant2 = null;
+        reactant2Name = null;
         foreach (GameObject g in outputList)
         {
             Destroy(g);
@@ -163,7 +165,7 @@ public class ReactionManager : MonoBehaviour
 
     public void TryToReact()
     {
-        if (reactant1 != null && reactant2 != null)
+        if ((reactant1 != null && reactant2 != null)||( reactant1Name == "Na2SO4" && reactant2 ==null))
         {
             Debug.Log(1);
             Debug.Log(reactant1);

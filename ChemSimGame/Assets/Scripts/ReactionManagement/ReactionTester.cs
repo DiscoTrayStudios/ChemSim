@@ -13,6 +13,15 @@ public class ReactionTester : MonoBehaviour
     public GameObject ClOH3;
     public GameObject NaOH;
     public GameObject NaCl;
+    public GameObject NH3;
+    public GameObject NH4;
+    public GameObject OH;
+    public GameObject H2SO4;
+    public GameObject Na2SO4;
+    public GameObject Na;
+    public GameObject SO4;
+    public GameObject N2;
+    public GameObject H2;
 
     // List all the reactions and their outputs as GameObjects in here
     // We use a hashmap as a multiset, with each reactant mapping
@@ -26,7 +35,11 @@ public class ReactionTester : MonoBehaviour
             { new Tuple<string, string>("reactant1", "reactant2"), new List<GameObject>(){h2o } },
             { new Tuple<string, string>(h2o.name, co2.name),  new List<GameObject>(){H2CO3 } }, // Test reaction
             { new Tuple<string, string>(h2o.name, HCl.name),   new List<GameObject>(){ClOH3 } },
-            { new Tuple<string, string>(NaOH.name, HCl.name),  new List<GameObject>(){NaCl, h2o } }
+            { new Tuple<string, string>(NaOH.name, HCl.name),  new List<GameObject>(){NaCl, h2o } },
+            { new Tuple<string, string>(NH3.name, h2o.name), new List<GameObject>(){NH4, OH } },
+            { new Tuple<string, string>(H2SO4.name, NaOH.name),  new List<GameObject>(){Na2SO4, h2o } },
+            { new Tuple<string, string>(Na2SO4.name, null),  new List<GameObject>(){Na, SO4 } },
+            { new Tuple<string, string>(N2.name, H2.name),  new List<GameObject>(){NH3 } },
         };
     }
 
