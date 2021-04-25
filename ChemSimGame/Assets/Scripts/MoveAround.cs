@@ -7,6 +7,7 @@ public class MoveAround : MonoBehaviour
     // Start is called before the first frame update
     
     public bool isMoving = true;
+    public double dh = 1;
 
     private float RightX;
     private float LeftX;
@@ -18,6 +19,7 @@ public class MoveAround : MonoBehaviour
     private float originalx;
     private float originaly;
     private Vector3 originalPosition;
+    private Quaternion originalRotation;
     private float x;
     private float y;
     private System.Random random;
@@ -34,10 +36,9 @@ public class MoveAround : MonoBehaviour
         originalx = transform.position.x;
         originaly = transform.position.y;
         originalPosition = transform.position;
-        x = Random();
-        while (x == 00) { x = Random(); }
-        y = Random();
-        while (y == 00) { y = Random(); }
+        originalRotation = transform.rotation;
+        x = GenSpeed();
+        y = GenSpeed();
         
     }
 
@@ -72,36 +73,28 @@ public class MoveAround : MonoBehaviour
     }
 
 
-    private float Random()
+    private float GenSpeed()
     {
-        int num;
-        if (reactant)
+        float speed = 15 - (-((float)dh / 100));
+        if (random.Next(1) == 0)
         {
-             num = random.Next(1, 3);
-            if (num == 1)
-            {
-                num = random.Next(-10, -4);
-            }
-            else { num = random.Next(5, 11); }
-            
+            speed *= -1;
         }
-        else
+        if (!reactant)
         {
-            num = random.Next(-2, 3);
             RightX = 9;
             LeftX = 4;
         }
-        return num;
+        Debug.Log(speed);
+        return speed;
 
     }
 
     public void StartMoving()
     {
         isMoving = true;
-        x = Random();
-        while (x == 00) { x = Random(); }
-        y = Random();
-        while (x == 00) { y = Random(); }
+        x = GenSpeed();
+        y = GenSpeed();
         body.velocity = new Vector3(x, y, 0);
         body.freezeRotation = false;
     }
@@ -112,6 +105,6 @@ public class MoveAround : MonoBehaviour
         body.velocity = new Vector3(0, 0, 0);
         body.position = originalPosition;
         body.freezeRotation = true;
-        body.rotation = Quaternion.identity;
+        body.rotation = originalRotation;
     }
 }

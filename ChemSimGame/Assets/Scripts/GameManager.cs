@@ -15,6 +15,9 @@ public class GameManager : MonoBehaviour
     public GameObject startButton;
     public GameObject tutorialButton;
     public GameObject creditsButton;
+
+    private MoleculeValuesTable moleculeValuesTable = new MoleculeValuesTable();
+
     // Start is called before the first frame update
     void Start()
     {
@@ -102,5 +105,8 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public double getMoleculedH(string name) { return moleculeValuesTable.getMoleculedH(name); }
+    public double getMoleculedS(string name) { return moleculeValuesTable.getMoleculedS(name); }
+    public double getMoleculedG(string name) { return moleculeValuesTable.getMoleculedG(name); }
 
 }
