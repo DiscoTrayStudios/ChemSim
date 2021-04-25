@@ -100,6 +100,7 @@ public class ReactionManager : MonoBehaviour
         reactant2count = 0;
 
         allReactants = new List<GameObject>();
+        reactant2Name = null;
     }
 
     // Update is called once per frame
@@ -221,9 +222,6 @@ public class ReactionManager : MonoBehaviour
     {
         if ((reactant1 != null && reactant2 != null)||( reactant1Name == "Na2SO4" && reactant2 ==null))
         {
-            Debug.Log(1);
-            Debug.Log(reactant1);
-            Debug.Log(reactant2);
             if (reactionTester.ReactionIsValid(reactant1Name, reactant2Name, reactant1count, reactant2count))
             {
                 List<GameObject> output = reactionTester.TryReaction(reactant1Name, reactant2Name);
@@ -261,7 +259,7 @@ public class ReactionManager : MonoBehaviour
             moveScript.isMoving = reactantsMoving;
             outputName += molecule.name + " + ";
             outputList.Add(reactionOutput);
-            if (molecule.name.Equals("H2O"))
+            if (molecule.name.Equals("H2O") || molecule.name.Equals("Na2SO4") || molecule.name.Equals("NH3"))
             {
                 moveScript.reactant = false;
             }

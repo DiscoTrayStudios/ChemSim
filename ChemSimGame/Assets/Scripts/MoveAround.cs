@@ -37,7 +37,7 @@ public class MoveAround : MonoBehaviour
         x = Random();
         while (x == 00) { x = Random(); }
         y = Random();
-        while (x == 00) { y = Random(); }
+        while (y == 00) { y = Random(); }
         
     }
 

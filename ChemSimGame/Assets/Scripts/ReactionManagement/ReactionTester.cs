@@ -37,9 +37,9 @@ public class ReactionTester : MonoBehaviour
             { new Tuple<string, string>(h2o.name, HCl.name),   new List<GameObject>(){ClOH3 } },
             { new Tuple<string, string>(NaOH.name, HCl.name),  new List<GameObject>(){NaCl, h2o } },
             { new Tuple<string, string>(NH3.name, h2o.name), new List<GameObject>(){NH4, OH } },
-            { new Tuple<string, string>(H2SO4.name, NaOH.name),  new List<GameObject>(){Na2SO4, h2o } },
-            { new Tuple<string, string>(Na2SO4.name, null),  new List<GameObject>(){Na, SO4 } },
-            { new Tuple<string, string>(N2.name, H2.name),  new List<GameObject>(){NH3 } },
+            { new Tuple<string, string>(H2SO4.name, NaOH.name),  new List<GameObject>(){Na2SO4, h2o, h2o } },
+            { new Tuple<string, string>(Na2SO4.name, null),  new List<GameObject>(){Na, Na, SO4 } },
+            { new Tuple<string, string>(N2.name, H2.name),  new List<GameObject>(){NH3, NH3 } },
         };
 
         
@@ -53,10 +53,24 @@ public class ReactionTester : MonoBehaviour
 
     public bool ReactionIsValid(string reactant1Name, string reactant2Name, int reactant1count, int reactant2count)
     {
+        if (reactant1Name == Na2SO4.name)
+        {
+            Debug.Log("A");
+            if (reactant2Name == null)
+            {
+                Debug.Log("B");
+                if (reactant1count == 1)
+                {
+                    Debug.Log("C");
+                    return true;
+                }
+            }
+            
+        }
         Tuple<string, string> pair1 = new Tuple<string, string>(reactant1Name, reactant2Name);
         if (reactions.ContainsKey(pair1))
         {
-            if (reactant1count != 1 || reactant2count != 1)
+            if ((reactant1count != 1 || reactant2count != 1) ||(reactant1Name == H2SO4.name) || (reactant1Name == N2.name))
             {
                 if ((reactant1Name == H2SO4.name && reactant2Name == NaOH.name))
                 {
@@ -64,7 +78,6 @@ public class ReactionTester : MonoBehaviour
                     {
                         return true;
                     }
-                    return false;
                 }
                 if ((reactant1Name == N2.name && reactant2Name == H2.name))
                 {
@@ -72,7 +85,6 @@ public class ReactionTester : MonoBehaviour
                     {
                         return true;
                     }
-                    return false;
                 }
                 return false;
             }
@@ -84,9 +96,9 @@ public class ReactionTester : MonoBehaviour
         else
         {
             Tuple<string, string> pair2 = new Tuple<string, string>(reactant2Name, reactant1Name);
-            if (reactions.ContainsKey(pair1))
+            if (reactions.ContainsKey(pair2))
             {
-                if (reactant1count != 1 || reactant2count != 1)
+                if ((reactant1count != 1 || reactant2count != 1) || (reactant2Name == H2SO4.name) || (reactant2Name == N2.name))
                 {
                     if ((reactant1Name == NaOH.name && reactant2Name == H2SO4.name))
                     {
@@ -94,7 +106,6 @@ public class ReactionTester : MonoBehaviour
                         {
                             return true;
                         }
-                        return false;
                     }
                     if ((reactant1Name == H2.name && reactant2Name == N2.name))
                     {
@@ -102,7 +113,6 @@ public class ReactionTester : MonoBehaviour
                         {
                             return true;
                         }
-                        return false;
                     }
                     return false;
                 }
