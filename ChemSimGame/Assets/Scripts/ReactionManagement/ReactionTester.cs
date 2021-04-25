@@ -55,13 +55,10 @@ public class ReactionTester : MonoBehaviour
     {
         if (reactant1Name == Na2SO4.name)
         {
-            Debug.Log("A");
             if (reactant2Name == null)
             {
-                Debug.Log("B");
                 if (reactant1count == 1)
                 {
-                    Debug.Log("C");
                     return true;
                 }
             }
