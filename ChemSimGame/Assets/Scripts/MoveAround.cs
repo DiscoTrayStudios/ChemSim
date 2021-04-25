@@ -85,7 +85,6 @@ public class MoveAround : MonoBehaviour
             RightX = 9;
             LeftX = 4;
         }
-        Debug.Log(speed);
         return speed;
 
     }

@@ -113,7 +113,6 @@ public class ReactionManager : MonoBehaviour
                     reactant1Name = reactantObject.name;
                     reactant1.GetComponent<MoveAround>().isMoving = reactantsMoving;
                     reactant1.GetComponent<MoveAround>().dh = getMoleculedH(reactant1Name);
-                    Debug.Log(reactant1.GetComponent<MoveAround>().dh);
                     reactant1count = 1;
                     allReactants.Add(reactant1);
                 }
@@ -187,7 +186,7 @@ public class ReactionManager : MonoBehaviour
 
     public void TryToReact()
     {
-        if ((reactant1 != null && reactant2 != null)||( reactant1Name == "Na2SO4" && reactant2 ==null))
+        if ((reactant1 != null && reactant2 != null)||( reactant1Name == "Na2SO4 (S)" && reactant2 ==null))
         {
             if (reactionTester.ReactionIsValid(reactant1Name, reactant2Name, reactant1count, reactant2count))
             {

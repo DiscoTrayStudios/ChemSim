@@ -21,6 +21,10 @@ TagManager:
   - SO42-
   - Cl+OH3
   - H2CO3
+  - H2O (L)
+  - H2O (G)
+  - Na2SO4 (S)
+  - Na2SO4 (Aq)
   layers:
   - Default
   - TransparentFX
