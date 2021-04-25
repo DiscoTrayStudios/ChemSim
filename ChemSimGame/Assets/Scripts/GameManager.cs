@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour
         startButton.SetActive(false);
         tutorialButton.SetActive(false);
         creditsButton.SetActive(false);
-        NextScene("Play");
+        FadeOut("Play");
     }
 
     public void Tutorial()
@@ -61,48 +61,62 @@ public class GameManager : MonoBehaviour
         startButton.SetActive(false);
         tutorialButton.SetActive(false);
         creditsButton.SetActive(false);
-        NextScene("Tutorial");
+        FadeOut("Tutorial");
     }
 
-        IEnumerator ColorLerp(Color endValue, float duration)
-        {
-            float time = 0;
-            Image sprite = image.GetComponent<Image>();
-            Color startValue = sprite.color;
+    public void BackToMenu()
+    {
+        textBox.SetActive(true);
+        startButton.SetActive(true);
+        tutorialButton.SetActive(true);
+        creditsButton.SetActive(true);
+        FadeIn("MainMenu");
+    }
 
-            while (time < duration)
+    IEnumerator ColorLerp(Color endValue, float duration)
+    {
+        float time = 0;
+        Image sprite = image.GetComponent<Image>();
+        Color startValue = sprite.color;
+
+        while (time < duration)
+        {
+            sprite.color = Color.Lerp(startValue, endValue, time / duration);
+            time += Time.deltaTime;
+            yield return null;
+        }
+        sprite.color = endValue;
+    }
+    
+    IEnumerator LoadYourAsyncScene(string scene, Color finalColor)
+    {
+        if (!SceneManager.GetActiveScene().name.Equals("MainMenu"))
+        {
+            StartCoroutine(ColorLerp(new Color(0, 0, 0, 1), 1));
+            while (!image.GetComponent<Image>().color.Equals(new Color(0, 0, 0, 1)))
             {
-                sprite.color = Color.Lerp(startValue, endValue, time / duration);
-                time += Time.deltaTime;
                 yield return null;
             }
-            sprite.color = endValue;
         }
-        IEnumerator LoadYourAsyncScene(string scene)
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(scene);
+        
+        while (!asyncLoad.isDone)
         {
-            if (!SceneManager.GetActiveScene().name.Equals("Start"))
-            {
-                StartCoroutine(ColorLerp(new Color(0, 0, 0, 1), 1));
-                while (!image.GetComponent<Image>().color.Equals(new Color(0, 0, 0, 1)))
-                {
-                    yield return null;
-                }
-            }
-            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(scene);
-
-            while (!asyncLoad.isDone)
-            {
-                yield return null;
-            }
-
-            StartCoroutine(ColorLerp(new Color(0, 0, 0, 0), 1));
+            yield return null;
         }
+        
+        StartCoroutine(ColorLerp(finalColor, 1));
+    }
     
 
-    public void NextScene(string whichScene)
+    public void FadeOut(string whichScene)
     {
-        StartCoroutine(LoadYourAsyncScene(whichScene));
+        StartCoroutine(LoadYourAsyncScene(whichScene, new Color(0, 0, 0, 0)));
+    }
 
+    public void FadeIn(string whichScene)
+    {
+        StartCoroutine(LoadYourAsyncScene(whichScene, new Color(0, 0, 0, 1)));
     }
 
     public double getMoleculedH(string name) { return moleculeValuesTable.getMoleculedH(name); }
