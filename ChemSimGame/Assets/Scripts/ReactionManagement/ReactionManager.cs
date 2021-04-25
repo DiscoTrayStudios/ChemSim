@@ -24,6 +24,8 @@ public class ReactionManager : MonoBehaviour
     private GameObject reactionOutput;
     private string outputName;
     private List<GameObject>outputList;
+    private int reactant1count;
+    private int reactant2count;
 
     private Dictionary<string, Molecule> reactantValues;
     private int numReactants;
@@ -92,6 +94,9 @@ public class ReactionManager : MonoBehaviour
 
         reactantsMoving = false;
         motionSwitchText.text = "Start Motion";
+
+        reactant1count = 0;
+        reactant2count = 0;
     }
 
     // Update is called once per frame
@@ -102,7 +107,40 @@ public class ReactionManager : MonoBehaviour
 
     public void addReactant(GameObject reactantObject)
     {
-        if (reactant1 == null || reactant2 == null || ReactionDone)
+        if (reactant1 != null && reactantObject.tag == reactant1.tag && reactant1count < 3)
+        {
+            Vector3 position;
+            if (reactant1count == 1)
+            {
+                 position = new Vector3(-10, 3, 5);
+            }
+            else
+            {
+                position = new Vector3(-10, -3, 5);
+            }
+            GameObject reactantInstance = Instantiate(reactantObject, (position), reactantObject.transform.rotation);
+            reactantInstance.GetComponent<MoveAround>().isMoving = reactantsMoving;
+            reactant1count++;
+        }
+
+        else if (reactant2 != null && reactantObject.tag == reactant2.tag && reactant2count < 3)
+        {
+            Vector3 position;
+            if (reactant2count == 1)
+            {
+                position = new Vector3(-7, 3, 5);
+            }
+            else
+            {
+                position = new Vector3(-7, -3, 5);
+            }
+            GameObject reactantInstance = Instantiate(reactantObject, (position), reactantObject.transform.rotation);
+            reactantInstance.GetComponent<MoveAround>().isMoving = reactantsMoving;
+            reactant2count++;
+        }
+
+
+        else if (reactant1 == null || reactant2 == null || ReactionDone)
         {
             Vector3 position = new Vector3(-10 + (numReactants * 3), 0, 5);
             GameObject reactantInstance = Instantiate(reactantObject, position, reactantObject.transform.rotation);
@@ -110,12 +148,14 @@ public class ReactionManager : MonoBehaviour
             {
                 reactant1 = reactantInstance;
                 reactant1Name = reactantObject.name;
-                reactant1.GetComponent<MoveAround>().isMoving = reactantsMoving;  
+                reactant1.GetComponent<MoveAround>().isMoving = reactantsMoving;
+                reactant1count = 1;
             } else
             {
                 reactant2 = reactantInstance;
                 reactant2Name = reactantObject.name;
                 reactant2.GetComponent<MoveAround>().isMoving = reactantsMoving;
+                reactant2count = 1;
             }
             UpdateText();
             numReactants += 1;
@@ -170,7 +210,7 @@ public class ReactionManager : MonoBehaviour
             Debug.Log(1);
             Debug.Log(reactant1);
             Debug.Log(reactant2);
-            if (reactionTester.ReactionIsValid(reactant1Name, reactant2Name))
+            if (reactionTester.ReactionIsValid(reactant1Name, reactant2Name, reactant1count, reactant2count))
             {
                 List<GameObject> output = reactionTester.TryReaction(reactant1Name, reactant2Name);
                 if (output != null)

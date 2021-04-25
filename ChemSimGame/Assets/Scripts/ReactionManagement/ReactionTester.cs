@@ -41,6 +41,8 @@ public class ReactionTester : MonoBehaviour
             { new Tuple<string, string>(Na2SO4.name, null),  new List<GameObject>(){Na, SO4 } },
             { new Tuple<string, string>(N2.name, H2.name),  new List<GameObject>(){NH3 } },
         };
+
+        
     }
 
     // Update is called once per frame
@@ -49,16 +51,67 @@ public class ReactionTester : MonoBehaviour
         
     }
 
-    public bool ReactionIsValid(string reactant1Name, string reactant2Name)
+    public bool ReactionIsValid(string reactant1Name, string reactant2Name, int reactant1count, int reactant2count)
     {
         Tuple<string, string> pair1 = new Tuple<string, string>(reactant1Name, reactant2Name);
         if (reactions.ContainsKey(pair1))
         {
-            return true;
-        } else
+            if (reactant1count != 1 || reactant2count != 1)
+            {
+                if ((reactant1Name == H2SO4.name && reactant2Name == NaOH.name))
+                {
+                    if (reactant1count == 1 && reactant2count == 2)
+                    {
+                        return true;
+                    }
+                    return false;
+                }
+                if ((reactant1Name == N2.name && reactant2Name == H2.name))
+                {
+                    if (reactant1count == 1 && reactant2count == 3)
+                    {
+                        return true;
+                    }
+                    return false;
+                }
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        else
         {
             Tuple<string, string> pair2 = new Tuple<string, string>(reactant2Name, reactant1Name);
-            return reactions.ContainsKey(pair2);
+            if (reactions.ContainsKey(pair1))
+            {
+                if (reactant1count != 1 || reactant2count != 1)
+                {
+                    if ((reactant1Name == NaOH.name && reactant2Name == H2SO4.name))
+                    {
+                        if (reactant1count == 2 && reactant2count == 1)
+                        {
+                            return true;
+                        }
+                        return false;
+                    }
+                    if ((reactant1Name == H2.name && reactant2Name == N2.name))
+                    {
+                        if (reactant1count == 3 && reactant2count == 1)
+                        {
+                            return true;
+                        }
+                        return false;
+                    }
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 

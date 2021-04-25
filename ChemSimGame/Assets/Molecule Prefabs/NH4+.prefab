@@ -256,7 +256,7 @@ GameObject:
   - component: {fileID: -2114538910295385748}
   m_Layer: 0
   m_Name: NH4+
-  m_TagString: Untagged
+  m_TagString: NH4+
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
