@@ -111,66 +111,78 @@ public class ReactionManager : MonoBehaviour
 
     public void addReactant(GameObject reactantObject)
     {
-        if (reactant1 != null && reactantObject.tag == reactant1.tag && reactant1count < 3)
+        if (!ReactionDone)
         {
-            Vector3 position;
-            if (reactant1count == 1)
+            if (reactant1 != null && reactantObject.tag == reactant1.tag && reactant1count < 3)
             {
-                 position = new Vector3(-10, 3, 5);
+                Vector3 position;
+                if (reactant1count == 1)
+                {
+                    position = new Vector3(-10, 3, 5);
+                }
+                else
+                {
+                    position = new Vector3(-10, -3, 5);
+                }
+                GameObject reactantInstance = Instantiate(reactantObject, (position), reactantObject.transform.rotation);
+                reactantInstance.GetComponent<MoveAround>().isMoving = reactantsMoving;
+                reactant1count++;
+                allReactants.Add(reactantInstance);
+            }
+
+            else if (reactant2 != null && reactantObject.tag == reactant2.tag && reactant2count < 3)
+            {
+                Vector3 position;
+                if (reactant2count == 1)
+                {
+                    position = new Vector3(-7, 3, 5);
+                }
+                else
+                {
+                    position = new Vector3(-7, -3, 5);
+                }
+                GameObject reactantInstance = Instantiate(reactantObject, (position), reactantObject.transform.rotation);
+                reactantInstance.GetComponent<MoveAround>().isMoving = reactantsMoving;
+                reactant2count++;
+                allReactants.Add(reactantInstance);
+            }
+
+            else if (reactant1 != null && reactant2 != null && (reactantObject.tag == reactant2.tag || reactantObject.tag == reactant1.tag))
+            {
+                ShowDialogue("You cannot add more than three of each type of reactant");
+            }
+
+            else if (reactant1 == null || reactant2 == null)
+            {
+                Vector3 position = new Vector3(-10 + (numReactants * 3), 0, 5);
+                GameObject reactantInstance = Instantiate(reactantObject, position, reactantObject.transform.rotation);
+                if (reactant1 == null)
+                {
+                    reactant1 = reactantInstance;
+                    reactant1Name = reactantObject.name;
+                    reactant1.GetComponent<MoveAround>().isMoving = reactantsMoving;
+                    reactant1count = 1;
+                    allReactants.Add(reactant1);
+                }
+                else
+                {
+                    reactant2 = reactantInstance;
+                    reactant2Name = reactantObject.name;
+                    reactant2.GetComponent<MoveAround>().isMoving = reactantsMoving;
+                    reactant2count = 1;
+                    allReactants.Add(reactant2);
+                }
+                UpdateText();
+                numReactants += 1;
+
             }
             else
             {
-                position = new Vector3(-10, -3, 5);
+                ShowDialogue("You cannot have more than two types of reactants");
             }
-            GameObject reactantInstance = Instantiate(reactantObject, (position), reactantObject.transform.rotation);
-            reactantInstance.GetComponent<MoveAround>().isMoving = reactantsMoving;
-            reactant1count++;
-            allReactants.Add(reactantInstance);
-        }
-
-        else if (reactant2 != null && reactantObject.tag == reactant2.tag && reactant2count < 3)
-        {
-            Vector3 position;
-            if (reactant2count == 1)
-            {
-                position = new Vector3(-7, 3, 5);
-            }
-            else
-            {
-                position = new Vector3(-7, -3, 5);
-            }
-            GameObject reactantInstance = Instantiate(reactantObject, (position), reactantObject.transform.rotation);
-            reactantInstance.GetComponent<MoveAround>().isMoving = reactantsMoving;
-            reactant2count++;
-            allReactants.Add(reactantInstance);
-        }
-
-
-        else if (reactant1 == null || reactant2 == null || ReactionDone)
-        {
-            Vector3 position = new Vector3(-10 + (numReactants * 3), 0, 5);
-            GameObject reactantInstance = Instantiate(reactantObject, position, reactantObject.transform.rotation);
-            if (reactant1 == null)
-            {
-                reactant1 = reactantInstance;
-                reactant1Name = reactantObject.name;
-                reactant1.GetComponent<MoveAround>().isMoving = reactantsMoving;
-                reactant1count = 1;
-                allReactants.Add(reactant1);
-            } else
-            {
-                reactant2 = reactantInstance;
-                reactant2Name = reactantObject.name;
-                reactant2.GetComponent<MoveAround>().isMoving = reactantsMoving;
-                reactant2count = 1;
-                allReactants.Add(reactant2);
-            }
-            UpdateText();
-            numReactants += 1;
-
         } else
         {
-            ShowDialogue("You cannot add more than two reactants");
+            ShowDialogue("Please clear the reactants");
         }
     }
 
@@ -216,6 +228,7 @@ public class ReactionManager : MonoBehaviour
         reactant1count = 0;
         reactant2count = 0;
         allReactants.Clear();
+        ReactionDone = false;
     }
 
     public void TryToReact()
@@ -266,7 +279,7 @@ public class ReactionManager : MonoBehaviour
             outputPosition.x+=3;
         }
         outputName = outputName.Substring(0, outputName.Length-3);
-       
+        ReactionDone = true;
     }
 
     public void ShowDialogue(string text)
