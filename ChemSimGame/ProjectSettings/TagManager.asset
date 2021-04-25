@@ -5,6 +5,22 @@ TagManager:
   serializedVersion: 2
   tags:
   - Molecule
+  - CO2
+  - H2
+  - H2O
+  - H2SO4
+  - HCl
+  - N2
+  - Na+
+  - Na2SO4
+  - NaCl
+  - NaOh
+  - NH3
+  - NH4+
+  - OH-
+  - SO42-
+  - Cl+OH3
+  - H2CO3
   layers:
   - Default
   - TransparentFX

@@ -26,6 +26,7 @@ public class ReactionManager : MonoBehaviour
     private List<GameObject>outputList;
     private int reactant1count;
     private int reactant2count;
+    private List<GameObject> allReactants;
 
     private Dictionary<string, Molecule> reactantValues;
     private int numReactants;
@@ -97,6 +98,8 @@ public class ReactionManager : MonoBehaviour
 
         reactant1count = 0;
         reactant2count = 0;
+
+        allReactants = new List<GameObject>();
     }
 
     // Update is called once per frame
@@ -121,6 +124,7 @@ public class ReactionManager : MonoBehaviour
             GameObject reactantInstance = Instantiate(reactantObject, (position), reactantObject.transform.rotation);
             reactantInstance.GetComponent<MoveAround>().isMoving = reactantsMoving;
             reactant1count++;
+            allReactants.Add(reactantInstance);
         }
 
         else if (reactant2 != null && reactantObject.tag == reactant2.tag && reactant2count < 3)
@@ -137,6 +141,7 @@ public class ReactionManager : MonoBehaviour
             GameObject reactantInstance = Instantiate(reactantObject, (position), reactantObject.transform.rotation);
             reactantInstance.GetComponent<MoveAround>().isMoving = reactantsMoving;
             reactant2count++;
+            allReactants.Add(reactantInstance);
         }
 
 
@@ -150,15 +155,18 @@ public class ReactionManager : MonoBehaviour
                 reactant1Name = reactantObject.name;
                 reactant1.GetComponent<MoveAround>().isMoving = reactantsMoving;
                 reactant1count = 1;
+                allReactants.Add(reactant1);
             } else
             {
                 reactant2 = reactantInstance;
                 reactant2Name = reactantObject.name;
                 reactant2.GetComponent<MoveAround>().isMoving = reactantsMoving;
                 reactant2count = 1;
+                allReactants.Add(reactant2);
             }
             UpdateText();
             numReactants += 1;
+
         } else
         {
             ShowDialogue("You cannot add more than two reactants");
@@ -185,10 +193,13 @@ public class ReactionManager : MonoBehaviour
 
     public void ClearReactants()
     {
-        Destroy(reactant1);
+        foreach (GameObject g in allReactants)
+        {
+            Destroy(g);
+        }
         reactant1 = null;
         reactant1Name = null;
-        Destroy(reactant2);
+        
         reactant2 = null;
         reactant2Name = null;
         foreach (GameObject g in outputList)
@@ -201,6 +212,9 @@ public class ReactionManager : MonoBehaviour
         reactionArrowInstance = null;
         numReactants = 0;
         UpdateText();
+        reactant1count = 0;
+        reactant2count = 0;
+        allReactants.Clear();
     }
 
     public void TryToReact()
@@ -275,13 +289,9 @@ public class ReactionManager : MonoBehaviour
         if (reactantsMoving)
         {
             motionSwitchText.text = "Stop Motion";
-            if (reactant1 != null)
+            foreach (GameObject g in allReactants)
             {
-                reactant1.GetComponent<MoveAround>().StartMoving();
-            }
-            if (reactant2 != null)
-            {
-                reactant2.GetComponent<MoveAround>().StartMoving();
+                g.GetComponent<MoveAround>().StartMoving();
             }
             foreach (GameObject output in outputList)
             {
@@ -291,13 +301,9 @@ public class ReactionManager : MonoBehaviour
         else
         {
             motionSwitchText.text = "Start Motion";
-            if (reactant1 != null)
+            foreach (GameObject g in allReactants)
             {
-                reactant1.GetComponent<MoveAround>().StopMoving();
-            }
-            if (reactant2 != null)
-            {
-                reactant2.GetComponent<MoveAround>().StopMoving();
+                g.GetComponent<MoveAround>().StopMoving();
             }
             foreach (GameObject output in outputList)
             {
