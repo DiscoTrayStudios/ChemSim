@@ -42,7 +42,7 @@ public class ReactionTester : MonoBehaviour
             { new Tuple<string, string>(h2ol.name, HCl.name),   new List<GameObject>(){ClOH3 } },
             { new Tuple<string, string>(h2og.name, HCl.name),   new List<GameObject>(){ClOH3 } },
             { new Tuple<string, string>(NaOH.name, HCl.name),  new List<GameObject>(){NaCl, h2ol } },
-            { new Tuple<string, string>(NH3.name, h2o.name), new List<GameObject>(){NH4, OH } },
+            { new Tuple<string, string>(NH3.name, h2ol.name), new List<GameObject>(){NH4, OH } },
             { new Tuple<string, string>(H2SO4.name, NaOH.name),  new List<GameObject>(){Na2SO4aq, h2ol, h2ol } },
             { new Tuple<string, string>(Na2SO4s.name, null),  new List<GameObject>(){Na, Na, SO4 } },
             { new Tuple<string, string>(N2.name, H2.name),  new List<GameObject>(){NH3, NH3 } },

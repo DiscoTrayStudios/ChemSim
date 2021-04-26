@@ -6,6 +6,8 @@ using TMPro;
 
 public class ReactionManager : MonoBehaviour
 {
+    public bool askingChangeQuestions;
+
     public TextMeshProUGUI reactantListText;
     public GameObject dialogueBox;
     public TextMeshProUGUI dialogueText;
@@ -207,7 +209,10 @@ public class ReactionManager : MonoBehaviour
                     DoReaction(output);
                     UpdateText();
                     CalculateChanges(output);
-                    AskQuestion();
+                    if (askingChangeQuestions)
+                    {
+                        AskQuestion();
+                    }
                 }
                 else
                 {

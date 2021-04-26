@@ -5652,6 +5652,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29f3914a51df6ea43ab7430d33711e51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  askingChangeQuestions: 1
   reactantListText: {fileID: 1512832627}
   dialogueBox: {fileID: 987588911}
   dialogueText: {fileID: 939786932}
