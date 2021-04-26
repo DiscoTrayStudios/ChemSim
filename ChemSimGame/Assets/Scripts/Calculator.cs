@@ -24,6 +24,7 @@ public class Calculator
         {
             for (int i=0;i< inputNames[name];i++)
             {
+                Debug.Log(name);
                 totalInputH += GameManager.Instance.getMoleculedH(name);
                 totalInputG += GameManager.Instance.getMoleculedG(name);
                 totalInputS += GameManager.Instance.getMoleculedS(name);

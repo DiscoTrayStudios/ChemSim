@@ -8,7 +8,7 @@ public class MoleculeValuesTable
     private Molecule H2OG = new Molecule("H2O (G)", -241.8, 188.8, -228.6);
     private Molecule CO2 = new Molecule("CO2", -393.5, 213.8, -394.4);
     private Molecule HCl = new Molecule("HCl", -167.5, -131.2, 53.06);
-    private Molecule NaOH = new Molecule("NaOH", -470.1, 48.3, - 419.2);
+    private Molecule NaOH = new Molecule("NaOH", -425.6, 64.5, -379.5);
     private Molecule NH3 = new Molecule("NH3", -46.1, 192.5, -16.5);
     private Molecule NH4 = new Molecule("NH4+", -132.5, 113.4, -79.3);
     private Molecule OH = new Molecule("OH-", -229.9, -10.5, -157.3);

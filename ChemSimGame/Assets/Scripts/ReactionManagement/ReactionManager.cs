@@ -47,7 +47,7 @@ public class ReactionManager : MonoBehaviour
 
     public TextMeshProUGUI targetDhText;
 
-    public double[] targetDHs = new double[4] { -30.5, -111.6, -5.0, -92.2 };
+    private double[] targetDHs = new double[3] { -30.5, -5.0, -92.2 };
     private int currentTarget = 0;
 
     // Start is called before the first frame update
