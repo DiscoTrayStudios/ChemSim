@@ -4,9 +4,8 @@ using System.Collections.Generic;
 public class MoleculeValuesTable
 {
     private Dictionary<string, Molecule> reactantValues;
-    private Molecule H2O = new Molecule("H2O", 0, 0, 0);
     private Molecule H2OL = new Molecule("H2O (L)", -285.8, 69.9, -237.2);
-    private Molecule H2OG = new Molecule("H2O (G)", -45, 45, -45);
+    private Molecule H2OG = new Molecule("H2O (G)", -241.8, 188.8, -228.6);
     private Molecule CO2 = new Molecule("CO2", -393.5, 213.8, -394.4);
     private Molecule HCl = new Molecule("HCl", -92.3, 186.9, -95.3);
     private Molecule NaOH = new Molecule("NaOH", -425.6, 64.5, -379.5);
@@ -26,7 +25,6 @@ public class MoleculeValuesTable
         reactantValues = new Dictionary<string, Molecule>();
         reactantValues.Add("H2O (L)", H2OL);
         reactantValues.Add("H2O (G)", H2OG);
-        reactantValues.Add("H2O", H2O);
         reactantValues.Add("CO2", CO2);
         reactantValues.Add("HCl", HCl);
         reactantValues.Add("NaOH", NaOH);

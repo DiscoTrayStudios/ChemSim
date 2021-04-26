@@ -12,21 +12,38 @@ public class TutorialText : MonoBehaviour
     public TextMeshProUGUI buttons;
     public TextMeshProUGUI display;
     public GameObject backToMenuButton;
+    public GameObject H2ODropdown;
+    public GameObject CO2Button;
+    public GameObject allChildren;
+
     private int clicks;
+    private bool co2Clicked;
+    private bool certainSelection;
     // Start is called before the first frame update
     void Start()
     {
         main.text = "Welcome to the ChemSim Tutorial! We're going to go over some of the basics so you can get more comfortable with the system. Please click to continue!";
         clicks = 0;
+        co2Clicked = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !certainSelection)
         {
             clicks += 1;
             click(clicks);
+        }
+        if (certainSelection)
+        {
+            if (clicks == 5)
+            {
+                Disable();
+                CO2Button.GetComponent<Button>().interactable = true;
+                CO2Button.GetComponent<Button>().onClick.AddListener(CO2Pressed);
+                
+            }
         }
     }
 
@@ -55,12 +72,16 @@ public class TutorialText : MonoBehaviour
         }
         else if (clicks == 5)
         {
+            certainSelection = true;
             reactants.text = "";
             reactants.text = "Great! Now press on the CO2 button.";
+            CO2Button.GetComponent<Image>().color = Color.yellow;
+
             //Code to make sure that happens
         }
         else if (clicks == 6)
         {
+            CO2Button.GetComponent<Image>().color = Color.white;
             reactants.text = "";
             buttons.text = "Lets see what happens when we press the Try Reaction button";
             //Code to make sure that happens
@@ -99,5 +120,42 @@ public class TutorialText : MonoBehaviour
     public void BackToMenu()
     {
         GameManager.Instance.BackToMenu();
+    }
+
+    public void Disable()
+    {
+        foreach(Transform child in allChildren.transform)
+        {
+            if (child.gameObject.GetComponent<Button>() != null)
+            {
+                child.gameObject.GetComponent<Button>().interactable = false;
+            }
+            if (child.gameObject.GetComponent<Dropdown>() != null)
+            {
+                child.gameObject.GetComponent<Dropdown>().interactable = false;
+            }
+        }
+    }
+    public void Enable()
+    {
+        foreach (Transform child in allChildren.transform)
+        {
+            if (child.gameObject.GetComponent<Button>() != null)
+            {
+                child.gameObject.GetComponent<Button>().interactable = true;
+            }
+            if (child.gameObject.GetComponent<Dropdown>() != null)
+            {
+                child.gameObject.GetComponent<Dropdown>().interactable = true;
+            }
+        }
+    }
+
+    private void CO2Pressed()
+    {
+        Enable();
+        co2Clicked = true;
+        clicks += 1;
+        click(clicks);
     }
 }
