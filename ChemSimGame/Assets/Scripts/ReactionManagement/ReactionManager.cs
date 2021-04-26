@@ -6,6 +6,7 @@ using TMPro;
 
 public class ReactionManager : MonoBehaviour
 {
+    public bool askingTargetQuestions;
     public bool askingChangeQuestions;
 
     public TextMeshProUGUI reactantListText;
@@ -44,6 +45,11 @@ public class ReactionManager : MonoBehaviour
     private double totalDG;
     private double totalDS;
 
+    public TextMeshProUGUI targetDhText;
+
+    public double[] targetDHs = new double[4] { -30.5, -111.6, -5.0, -92.2 };
+    private int currentTarget = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -63,6 +69,11 @@ public class ReactionManager : MonoBehaviour
 
         allReactants = new List<GameObject>();
         reactant2Name = null;
+        if (askingTargetQuestions)
+        {
+            targetDhText.text = "Target dH: " + targetDHs[currentTarget];
+            ShowDialogue("What reaction gives a change in enthalpy of " + targetDHs[currentTarget] + "?");
+        }
     }
 
     // Update is called once per frame
@@ -209,7 +220,10 @@ public class ReactionManager : MonoBehaviour
                     DoReaction(output);
                     UpdateText();
                     CalculateChanges(output);
-                    if (askingChangeQuestions)
+                    if (askingTargetQuestions)
+                    {
+                        CheckTarget();
+                    } else if (askingChangeQuestions)
                     {
                         AskQuestion();
                     }
@@ -307,6 +321,26 @@ public class ReactionManager : MonoBehaviour
         totalDH = changes[0];
         totalDG = changes[1];
         totalDS = changes[2];
+    }
+
+    private void CheckTarget()
+    {
+        if (totalDH == targetDHs[currentTarget])
+        {
+            currentTarget += 1;
+            if (currentTarget < targetDHs.Length)
+            {
+                ShowDialogue("That's right!\nNow what reaction gives a change in enthalpy of " + targetDHs[currentTarget] + "?");
+                targetDhText.text = "Target dh: " + targetDHs[currentTarget];
+            } else
+            {
+                ShowDialogue("That's right!\nYou've found all the target changes. Now can you find all the change values of a reaction?");
+                targetDhText.gameObject.SetActive(false);
+            }
+        } else
+        {
+            ShowDialogue("That's not right. The reaction you gave has a dH of " + totalDH);
+        }
     }
 
     private void AskQuestion()

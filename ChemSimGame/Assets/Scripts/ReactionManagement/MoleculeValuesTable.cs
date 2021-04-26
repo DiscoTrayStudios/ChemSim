@@ -4,11 +4,11 @@ using System.Collections.Generic;
 public class MoleculeValuesTable
 {
     private Dictionary<string, Molecule> reactantValues;
-    private Molecule H2OL = new Molecule("H2O (L)", -285.8, 69.9, -237.2);
+    private Molecule H2OL = new Molecule("H2O (L)", -285.8, 69.9, -237.1);
     private Molecule H2OG = new Molecule("H2O (G)", -241.8, 188.8, -228.6);
     private Molecule CO2 = new Molecule("CO2", -393.5, 213.8, -394.4);
-    private Molecule HCl = new Molecule("HCl", -92.3, 186.9, -95.3);
-    private Molecule NaOH = new Molecule("NaOH", -425.6, 64.5, -379.5);
+    private Molecule HCl = new Molecule("HCl", -167.5, -131.2, 53.06);
+    private Molecule NaOH = new Molecule("NaOH", -470.1, 48.3, - 419.2);
     private Molecule NH3 = new Molecule("NH3", -46.1, 192.5, -16.5);
     private Molecule NH4 = new Molecule("NH4+", -132.5, 113.4, -79.3);
     private Molecule OH = new Molecule("OH-", -229.9, -10.5, -157.3);
@@ -19,6 +19,7 @@ public class MoleculeValuesTable
     private Molecule SO4 = new Molecule("SO42-", -909.3, 20.1, -744.6);
     private Molecule N2 = new Molecule("N2", 0, 191.5, 0);
     private Molecule H2 = new Molecule("H2", 0, 130.6, 0);
+    private Molecule NaCl = new Molecule("NaCl", -407.3, 115.5, -393.1);
 
     public MoleculeValuesTable()
     {
@@ -38,6 +39,7 @@ public class MoleculeValuesTable
         reactantValues.Add("SO42-", SO4);
         reactantValues.Add("N2", N2);
         reactantValues.Add("H2", H2);
+        reactantValues.Add("NaCl", NaCl);
     }
     public double getMoleculedH(string name) {
         try
