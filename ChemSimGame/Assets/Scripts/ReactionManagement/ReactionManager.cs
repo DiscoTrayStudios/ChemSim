@@ -31,6 +31,17 @@ public class ReactionManager : MonoBehaviour
     private int numReactants;
     private bool ReactionDone = false;
 
+    private Calculator calc = new Calculator();
+
+    public GameObject questionBox;
+    public TMP_InputField dHEntry;
+    public TMP_InputField dGEntry;
+    public TMP_InputField dSEntry;
+
+    private double totalDH;
+    private double totalDG;
+    private double totalDS;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -195,6 +206,8 @@ public class ReactionManager : MonoBehaviour
                 {
                     DoReaction(output);
                     UpdateText();
+                    CalculateChanges(output);
+                    AskQuestion();
                 }
                 else
                 {
@@ -274,6 +287,44 @@ public class ReactionManager : MonoBehaviour
             {
                 output.GetComponent<MoveAround>().StopMoving();
             }
+        }
+    }
+
+    private void CalculateChanges(List<GameObject> output)
+    {
+        Dictionary<string, int> input = new Dictionary<string, int>();
+        input.Add(reactant1Name, reactant1count);
+        if (reactant2Name != null)
+        {
+            input.Add(reactant2Name, reactant2count);
+        }
+        double[] changes = calc.CalculateChanges(input, output);
+        totalDH = changes[0];
+        totalDG = changes[1];
+        totalDS = changes[2];
+    }
+
+    private void AskQuestion()
+    {
+        dHEntry.text = "";
+        dGEntry.text = "";
+        dSEntry.text = "";
+        questionBox.SetActive(true);
+    }
+
+    public void SubmitAnswer()
+    {
+        double entereddH = double.Parse(dHEntry.text);
+        double entereddG = double.Parse(dGEntry.text);
+        double entereddS = double.Parse(dSEntry.text);
+        if (entereddG == totalDG && entereddH == totalDH && entereddS == totalDS)
+        {
+            questionBox.SetActive(false);
+            ShowDialogue("You were right!");
+        } else
+        {
+            questionBox.SetActive(false);
+            ShowDialogue("The correct answer is dH: " + totalDH + " dG: " + totalDG + " dS: " + totalDS);
         }
     }
 

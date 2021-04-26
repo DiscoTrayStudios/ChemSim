@@ -173,9 +173,9 @@ public class TutorialText : MonoBehaviour
             {
                 child.gameObject.GetComponent<Button>().interactable = true;
             }
-            if (child.gameObject.GetComponent<Dropdown>() != null)
+            if (child.gameObject.GetComponent<TMP_Dropdown>() != null)
             {
-                child.gameObject.GetComponent<Dropdown>().interactable = true;
+                child.gameObject.GetComponent<TMP_Dropdown>().interactable = true;
             }
         }
         foreach (Transform child in allOptions.transform)
