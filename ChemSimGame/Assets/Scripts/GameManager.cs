@@ -42,6 +42,14 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            if (canvas != null)
+            {
+                Destroy(canvas);
+            }
+            if (events != null)
+            {
+                Destroy(events);
+            }
             Destroy(gameObject);
         }
     }
@@ -92,7 +100,7 @@ public class GameManager : MonoBehaviour
     {
         if (!SceneManager.GetActiveScene().name.Equals("MainMenu"))
         {
-            StartCoroutine(ColorLerp(new Color(0, 0, 0, 1), 1));
+            StartCoroutine(ColorLerp(new Color(0, 0, 0, 1), 0.25f));
             while (!image.GetComponent<Image>().color.Equals(new Color(0, 0, 0, 1)))
             {
                 yield return null;
@@ -105,7 +113,7 @@ public class GameManager : MonoBehaviour
             yield return null;
         }
         
-        StartCoroutine(ColorLerp(finalColor, 1));
+        StartCoroutine(ColorLerp(finalColor, 0.25f));
     }
     
 
