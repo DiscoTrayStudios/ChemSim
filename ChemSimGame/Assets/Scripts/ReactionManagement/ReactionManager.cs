@@ -314,17 +314,21 @@ public class ReactionManager : MonoBehaviour
 
     public void SubmitAnswer()
     {
-        double entereddH = double.Parse(dHEntry.text);
-        double entereddG = double.Parse(dGEntry.text);
-        double entereddS = double.Parse(dSEntry.text);
-        if (entereddG == totalDG && entereddH == totalDH && entereddS == totalDS)
+        if (dHEntry.text.Length > 0 && dSEntry.text.Length > 0 && dGEntry.text.Length > 0)
         {
-            questionBox.SetActive(false);
-            ShowDialogue("You were right!");
-        } else
-        {
-            questionBox.SetActive(false);
-            ShowDialogue("The correct answer is dH: " + totalDH + " dG: " + totalDG + " dS: " + totalDS);
+            double entereddH = Math.Round(double.Parse(dHEntry.text), 2);
+            double entereddG = Math.Round(double.Parse(dGEntry.text), 2);
+            double entereddS = Math.Round(double.Parse(dSEntry.text), 2);
+            if (entereddG == totalDG && entereddH == totalDH && entereddS == totalDS)
+            {
+                questionBox.SetActive(false);
+                ShowDialogue("You were right!");
+            }
+            else
+            {
+                questionBox.SetActive(false);
+                ShowDialogue("The correct answer is \ndH: " + totalDH + "\ndG: " + totalDG + "\ndS: " + totalDS);
+            }
         }
     }
 

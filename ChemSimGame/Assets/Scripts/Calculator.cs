@@ -24,16 +24,16 @@ public class Calculator
         {
             for (int i=0;i< inputNames[name];i++)
             {
-                totalInputH = GameManager.Instance.getMoleculedH(name);
-                totalInputG = GameManager.Instance.getMoleculedG(name);
-                totalInputS = GameManager.Instance.getMoleculedS(name);
+                totalInputH += GameManager.Instance.getMoleculedH(name);
+                totalInputG += GameManager.Instance.getMoleculedG(name);
+                totalInputS += GameManager.Instance.getMoleculedS(name);
             }
         }
         foreach (GameObject g in output)
         {
-            totalOutputH = GameManager.Instance.getMoleculedH(g.name);
-            totalOutputG = GameManager.Instance.getMoleculedG(g.name);
-            totalOutputS = GameManager.Instance.getMoleculedS(g.name);
+            totalOutputH += GameManager.Instance.getMoleculedH(g.name);
+            totalOutputG += GameManager.Instance.getMoleculedG(g.name);
+            totalOutputS += GameManager.Instance.getMoleculedS(g.name);
         }
         double dH = Math.Round(totalOutputH - totalInputH, 2);
         double dG = Math.Round(totalOutputG - totalInputG, 2);
