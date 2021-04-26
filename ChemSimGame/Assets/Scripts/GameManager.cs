@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public GameObject startButton;
     public GameObject tutorialButton;
     public GameObject creditsButton;
+    public GameObject helpButton;
 
     private MoleculeValuesTable moleculeValuesTable = new MoleculeValuesTable();
 
@@ -60,6 +61,7 @@ public class GameManager : MonoBehaviour
         startButton.SetActive(false);
         tutorialButton.SetActive(false);
         creditsButton.SetActive(false);
+        helpButton.SetActive(false);
         FadeOut("Play");
     }
 
@@ -69,7 +71,18 @@ public class GameManager : MonoBehaviour
         startButton.SetActive(false);
         tutorialButton.SetActive(false);
         creditsButton.SetActive(false);
+        helpButton.SetActive(false);
         FadeOut("Tutorial");
+    }
+
+    public void Help()
+    {
+        textBox.SetActive(false);
+        startButton.SetActive(false);
+        tutorialButton.SetActive(false);
+        creditsButton.SetActive(false);
+        helpButton.SetActive(false);
+        FadeOut("Help");
     }
 
     public void BackToMenu()
@@ -78,6 +91,7 @@ public class GameManager : MonoBehaviour
         startButton.SetActive(true);
         tutorialButton.SetActive(true);
         creditsButton.SetActive(true);
+        helpButton.SetActive(true);
         FadeIn("MainMenu");
     }
 
