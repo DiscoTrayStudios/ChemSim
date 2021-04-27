@@ -258,7 +258,7 @@ public class ReactionManager : MonoBehaviour
             moveScript.dh = getMoleculedH(molecule.name);
             outputName += molecule.name + " + ";
             outputList.Add(reactionOutput);
-            if (molecule.name.Equals("H2O") || molecule.name.Equals("Na2SO4") || molecule.name.Equals("NH3"))
+            if (molecule.name.Equals("H2O (L)") || molecule.name.Equals("Na2SO4 (Aq)") || molecule.name.Equals("NH3"))
             {
                 moveScript.reactant = false;
             }
