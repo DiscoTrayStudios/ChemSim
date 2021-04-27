@@ -171,8 +171,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 896174931717627914}
-  - component: {fileID: 7769511047068856142}
-  - component: {fileID: 3625866402461313985}
   m_Layer: 0
   m_Name: Na2SO4 (S)
   m_TagString: Na2SO4 (Aq)
@@ -207,37 +205,6 @@ Transform:
   m_Father: {fileID: 2144346981744337564}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &7769511047068856142
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 514548312176851632}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 8
-  m_CollisionDetection: 0
---- !u!114 &3625866402461313985
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 514548312176851632}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d755ab4461a8fee4b88395a8ce5fac82, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isMoving: 1
-  dh: 1
-  reactant: 1
 --- !u!1 &2820559158659674157
 GameObject:
   m_ObjectHideFlags: 0
@@ -330,9 +297,11 @@ GameObject:
   - component: {fileID: 2144346981744337564}
   - component: {fileID: 3137505935744548381}
   - component: {fileID: 853706498241829315}
+  - component: {fileID: -2174994766141882935}
+  - component: {fileID: 465103788271248271}
   m_Layer: 0
   m_Name: Na2SO4 (S)
-  m_TagString: Untagged
+  m_TagString: Na2SO4 (S)
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -379,6 +348,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotSpeed: 500
+--- !u!114 &-2174994766141882935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3238279661727902558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d755ab4461a8fee4b88395a8ce5fac82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isMoving: 1
+  dh: 1
+  reactant: 1
+--- !u!54 &465103788271248271
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3238279661727902558}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &3258668950978022910
 GameObject:
   m_ObjectHideFlags: 0

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.00022234098, g: 0.0010647452, b: 0.0022249902, a: 1}
+  m_IndirectSpecularColor: {r: 0.0001970736, g: 0.0010639091, b: 0.0022099072, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1063,7 +1063,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4698,7 +4698,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -5083,11 +5083,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29f3914a51df6ea43ab7430d33711e51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  askingTargetQuestions: 0
+  askingChangeQuestions: 0
   reactantListText: {fileID: 2019204476}
   dialogueBox: {fileID: 288972609}
   dialogueText: {fileID: 1105465176}
   reactionArrow: {fileID: 256562302137616894, guid: cb7ad0a2bfd5154419e609fcac1046ce, type: 3}
   motionSwitchText: {fileID: 1553824063}
+  questionBox: {fileID: 0}
+  dHEntry: {fileID: 0}
+  dGEntry: {fileID: 0}
+  dSEntry: {fileID: 0}
+  targetDhText: {fileID: 0}
 --- !u!4 &1097119851
 Transform:
   m_ObjectHideFlags: 0
