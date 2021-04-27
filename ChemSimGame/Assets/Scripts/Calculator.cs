@@ -28,10 +28,12 @@ public class Calculator
                 totalInputH += GameManager.Instance.getMoleculedH(name);
                 totalInputG += GameManager.Instance.getMoleculedG(name);
                 totalInputS += GameManager.Instance.getMoleculedS(name);
+                Debug.Log(totalInputH);
             }
         }
         foreach (GameObject g in output)
         {
+            Debug.Log(g);
             totalOutputH += GameManager.Instance.getMoleculedH(g.name);
             totalOutputG += GameManager.Instance.getMoleculedG(g.name);
             totalOutputS += GameManager.Instance.getMoleculedS(g.name);
