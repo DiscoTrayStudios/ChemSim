@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -24,11 +24,11 @@ public class ToolTipText : MonoBehaviour
     public void setTextDrop(TextMeshProUGUI label) 
     {
         name = label.text;
-        text.GetComponent<UnityEngine.UI.Text>().text = name + "\ndH = " + reaction.getMoleculedH(name) + "\ndS = " + reaction.getMoleculedS(name) + "\ndG = " + reaction.getMoleculedG(name);
+        text.GetComponent<UnityEngine.UI.Text>().text = name + "\nΔH = " + reaction.getMoleculedH(name) + "\nΔS = " + reaction.getMoleculedS(name) + "\nΔG = " + reaction.getMoleculedG(name);
     }
 
     public void setTextButton(string name)
     {
-        text.GetComponent<UnityEngine.UI.Text>().text = name + "\ndH = " + reaction.getMoleculedH(name) + "\ndS = " + reaction.getMoleculedS(name) + "\ndG = " + reaction.getMoleculedG(name);
+        text.GetComponent<UnityEngine.UI.Text>().text = name + "\nΔH = " + reaction.getMoleculedH(name) + "\nΔS = " + reaction.getMoleculedS(name) + "\nΔG = " + reaction.getMoleculedG(name);
     }
 }

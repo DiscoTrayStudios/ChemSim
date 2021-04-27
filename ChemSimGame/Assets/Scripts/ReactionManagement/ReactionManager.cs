@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System;
 using UnityEngine;
@@ -71,7 +71,7 @@ public class ReactionManager : MonoBehaviour
         reactant2Name = null;
         if (askingTargetQuestions)
         {
-            targetDhText.text = "Target dH: " + targetDHs[currentTarget];
+            targetDhText.text = "Target ΔH: " + targetDHs[currentTarget];
             ShowDialogue("What reaction gives a change in enthalpy of " + targetDHs[currentTarget] + "?");
         }
     }
@@ -331,7 +331,7 @@ public class ReactionManager : MonoBehaviour
             if (currentTarget < targetDHs.Length)
             {
                 ShowDialogue("That's right!\nNow what reaction gives a change in enthalpy of " + targetDHs[currentTarget] + "?");
-                targetDhText.text = "Target dh: " + targetDHs[currentTarget];
+                targetDhText.text = "Target Δh: " + targetDHs[currentTarget];
             } else
             {
                 ShowDialogue("That's right!\nYou've found all the target changes. Now can you find all the change values of a reaction?");
@@ -339,7 +339,7 @@ public class ReactionManager : MonoBehaviour
             }
         } else
         {
-            ShowDialogue("That's not right. The reaction you gave has a dH of " + totalDH);
+            ShowDialogue("That's not right. The reaction you gave has a ΔH of " + totalDH);
         }
     }
 
@@ -366,7 +366,7 @@ public class ReactionManager : MonoBehaviour
             else
             {
                 questionBox.SetActive(false);
-                ShowDialogue("The correct answer is \ndH: " + totalDH + "\ndG: " + totalDG + "\ndS: " + totalDS);
+                ShowDialogue("The correct answer is \nΔH: " + totalDH + "\nΔG: " + totalDG + "\nΔS: " + totalDS);
             }
         }
     }

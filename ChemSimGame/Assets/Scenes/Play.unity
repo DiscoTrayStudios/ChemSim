@@ -5761,7 +5761,7 @@ MonoBehaviour:
   H2CO3: {fileID: 2837760653911491773, guid: d41ba015c8a93e74ab9ed63106a97ebd, type: 3}
   HCl: {fileID: 4118369818937185286, guid: beb10ad2a36828a459a48be18127b363, type: 3}
   ClOH3: {fileID: 2321348931712087323, guid: 80c95477046bd1547b1a9aa1d2246a10, type: 3}
-  NaOH: {fileID: 1807039884042494061, guid: 9846b70d300888b44aa906c301c6155f, type: 3}
+  NaOH: {fileID: 1579311571668383488, guid: 3547095c4bf7b8649967723ed9fe8417, type: 3}
   NaCl: {fileID: 798884626655059582, guid: bfe0d211c4a126041a984c3a3d6d9db2, type: 3}
   NH3: {fileID: 2507690675012552130, guid: fc88690cba2c1e74f9e3bf858fd1dbc5, type: 3}
   NH4: {fileID: 3163038551494923705, guid: 1e701aacc030ed347a0da6d7a7630717, type: 3}
@@ -9451,7 +9451,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Goal dH: '
+  m_text: "Goal \u0394H: "
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 066db9e3797f657409ddf0da99b7f19c, type: 2}
   m_sharedMaterial: {fileID: 6896605341901114744, guid: 066db9e3797f657409ddf0da99b7f19c, type: 2}
