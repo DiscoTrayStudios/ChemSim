@@ -394,6 +394,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7205329204714849108}
   - component: {fileID: 6646158521894947867}
+  - component: {fileID: 7512214624775708205}
   m_Layer: 0
   m_Name: NaOh
   m_TagString: NaOh
@@ -435,3 +436,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 8
   m_CollisionDetection: 0
+--- !u!114 &7512214624775708205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7545121541201500654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d755ab4461a8fee4b88395a8ce5fac82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isMoving: 1
+  dh: 1
+  reactant: 1

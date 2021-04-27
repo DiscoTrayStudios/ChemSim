@@ -475,6 +475,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8276495983821641684}
   - component: {fileID: 3438484195248754231}
+  - component: {fileID: 1264727098598951871}
   m_Layer: 0
   m_Name: H2O (G)
   m_TagString: H2O (G)
@@ -517,3 +518,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 8
   m_CollisionDetection: 0
+--- !u!114 &1264727098598951871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8761706429658860910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d755ab4461a8fee4b88395a8ce5fac82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isMoving: 1
+  dh: 1
+  reactant: 1
