@@ -25,7 +25,7 @@ public class TutorialText : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        main.text = "Welcome to the ChemSim Tutorial! We're going to go over some of the basics so you can get more comfortable with the system. Please click to continue!";
+        main.text = "Welcome to the ChemSim Tutorial! We're going to go over some of the basics so you can get more comfortable with the system. Please click anywhere to continue!";
         clicks = 0;
         co2Clicked = false;
         h2oclicked = false;
@@ -72,7 +72,7 @@ public class TutorialText : MonoBehaviour
         if (clicks == 1)
         {
             main.text = "";
-            reactants.text = "This is all of the reactants that you can use! Hover over a button or dropdown menu option to see all the values for that compound.";
+            reactants.text = "These is all of the reactants that you can use! Hover over a button or dropdown menu option to see all the values for that compound.";
         }
         else if (clicks == 2)
         {
