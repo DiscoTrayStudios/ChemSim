@@ -129,7 +129,7 @@ public class ReactionManager : MonoBehaviour
 
             else if (reactant1 == null || reactant2 == null)
             {
-                Vector3 position = new Vector3(-10 + (numReactants * 3), 0, 5);
+                Vector3 position = new Vector3(-12 + (numReactants * 4), 0, 5);
                 GameObject reactantInstance = Instantiate(reactantObject, position, reactantObject.transform.rotation);
                 if (reactant1 == null)
                 {

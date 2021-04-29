@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -2823943786586921882}
   - component: {fileID: 8884659068699374319}
   m_Layer: 0
-  m_Name: H20 (L)
+  m_Name: H2O (L)
   m_TagString: H2O (L)
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -91,7 +91,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 8
   m_CollisionDetection: 0
 --- !u!1 &2133440251807418679
 GameObject:
