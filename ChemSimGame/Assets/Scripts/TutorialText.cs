@@ -18,6 +18,9 @@ public class TutorialText : MonoBehaviour
     public GameObject allReactants;
     public GameObject allOptions;
 
+    public GameObject next;
+    public GameObject last;
+
     private int clicks;
     private bool co2Clicked;
     private bool h2oclicked;
@@ -25,117 +28,132 @@ public class TutorialText : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        main.text = "Welcome to the ChemSim Tutorial! We're going to go over some of the basics so you can get more comfortable with the system. Please click anywhere to continue!";
         clicks = 0;
         co2Clicked = false;
         h2oclicked = false;
+        click(clicks);
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && !certainSelection)
-        {
-            clicks += 1;
-            click(clicks);
-        }
-        if (certainSelection)
-        {
-            if (clicks == 4)
-            {
-                Disable();
-                H2ODropdown.GetComponent<TMP_Dropdown>().interactable = true;
-                H2ODropdown.GetComponent<TMP_Dropdown>().onValueChanged.AddListener(delegate
-                {
-                    H2OPressed();
-                });
-            }
-            if (clicks == 5)
-            {
-                Disable();
-                CO2Button.GetComponent<Button>().interactable = true;
-                CO2Button.GetComponent<Button>().onClick.AddListener(CO2Pressed);
+        //if (Input.GetMouseButtonDown(0) && !certainSelection)
+        //{
+        //    clicks += 1;
+        //    click(clicks);
+        //}
+        //if (certainSelection)
+        //{
+        //    if (clicks == 4)
+        //    {
+        //        Disable();
+        //        H2ODropdown.GetComponent<TMP_Dropdown>().interactable = true;
+        //        H2ODropdown.GetComponent<TMP_Dropdown>().onValueChanged.AddListener(delegate
+        //        {
+        //            H2OPressed();
+        //        });
+        //    }
+        //    if (clicks == 5)
+        //    {
+        //        Disable();
+        //        CO2Button.GetComponent<Button>().interactable = true;
+        //        CO2Button.GetComponent<Button>().onClick.AddListener(CO2Pressed);
                 
-            }
-            if (clicks == 6)
-            {
-                Disable();
-                tryReactionButton.GetComponent<Button>().interactable = true;
-                tryReactionButton.GetComponent<Button>().onClick.AddListener(ReactionPressed);
-            }
-        }
+        //    }
+        //    if (clicks == 6)
+        //    {
+        //        Disable();
+        //        tryReactionButton.GetComponent<Button>().interactable = true;
+        //        tryReactionButton.GetComponent<Button>().onClick.AddListener(ReactionPressed);
+        //    }
+        //}
     }
 
     private void click(int clicks)
     {
         Debug.Log(clicks);
-        if (clicks == 1)
+        if (clicks == 0)
         {
-            main.text = "";
+            clearText();
+            main.text = "Welcome to the ChemSim Tutorial! We're going to go over some of the basics so you can get more comfortable with the system. Please use the buttons in the bottom right to navigate through the tutorial!";
+            Disable();
+        }
+        else if (clicks == 1)
+        {
+            clearText();
             reactants.text = "These is all of the reactants that you can use! Hover over a button or dropdown menu option to see all the values for that compound.";
+            Disable();
         }
         else if (clicks == 2)
         {
-            reactants.text = "";
+            clearText();
             display.text = "Here is where all of the current reaction and product information will be displayed!";
+            Disable();
         }
         else if (clicks == 3)
         {
-            display.text = "";
+            clearText();
             buttons.text = "This is where we can get rid of all compounds on screen, test to see if our reaction will work, and have the molecules move around and collide!";
+            Disable();
         }
         else if (clicks == 4)
         {
             certainSelection = true;
-            buttons.text = "";
+            clearText();
             reactants.text = "Lets try making a reaction! Try selecting the liquid state of H2O.";
+            Disable();
             H2ODropdown.GetComponent<Image>().color = Color.yellow;
         }
         else if (clicks == 5)
         {
             H2ODropdown.GetComponent<Image>().color = Color.white;
             certainSelection = true;
-            reactants.text = "";
+            clearText();
             reactants.text = "Great! Now press on the CO2 button.";
+            Disable();
             CO2Button.GetComponent<Image>().color = Color.yellow;
 
         }
         else if (clicks == 6)
         {
             CO2Button.GetComponent<Image>().color = Color.white;
-            reactants.text = "";
+            clearText();
             buttons.text = "Lets see what happens when we press the Try Reaction button";
+            Disable();
             tryReactionButton.GetComponent<Image>().color = Color.yellow;
             certainSelection = true;
         }
         else if (clicks == 7)
         {
             tryReactionButton.GetComponent<Image>().color = Color.white;
-            buttons.text = "";
+            clearText();
             main.text = "Good Job! You just made your first reaction! Before we are done, there is another important piece of information to help you use this tool.";
+            Disable();
         }
         else if (clicks == 8)
         {
-            main.text = "";
+            clearText();
             reactants.text = "You can have up to two different kinds of reactants, but up to 3 molecules of one reactant. To get multiple molecules of a reactant, just press on the button or drop down option again.";
+            Disable();
         }
         else if (clicks == 9)
         {
-            reactants.text = "";
+            clearText();
             main.text = "You can stay in here and play with the system more to get more comfortable or go back to the main menu anytime!";
+            Disable();
         }
         else
         {
+            clearText();
             EndOfTutorial();
+            Enable();
         }
     }
 
     private void EndOfTutorial()
     {
-        reactants.gameObject.SetActive(false);
-        main.gameObject.SetActive(false);
-        buttons.gameObject.SetActive(false);
-        display.gameObject.SetActive(false);
+        main.text = "";
         backToMenuButton.SetActive(true);
     }
 
@@ -210,5 +228,32 @@ public class TutorialText : MonoBehaviour
         certainSelection = false;
         clicks = 7;
         click(clicks);
+    }
+
+    public void forward()
+    {
+        clicks++;
+        if (clicks >10)
+        {
+            clicks = 10;
+        }
+        click(clicks);
+    }
+
+    public void backwards()
+    {
+        clicks--;
+        if (clicks < 0)
+        {
+            clicks = 0;
+        }
+        click(clicks);
+    }
+    private void clearText()
+    {
+        main.text = "";
+        reactants.text = "";
+        buttons.text = "";
+        display.text = "";
     }
 }
