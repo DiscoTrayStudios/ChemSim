@@ -91,11 +91,11 @@ public class ReactionManager : MonoBehaviour
                 Vector3 position;
                 if (reactant1count == 1)
                 {
-                    position = new Vector3(-10, 3, 5);
+                    position = new Vector3(-12, 3, 5);
                 }
                 else
                 {
-                    position = new Vector3(-10, -3, 5);
+                    position = new Vector3(-12, -3, 5);
                 }
                 GameObject reactantInstance = Instantiate(reactantObject, (position), reactantObject.transform.rotation);
                 reactantInstance.GetComponent<MoveAround>().isMoving = reactantsMoving;
@@ -109,11 +109,11 @@ public class ReactionManager : MonoBehaviour
                 Vector3 position;
                 if (reactant2count == 1)
                 {
-                    position = new Vector3(-7, 3, 5);
+                    position = new Vector3(-8, 3, 5);
                 }
                 else
                 {
-                    position = new Vector3(-7, -3, 5);
+                    position = new Vector3(-8, -3, 5);
                 }
                 GameObject reactantInstance = Instantiate(reactantObject, (position), reactantObject.transform.rotation);
                 reactantInstance.GetComponent<MoveAround>().isMoving = reactantsMoving;

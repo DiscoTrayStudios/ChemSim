@@ -26,6 +26,7 @@ public class StateDropDownMenu : MonoBehaviour
         if (menu.value != 0)
         {
             manager.addReactant(options[menu.value - 1]);
+            menu.value = 0;
         }
     }
 }
