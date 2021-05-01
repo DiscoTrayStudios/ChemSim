@@ -26,7 +26,6 @@ public class TutorialText : MonoBehaviour
     private bool co2Clicked;
     private bool h2oClicked;
     private bool reactionClicked;
-    private bool certainSelection;
     // Start is called before the first frame update
     void Start()
     {
@@ -41,36 +40,7 @@ public class TutorialText : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (Input.GetMouseButtonDown(0) && !certainSelection)
-        //{
-        //    clicks += 1;
-        //    click(clicks);
-        //}
-        //if (certainSelection)
-        //{
-        //    if (clicks == 4)
-        //    {
-        //        Disable();
-        //        H2ODropdown.GetComponent<TMP_Dropdown>().interactable = true;
-        //        H2ODropdown.GetComponent<TMP_Dropdown>().onValueChanged.AddListener(delegate
-        //        {
-        //            H2OPressed();
-        //        });
-        //    }
-        //    if (clicks == 5)
-        //    {
-        //        Disable();
-        //        CO2Button.GetComponent<Button>().interactable = true;
-        //        CO2Button.GetComponent<Button>().onClick.AddListener(CO2Pressed);
-                
-        //    }
-        //    if (clicks == 6)
-        //    {
-        //        Disable();
-        //        tryReactionButton.GetComponent<Button>().interactable = true;
-        //        tryReactionButton.GetComponent<Button>().onClick.AddListener(ReactionPressed);
-        //    }
-        //}
+        
     }
 
     private void click()
@@ -101,7 +71,6 @@ public class TutorialText : MonoBehaviour
         }
         else if (clicks == 4)
         {
-            certainSelection = true;
             clearText();
             reactants.text = "Lets try making a reaction! Try selecting the liquid state of H2O.";
             Disable();
@@ -120,7 +89,6 @@ public class TutorialText : MonoBehaviour
             if (h2oClicked)
             {
                 H2ODropdown.GetComponent<Image>().color = Color.white;
-                certainSelection = true;
                 clearText();
                 reactants.text = "Great! Now press on the CO2 button.";
                 Disable();
@@ -145,7 +113,6 @@ public class TutorialText : MonoBehaviour
                 buttons.text = "Lets see what happens when we press the Try Reaction button";
                 Disable();
                 tryReactionButton.GetComponent<Image>().color = Color.yellow;
-                certainSelection = true;
                 tryReactionButton.GetComponent<Button>().interactable = true;
                 tryReactionButton.GetComponent<Button>().onClick.AddListener(ReactionPressed);
             }
@@ -247,21 +214,30 @@ public class TutorialText : MonoBehaviour
     private void CO2Pressed()
     {
         co2Clicked = true;
-        clicks =6;
+        if (clicks != 10)
+        {
+            clicks = 6;
+        }
         click();
 
     }
     private void H2OPressed()
     {
         h2oClicked = true;
-        clicks = 5;
+        if (clicks != 10)
+        {
+            clicks = 5;
+        }
         click();
     }
 
     private void ReactionPressed()
     {
         reactionClicked = true;
-        clicks = 7;
+        if (clicks != 10)
+        {
+            clicks = 7;
+        }
         click();
     }
 
