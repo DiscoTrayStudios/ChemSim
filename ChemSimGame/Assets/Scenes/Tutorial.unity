@@ -634,6 +634,7 @@ MonoBehaviour:
   tryReactionButton: {fileID: 804452507}
   allReactants: {fileID: 1134098003}
   allOptions: {fileID: 1301176436}
+  reactionManager: {fileID: 1097119848}
   next: {fileID: 710221580}
   last: {fileID: 175049307}
 --- !u!1 &121955362

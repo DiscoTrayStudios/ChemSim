@@ -17,21 +17,24 @@ public class TutorialText : MonoBehaviour
     public GameObject tryReactionButton;
     public GameObject allReactants;
     public GameObject allOptions;
+    public GameObject reactionManager;
 
     public GameObject next;
     public GameObject last;
 
     private int clicks;
     private bool co2Clicked;
-    private bool h2oclicked;
+    private bool h2oClicked;
+    private bool reactionClicked;
     private bool certainSelection;
     // Start is called before the first frame update
     void Start()
     {
         clicks = 0;
         co2Clicked = false;
-        h2oclicked = false;
-        click(clicks);
+        h2oClicked = false;
+        reactionClicked = false;
+        click();
         
     }
 
@@ -70,9 +73,8 @@ public class TutorialText : MonoBehaviour
         //}
     }
 
-    private void click(int clicks)
+    private void click()
     {
-        Debug.Log(clicks);
         if (clicks == 0)
         {
             clearText();
@@ -104,32 +106,69 @@ public class TutorialText : MonoBehaviour
             reactants.text = "Lets try making a reaction! Try selecting the liquid state of H2O.";
             Disable();
             H2ODropdown.GetComponent<Image>().color = Color.yellow;
+            H2ODropdown.GetComponent<TMP_Dropdown>().interactable = true;
+            H2ODropdown.GetComponent<TMP_Dropdown>().onValueChanged.AddListener(delegate
+            {
+                H2OPressed();
+            });
+
         }
         else if (clicks == 5)
         {
-            H2ODropdown.GetComponent<Image>().color = Color.white;
-            certainSelection = true;
-            clearText();
-            reactants.text = "Great! Now press on the CO2 button.";
-            Disable();
-            CO2Button.GetComponent<Image>().color = Color.yellow;
+
+            H2ODropdown.GetComponent<Image>().color = Color.yellow;
+            if (h2oClicked)
+            {
+                H2ODropdown.GetComponent<Image>().color = Color.white;
+                certainSelection = true;
+                clearText();
+                reactants.text = "Great! Now press on the CO2 button.";
+                Disable();
+                CO2Button.GetComponent<Image>().color = Color.yellow;
+                CO2Button.GetComponent<Button>().interactable = true;
+                CO2Button.GetComponent<Button>().onClick.AddListener(CO2Pressed);
+            }
+            else
+            {
+                clicks=4;
+            }
 
         }
         else if (clicks == 6)
         {
-            CO2Button.GetComponent<Image>().color = Color.white;
-            clearText();
-            buttons.text = "Lets see what happens when we press the Try Reaction button";
-            Disable();
-            tryReactionButton.GetComponent<Image>().color = Color.yellow;
-            certainSelection = true;
+
+            CO2Button.GetComponent<Image>().color = Color.yellow;
+            if (co2Clicked)
+            {
+                CO2Button.GetComponent<Image>().color = Color.white;
+                clearText();
+                buttons.text = "Lets see what happens when we press the Try Reaction button";
+                Disable();
+                tryReactionButton.GetComponent<Image>().color = Color.yellow;
+                certainSelection = true;
+                tryReactionButton.GetComponent<Button>().interactable = true;
+                tryReactionButton.GetComponent<Button>().onClick.AddListener(ReactionPressed);
+            }
+            else
+            {
+                clicks=5;
+            }
         }
         else if (clicks == 7)
         {
-            tryReactionButton.GetComponent<Image>().color = Color.white;
-            clearText();
-            main.text = "Good Job! You just made your first reaction! Before we are done, there is another important piece of information to help you use this tool.";
-            Disable();
+
+            tryReactionButton.GetComponent<Image>().color = Color.yellow;
+            if (reactionClicked)
+            {
+                tryReactionButton.GetComponent<Image>().color = Color.white;
+                clearText();
+                main.text = "Good Job! You just made your first reaction! Before we are done, there is another important piece of information to help you use this tool.";
+                Disable();
+            }
+            else
+            {
+                clicks=6;
+            }
         }
         else if (clicks == 8)
         {
@@ -207,27 +246,23 @@ public class TutorialText : MonoBehaviour
 
     private void CO2Pressed()
     {
-        Enable();
         co2Clicked = true;
-        certainSelection = false;
         clicks =6;
-        click(clicks);
+        click();
+
     }
     private void H2OPressed()
     {
-        Enable();
-        h2oclicked = true;
-        certainSelection = false;
+        h2oClicked = true;
         clicks = 5;
-        click(clicks);
+        click();
     }
 
     private void ReactionPressed()
     {
-        Enable();
-        certainSelection = false;
+        reactionClicked = true;
         clicks = 7;
-        click(clicks);
+        click();
     }
 
     public void forward()
@@ -237,7 +272,9 @@ public class TutorialText : MonoBehaviour
         {
             clicks = 10;
         }
-        click(clicks);
+        setToWhite();
+        Debug.Log(clicks);
+        click();
     }
 
     public void backwards()
@@ -247,7 +284,16 @@ public class TutorialText : MonoBehaviour
         {
             clicks = 0;
         }
-        click(clicks);
+        if (4<clicks&&clicks<8)
+        {
+            clicks = 4;
+            h2oClicked = false;
+            co2Clicked = false;
+            reactionClicked = false;
+            reactionManager.GetComponent<ReactionManager>().ClearReactants();
+        }
+        setToWhite();
+        click();
     }
     private void clearText()
     {
@@ -255,5 +301,12 @@ public class TutorialText : MonoBehaviour
         reactants.text = "";
         buttons.text = "";
         display.text = "";
+    }
+
+    private void setToWhite()
+    {
+        tryReactionButton.GetComponent<Image>().color = Color.white;
+        H2ODropdown.GetComponent<Image>().color = Color.white;
+        CO2Button.GetComponent<Image>().color = Color.white;
     }
 }
