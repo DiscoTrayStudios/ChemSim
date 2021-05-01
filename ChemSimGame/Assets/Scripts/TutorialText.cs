@@ -18,6 +18,7 @@ public class TutorialText : MonoBehaviour
     public GameObject allReactants;
     public GameObject allOptions;
     public GameObject reactionManager;
+    public GameObject DialogueBox;
 
     public GameObject next;
     public GameObject last;
@@ -153,7 +154,10 @@ public class TutorialText : MonoBehaviour
         {
             clearText();
             EndOfTutorial();
-            Enable();
+            if (!DialogueBox.activeSelf)
+            {
+                Enable();
+            }
         }
     }
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class ReactionManager : MonoBehaviour
 {
@@ -18,6 +19,10 @@ public class ReactionManager : MonoBehaviour
     public TextMeshProUGUI motionSwitchText;
 
     private bool reactantsMoving;
+
+    public GameObject Panel;
+    public GameObject Options;
+    public GameObject OptionalOptions;
 
     private ReactionTester reactionTester;
     private GameObject reactant1;
@@ -272,11 +277,13 @@ public class ReactionManager : MonoBehaviour
     {
         dialogueText.text = text;
         dialogueBox.SetActive(true);
+        Disable();
     }
 
     public void CloseDialogue()
     {
         dialogueBox.SetActive(false);
+        Enable();
     }
 
     // Causes molecules to start/stop moving
@@ -374,4 +381,68 @@ public class ReactionManager : MonoBehaviour
     public double getMoleculedH(string name){ return GameManager.Instance.getMoleculedH(name); }
     public double getMoleculedS(string name) { return GameManager.Instance.getMoleculedS(name); }
     public double getMoleculedG(string name) { return GameManager.Instance.getMoleculedG(name); }
+
+    public void Disable()
+    {
+        foreach (Transform child in Panel.transform)
+        {
+            
+            if (child.gameObject.GetComponent<Button>() != null)
+            {
+                child.gameObject.GetComponent<Button>().interactable = false;
+            }
+            if (child.gameObject.GetComponent<TMP_Dropdown>() != null)
+            {
+                child.gameObject.GetComponent<TMP_Dropdown>().interactable = false;
+            }
+        }
+        foreach (Transform child in Options.transform)
+        {
+            if (child.gameObject.GetComponent<Button>() != null)
+            {
+                child.gameObject.GetComponent<Button>().interactable = false;
+            }
+        }
+        if (OptionalOptions != null)
+        {
+            foreach (Transform child in OptionalOptions.transform)
+            {
+                if (child.gameObject.GetComponent<Button>() != null)
+                {
+                    child.gameObject.GetComponent<Button>().interactable = false;
+                }
+            }
+        }
+    }
+    public void Enable()
+    {
+        foreach (Transform child in Panel.transform)
+        {
+            if (child.gameObject.GetComponent<Button>() != null)
+            {
+                child.gameObject.GetComponent<Button>().interactable = true;
+            }
+            if (child.gameObject.GetComponent<TMP_Dropdown>() != null)
+            {
+                child.gameObject.GetComponent<TMP_Dropdown>().interactable = true;
+            }
+        }
+        foreach (Transform child in Options.transform)
+        {
+            if (child.gameObject.GetComponent<Button>() != null)
+            {
+                child.gameObject.GetComponent<Button>().interactable = true;
+            }
+        }
+        if (OptionalOptions != null)
+        {
+            foreach (Transform child in OptionalOptions.transform)
+            {
+                if (child.gameObject.GetComponent<Button>() != null)
+                {
+                    child.gameObject.GetComponent<Button>().interactable = true;
+                }
+            }
+        }
+    }
 }
