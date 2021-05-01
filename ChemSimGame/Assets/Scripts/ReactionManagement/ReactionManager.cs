@@ -17,6 +17,7 @@ public class ReactionManager : MonoBehaviour
     private GameObject reactionArrowInstance;
 
     public TextMeshProUGUI motionSwitchText;
+    public GameObject ReactionButton;
 
     private bool reactantsMoving;
 
@@ -55,6 +56,9 @@ public class ReactionManager : MonoBehaviour
     private double[] targetDHs = new double[3] { -30.5, -5.0, -92.2 };
     private int currentTarget = 0;
 
+    private bool productPresent;
+    private bool clickAboveNine;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -79,12 +83,16 @@ public class ReactionManager : MonoBehaviour
             targetDhText.text = "Target ΔH: " + targetDHs[currentTarget];
             ShowDialogue("What reaction gives a change in enthalpy of " + targetDHs[currentTarget] + "?");
         }
+        productPresent = false;
+        clickAboveNine = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (!dialogueBox.activeSelf && clickAboveNine) { 
+            ReactionButton.GetComponent<Button>().interactable = !productPresent;
+        }
     }
 
     public void addReactant(GameObject reactantObject)
@@ -211,6 +219,8 @@ public class ReactionManager : MonoBehaviour
         reactant2count = 0;
         allReactants.Clear();
         ReactionDone = false;
+        productPresent = false;
+        
     }
 
     public void TryToReact()
@@ -222,6 +232,7 @@ public class ReactionManager : MonoBehaviour
                 List<GameObject> output = reactionTester.TryReaction(reactant1Name, reactant2Name);
                 if (output != null)
                 {
+                    productPresent = true;
                     DoReaction(output);
                     UpdateText();
                     CalculateChanges(output);
@@ -244,7 +255,7 @@ public class ReactionManager : MonoBehaviour
             }
         }else
         {
-            ShowDialogue("Please select two reactants.");
+            ShowDialogue("That is not a valid reaction.");
         }
     }
 
@@ -444,5 +455,10 @@ public class ReactionManager : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void clickSet(bool click)
+    {
+        clickAboveNine = click;
     }
 }

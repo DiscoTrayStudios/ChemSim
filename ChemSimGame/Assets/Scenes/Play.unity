@@ -5832,8 +5832,10 @@ MonoBehaviour:
   dialogueText: {fileID: 939786932}
   reactionArrow: {fileID: 256562302137616894, guid: cb7ad0a2bfd5154419e609fcac1046ce, type: 3}
   motionSwitchText: {fileID: 1174721096}
+  ReactionButton: {fileID: 1079128737}
   Panel: {fileID: 7775017}
   Options: {fileID: 1185189100}
+  OptionalOptions: {fileID: 0}
   questionBox: {fileID: 427831258}
   dHEntry: {fileID: 1411405922}
   dGEntry: {fileID: 1679933943}

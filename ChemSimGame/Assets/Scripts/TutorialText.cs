@@ -41,7 +41,7 @@ public class TutorialText : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        reactionManager.GetComponent<ReactionManager>().clickSet(clicks > 9);
     }
 
     private void click()

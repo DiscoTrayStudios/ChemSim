@@ -29,7 +29,7 @@ public class MoveAround : MonoBehaviour
     {
         random = new System.Random();
         RightX = -2;
-        LeftX = -16;
+        LeftX = -14;
         UpY = 6;
         DownY = -2;
         body = GetComponent<Rigidbody>();
@@ -82,7 +82,7 @@ public class MoveAround : MonoBehaviour
         }
         if (!reactant)
         {
-            RightX = 9;
+            RightX = 8;
             LeftX = 4;
         }
         return speed;
