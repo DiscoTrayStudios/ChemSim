@@ -32,6 +32,7 @@ public class ReactionManager : MonoBehaviour
     private string reactant2Name;
     private GameObject reactionOutput;
     private string outputName;
+    private List<String> outputNames;
     private List<GameObject>outputList;
     private int reactant1count;
     private int reactant2count;
@@ -69,6 +70,7 @@ public class ReactionManager : MonoBehaviour
             reactantListText.text = "";
         }
         outputList = new List<GameObject>();
+        outputNames = new List<string>();
 
         reactantsMoving = false;
         motionSwitchText.text = "Start Motion";
@@ -220,7 +222,7 @@ public class ReactionManager : MonoBehaviour
         allReactants.Clear();
         ReactionDone = false;
         productPresent = false;
-        
+        outputNames = new List<string>();
     }
 
     public void TryToReact()
@@ -273,6 +275,7 @@ public class ReactionManager : MonoBehaviour
             moveScript.isMoving = reactantsMoving;
             moveScript.dh = getMoleculedH(molecule.name);
             outputName += molecule.name + " + ";
+            outputNames.Add(molecule.name);
             outputList.Add(reactionOutput);
             if (molecule.name.Equals("H2O (L)") || molecule.name.Equals("Na2SO4 (Aq)") || molecule.name.Equals("NH3"))
             {
@@ -460,5 +463,33 @@ public class ReactionManager : MonoBehaviour
     public void clickSet(bool click)
     {
         clickAboveNine = click;
+    }
+
+    public void ShowValues()
+    {
+        string text = "";
+        if (reactant1Name != null)
+        {
+            text += ValueString(reactant1Name);
+        }
+        if (reactant2Name != null)
+        {
+            text += "\n" + ValueString(reactant2Name);
+        }
+        foreach (string name in outputNames)
+        {
+            text += "\n" + ValueString(name);
+        }
+        ShowDialogue(text);
+    }
+
+    private string ValueString(string moleculeName)
+    {
+        string text = "";
+        text += moleculeName + " ";
+        text += "H: " + getMoleculedH(moleculeName) + " ";
+        text += "G: " + getMoleculedG(moleculeName) + " ";
+        text += "S: " + getMoleculedS(moleculeName) + " ";
+        return text;
     }
 }
