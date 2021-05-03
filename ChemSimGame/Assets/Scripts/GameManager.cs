@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
     public GameObject tutorialButton;
     public GameObject creditsButton;
     public GameObject helpButton;
+    public GameObject creditsText;
+    public GameObject backButton;
 
     private MoleculeValuesTable moleculeValuesTable = new MoleculeValuesTable();
 
@@ -93,6 +95,26 @@ public class GameManager : MonoBehaviour
         creditsButton.SetActive(true);
         helpButton.SetActive(true);
         FadeIn("MainMenu");
+    }
+
+    public void ShowCredits()
+    {
+        startButton.SetActive(false);
+        tutorialButton.SetActive(false);
+        creditsButton.SetActive(false);
+        helpButton.SetActive(false);
+        creditsText.SetActive(true);
+        backButton.SetActive(true);
+    }
+
+    public void HideCredits()
+    {
+        startButton.SetActive(true);
+        tutorialButton.SetActive(true);
+        creditsButton.SetActive(true);
+        helpButton.SetActive(true);
+        creditsText.SetActive(false);
+        backButton.SetActive(false);
     }
 
     IEnumerator ColorLerp(Color endValue, float duration)
