@@ -37,6 +37,7 @@ public class Calculator
             totalOutputH += GameManager.Instance.getMoleculedH(g.name);
             totalOutputG += GameManager.Instance.getMoleculedG(g.name);
             totalOutputS += GameManager.Instance.getMoleculedS(g.name);
+            Debug.Log(totalOutputH);
         }
         double dH = Math.Round(totalOutputH - totalInputH, 2);
         double dG = Math.Round(totalOutputG - totalInputG, 2);
