@@ -169,4 +169,6 @@ public class GameManager : MonoBehaviour
     public double getMoleculedS(string name) { return moleculeValuesTable.getMoleculedS(name); }
     public double getMoleculedG(string name) { return moleculeValuesTable.getMoleculedG(name); }
 
+    public Dictionary<string, Molecule> getReactionTable() { return moleculeValuesTable.getReactionValues(); }
+
 }

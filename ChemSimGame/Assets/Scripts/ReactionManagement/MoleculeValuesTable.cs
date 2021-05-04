@@ -20,6 +20,7 @@ public class MoleculeValuesTable
     private Molecule N2 = new Molecule("N2", 0, 191.5, 0);
     private Molecule H2 = new Molecule("H2", 0, 130.6, 0);
     private Molecule NaCl = new Molecule("NaCl", -407.3, 115.5, -393.1);
+    private Molecule H2CO3 = new Molecule("H2CO3", -677.14, -56.9, -527.9);
 
     public MoleculeValuesTable()
     {
@@ -28,18 +29,19 @@ public class MoleculeValuesTable
         reactantValues.Add("H2O (G)", H2OG);
         reactantValues.Add("CO2", CO2);
         reactantValues.Add("HCl", HCl);
+        reactantValues.Add("H2SO4", H2SO4);
         reactantValues.Add("NaOH", NaOH);
         reactantValues.Add("NH3", NH3);
-        reactantValues.Add("NH4+", NH4);
-        reactantValues.Add("OH-", OH);
-        reactantValues.Add("H2SO4", H2SO4);
+        reactantValues.Add("N2", N2);
         reactantValues.Add("Na2SO4 (Aq)", Na2SO4Aq);
         reactantValues.Add("Na2SO4 (S)", Na2SO4S);
+        reactantValues.Add("H2", H2);
+        reactantValues.Add("NH4+", NH4);
+        reactantValues.Add("OH-", OH);
         reactantValues.Add("Na+", Na);
         reactantValues.Add("SO42-", SO4);
-        reactantValues.Add("N2", N2);
-        reactantValues.Add("H2", H2);
         reactantValues.Add("NaCl", NaCl);
+        reactantValues.Add("H2CO3", H2CO3);
     }
     public double getMoleculedH(string name) {
         try
@@ -67,5 +69,10 @@ public class MoleculeValuesTable
         {
             return 0;
         }
+    }
+
+    public Dictionary<string, Molecule> getReactionValues()
+    {
+        return reactantValues;
     }
 }

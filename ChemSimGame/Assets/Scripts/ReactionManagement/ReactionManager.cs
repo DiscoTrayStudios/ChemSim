@@ -60,6 +60,9 @@ public class ReactionManager : MonoBehaviour
     private bool productPresent;
     private bool clickAboveNine;
 
+    public GameObject AllValuesText;
+    public GameObject AllValuesBox;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -92,7 +95,7 @@ public class ReactionManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!dialogueBox.activeSelf && clickAboveNine) { 
+        if ((!AllValuesBox.activeSelf && !dialogueBox.activeSelf) && clickAboveNine) { 
             ReactionButton.GetComponent<Button>().interactable = !productPresent;
         }
     }
@@ -487,9 +490,37 @@ public class ReactionManager : MonoBehaviour
     {
         string text = "";
         text += moleculeName + " ";
-        text += "H: " + getMoleculedH(moleculeName) + " ";
-        text += "G: " + getMoleculedG(moleculeName) + " ";
-        text += "S: " + getMoleculedS(moleculeName) + " ";
+        text += "ΔH: " + getMoleculedH(moleculeName) + "  ";
+        text += "ΔG: " + getMoleculedG(moleculeName) + "  ";
+        text += "ΔS: " + getMoleculedS(moleculeName) + "  ";
         return text;
     }
+
+    public void GetAllValues()
+    {
+        string text = "";
+        Dictionary<string, Molecule> reactionValues = GameManager.Instance.getReactionTable();
+        foreach (KeyValuePair<string,Molecule> pair in reactionValues)
+        {
+            text += ValueString(pair.Key);
+            text += "\n";
+        }
+        AllValuesText.GetComponent<TMP_Text>().text = text;
+    }
+
+
+    public void ShowValueText()
+    {
+        AllValuesBox.SetActive(true);
+        GetAllValues();
+        Disable();
+    }
+
+    public void CloseAllValues()
+    {
+        AllValuesBox.SetActive(false);
+        Enable();
+    }
+
+
 }
