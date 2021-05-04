@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     public GameObject helpButton;
     public GameObject creditsText;
     public GameObject backButton;
+    public GameObject audioSource;
 
     private MoleculeValuesTable moleculeValuesTable = new MoleculeValuesTable();
 
@@ -41,6 +42,7 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
             DontDestroyOnLoad(canvas);
             DontDestroyOnLoad(events);
+            DontDestroyOnLoad(audioSource);
 
         }
         else
