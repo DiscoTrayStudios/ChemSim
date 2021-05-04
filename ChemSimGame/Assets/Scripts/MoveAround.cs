@@ -7,7 +7,7 @@ public class MoveAround : MonoBehaviour
     // Start is called before the first frame update
     
     public bool isMoving = true;
-    public double dh = 1;
+    public double dh;
 
     private float RightX;
     private float LeftX;
@@ -27,6 +27,7 @@ public class MoveAround : MonoBehaviour
     public bool reactant;
     void Start()
     {
+        /*dh = GameManager.Instance.getMoleculedH(this.name);*/
         random = new System.Random();
         RightX = -2;
         LeftX = -14;
@@ -75,7 +76,7 @@ public class MoveAround : MonoBehaviour
 
     private float GenSpeed()
     {
-        float speed = 15 - (-((float)dh / 100));
+        float speed = 2 * -(float)dh/100;
         if (random.Next(1) == 0)
         {
             speed *= -1;
