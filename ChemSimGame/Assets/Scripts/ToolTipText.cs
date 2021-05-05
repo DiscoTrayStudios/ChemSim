@@ -24,11 +24,11 @@ public class ToolTipText : MonoBehaviour
     public void setTextDrop(TextMeshProUGUI label) 
     {
         name = label.text;
-        text.GetComponent<UnityEngine.UI.Text>().text = name + "\nΔH = " + reaction.getMoleculedH(name) + "kJ/mol" + "\nΔS = " + reaction.getMoleculedS(name) + "J/molK" + "\nΔG = " + reaction.getMoleculedG(name) + "kJ/mol";
+        text.GetComponent<UnityEngine.UI.Text>().text = name + "\nΔH = " + reaction.getMoleculedH(name) + " kJ/mol" + "\nΔS = " + reaction.getMoleculedS(name) + " J/molK" + "\nΔG = " + reaction.getMoleculedG(name) + " kJ/mol";
     }
 
     public void setTextButton(string name)
     {
-        text.GetComponent<UnityEngine.UI.Text>().text = name + "\nΔH = " + reaction.getMoleculedH(name) + "kJ/mol" + "\nΔS = " + reaction.getMoleculedS(name) + "J/molK" + "\nΔG = " + reaction.getMoleculedG(name) + "kJ/mol";
+        text.GetComponent<UnityEngine.UI.Text>().text = name + "\nΔH = " + reaction.getMoleculedH(name) + " kJ/mol" + "\nΔS = " + reaction.getMoleculedS(name) + " J/molK" + "\nΔG = " + reaction.getMoleculedG(name) + " kJ/mol";
     }
 }
