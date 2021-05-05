@@ -97,6 +97,7 @@ public class MoveAround : MonoBehaviour
         y = GenSpeed();
         body.velocity = new Vector3(x, y, 0);
         body.freezeRotation = false;
+        gameObject.GetComponent<TrailRenderer>().enabled = true;
     }
 
     public void StopMoving()
@@ -106,5 +107,6 @@ public class MoveAround : MonoBehaviour
         body.position = originalPosition;
         body.freezeRotation = true;
         body.rotation = originalRotation;
+        gameObject.GetComponent<TrailRenderer>().enabled = false;
     }
 }
