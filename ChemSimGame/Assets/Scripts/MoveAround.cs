@@ -6,7 +6,7 @@ public class MoveAround : MonoBehaviour
 {
     // Start is called before the first frame update
     
-    private bool isMoving = false;
+    public bool isMoving = false;
     public double dh;
 
     private float RightX;

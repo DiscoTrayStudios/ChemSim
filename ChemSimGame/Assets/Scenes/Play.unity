@@ -2018,13 +2018,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'dH
-
-
-    dG
-
-
-    dS'
+  m_text: "\u0394H\n\n\u0394G\n\n\u0394S"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 066db9e3797f657409ddf0da99b7f19c, type: 2}
   m_sharedMaterial: {fileID: 6896605341901114744, guid: 066db9e3797f657409ddf0da99b7f19c, type: 2}
@@ -2344,7 +2338,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: What is the dH, dG, and dS of this reaction?
+  m_text: "What is the \u0394H, \u0394G, and \u0394S of this reaction?"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 066db9e3797f657409ddf0da99b7f19c, type: 2}
   m_sharedMaterial: {fileID: 6896605341901114744, guid: 066db9e3797f657409ddf0da99b7f19c, type: 2}
@@ -3206,10 +3200,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: dS
+  m_text: "\u0394S"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 066db9e3797f657409ddf0da99b7f19c, type: 2}
+  m_sharedMaterial: {fileID: 6896605341901114744, guid: 066db9e3797f657409ddf0da99b7f19c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3272,7 +3266,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &611848869
@@ -3997,10 +3991,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: dH
+  m_text: "\u0394H"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 066db9e3797f657409ddf0da99b7f19c, type: 2}
+  m_sharedMaterial: {fileID: 6896605341901114744, guid: 066db9e3797f657409ddf0da99b7f19c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4063,7 +4057,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &775949162
@@ -11372,10 +11366,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: dG
+  m_text: "\u0394G"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 066db9e3797f657409ddf0da99b7f19c, type: 2}
+  m_sharedMaterial: {fileID: 6896605341901114744, guid: 066db9e3797f657409ddf0da99b7f19c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -11438,7 +11432,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &2050380183
