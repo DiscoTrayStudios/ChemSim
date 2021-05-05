@@ -82,7 +82,7 @@ public class MoveAround : MonoBehaviour
 
     private float GenSpeed()
     {
-        float speed = 30 - (float)dh/100;
+        float speed = (30 - (float)dh/100)/5;
         if (random.Next(1) == 0)
         {
             speed *= -1;

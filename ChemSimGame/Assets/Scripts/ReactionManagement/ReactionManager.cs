@@ -266,6 +266,7 @@ public class ReactionManager : MonoBehaviour
 
     private void DoReaction(List<GameObject> outputObject)
     {
+        int count = 0;
         Debug.Log(numReactants);
         Vector3 arrowPosition = new Vector3(0, 0, 5);
         reactionArrowInstance = Instantiate(reactionArrow, arrowPosition, reactionArrow.transform.rotation);
@@ -284,7 +285,15 @@ public class ReactionManager : MonoBehaviour
             {
                 moveScript.reactant = false;
             }
-            outputPosition.x+=3;
+            if (count == 0)
+            {
+                outputPosition.y = 2;
+            }
+            else
+            {
+                outputPosition.y = -2;
+            }
+            count += 1;
         }
         outputName = outputName.Substring(0, outputName.Length-3);
         ReactionDone = true;
