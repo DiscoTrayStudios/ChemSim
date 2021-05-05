@@ -54,7 +54,7 @@ public class ReactionManager : MonoBehaviour
 
     public TextMeshProUGUI targetDhText;
 
-    private double[] targetDHs = new double[3] { -30.5, -5.0, -92.2};
+    private double[] targetDHs = new double[5] { -30.5, -5.0, -92.2, -100, -200.6};
     private int currentTarget = 0;
 
     private bool productPresent;
@@ -116,13 +116,7 @@ public class ReactionManager : MonoBehaviour
                     position = new Vector3(-12, -3, 5);
                 }
                 GameObject reactantInstance = Instantiate(reactantObject, (position), reactantObject.transform.rotation);
-                if (reactantsMoving)
-                {
-                    reactantInstance.GetComponent<MoveAround>().StartMoving();
-                } else
-                {
-                    reactantInstance.GetComponent<MoveAround>().StopMoving();
-                }
+                reactantInstance.GetComponent<MoveAround>().isMoving = reactantsMoving;
                 reactantInstance.GetComponent<MoveAround>().dh = getMoleculedH(reactant1Name);
                 reactant1count++;
                 allReactants.Add(reactantInstance);
@@ -140,13 +134,7 @@ public class ReactionManager : MonoBehaviour
                     position = new Vector3(-8, -3, 5);
                 }
                 GameObject reactantInstance = Instantiate(reactantObject, (position), reactantObject.transform.rotation);
-                if (reactantsMoving)
-                {
-                    reactantInstance.GetComponent<MoveAround>().StartMoving();
-                } else
-                {
-                    reactantInstance.GetComponent<MoveAround>().StopMoving();
-                }
+                reactantInstance.GetComponent<MoveAround>().isMoving = reactantsMoving;
                 reactantInstance.GetComponent<MoveAround>().dh = getMoleculedH(reactant2Name);
                 reactant2count++;
                 allReactants.Add(reactantInstance);
@@ -165,14 +153,7 @@ public class ReactionManager : MonoBehaviour
                 {
                     reactant1 = reactantInstance;
                     reactant1Name = reactantObject.name;
-                    if (reactantsMoving)
-                    {
-                        reactant1.GetComponent<MoveAround>().StartMoving();
-                    }
-                    else
-                    {
-                        reactant1.GetComponent<MoveAround>().StopMoving();
-                    }
+                    reactant1.GetComponent<MoveAround>().isMoving = reactantsMoving;
                     reactant1.GetComponent<MoveAround>().dh = getMoleculedH(reactant1Name);
                     reactant1count = 1;
                     allReactants.Add(reactant1);
@@ -181,13 +162,7 @@ public class ReactionManager : MonoBehaviour
                 {
                     reactant2 = reactantInstance;
                     reactant2Name = reactantObject.name;
-                    if (reactantsMoving)
-                    {
-                        reactant2.GetComponent<MoveAround>().StartMoving();
-                    } else
-                    {
-                        reactant2.GetComponent<MoveAround>().StopMoving();
-                    }
+                    reactant2.GetComponent<MoveAround>().isMoving = reactantsMoving;
                     reactant2.GetComponent<MoveAround>().dh = getMoleculedH(reactant2Name);
                     reactant2count = 1;
                     allReactants.Add(reactant2);
@@ -300,13 +275,7 @@ public class ReactionManager : MonoBehaviour
         {
             reactionOutput = Instantiate(molecule, outputPosition, molecule.transform.rotation);
             MoveAround moveScript = reactionOutput.GetComponent<MoveAround>();
-            if (reactantsMoving)
-            {
-                moveScript.StartMoving();
-            }else
-            {
-                moveScript.StopMoving();
-            }
+            moveScript.isMoving = reactantsMoving;
             moveScript.dh = getMoleculedH(molecule.name);
             outputName += molecule.name + " + ";
             outputNames.Add(molecule.name);
@@ -388,7 +357,7 @@ public class ReactionManager : MonoBehaviour
                 if (currentTarget < targetDHs.Length)
                 {
                     ShowDialogue("That's right!\nNow what reaction gives a change in enthalpy of " + targetDHs[currentTarget] + "?");
-                    targetDhText.text = "Target Δh: " + targetDHs[currentTarget];
+                    targetDhText.text = "Target ΔH: " + targetDHs[currentTarget];
                 }
                 else
                 {
