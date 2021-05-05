@@ -54,7 +54,7 @@ public class ReactionManager : MonoBehaviour
 
     public TextMeshProUGUI targetDhText;
 
-    private double[] targetDHs = new double[5] { -30.5, -5.0, -92.2, -100, -111.6};
+    private double[] targetDHs = new double[5] { -30.5, -5.0, -92.2, -100, -200.6};
     private int currentTarget = 0;
 
     private bool productPresent;
