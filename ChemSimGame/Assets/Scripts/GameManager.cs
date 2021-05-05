@@ -162,7 +162,7 @@ public class GameManager : MonoBehaviour
 
     public void FadeIn(string whichScene)
     {
-        StartCoroutine(LoadYourAsyncScene(whichScene, new Color(0, 0, 0, 1)));
+        StartCoroutine(LoadYourAsyncScene(whichScene, new Color(1, 1, 1, 1)));
     }
 
     public double getMoleculedH(string name) { return moleculeValuesTable.getMoleculedH(name); }
