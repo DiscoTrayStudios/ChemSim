@@ -349,21 +349,27 @@ public class ReactionManager : MonoBehaviour
 
     private void CheckTarget()
     {
-        if (totalDH == targetDHs[currentTarget])
+        if (askingTargetQuestions)
         {
-            currentTarget += 1;
-            if (currentTarget < targetDHs.Length)
+            if (totalDH == targetDHs[currentTarget])
             {
-                ShowDialogue("That's right!\nNow what reaction gives a change in enthalpy of " + targetDHs[currentTarget] + "?");
-                targetDhText.text = "Target Δh: " + targetDHs[currentTarget];
-            } else
-            {
-                ShowDialogue("That's right!\nYou've found all the target changes. Now can you find all the change values of a reaction?");
-                targetDhText.gameObject.SetActive(false);
+                currentTarget += 1;
+                if (currentTarget < targetDHs.Length)
+                {
+                    ShowDialogue("That's right!\nNow what reaction gives a change in enthalpy of " + targetDHs[currentTarget] + "?");
+                    targetDhText.text = "Target Δh: " + targetDHs[currentTarget];
+                }
+                else
+                {
+                    askingTargetQuestions = false;
+                    ShowDialogue("That's right!\nYou've found all the target changes. Now can you find all the change values of a reaction?");
+                    targetDhText.gameObject.SetActive(false);
+                }
             }
-        } else
-        {
-            ShowDialogue("That's not right. The reaction you gave has a ΔH of " + totalDH);
+            else
+            {
+                ShowDialogue("That's not right. The reaction you gave has a ΔH of " + totalDH);
+            }
         }
     }
 
