@@ -6,7 +6,7 @@ public class MoveAround : MonoBehaviour
 {
     // Start is called before the first frame update
     
-    public bool isMoving = true;
+    private bool isMoving = false;
     public double dh;
 
     private float RightX;
@@ -25,9 +25,9 @@ public class MoveAround : MonoBehaviour
     private System.Random random;
 
     public bool reactant;
-    void Start()
+
+    private void Awake()
     {
-        /*dh = GameManager.Instance.getMoleculedH(this.name);*/
         random = new System.Random();
         RightX = -2;
         LeftX = -14;
@@ -40,13 +40,19 @@ public class MoveAround : MonoBehaviour
         originalRotation = transform.rotation;
         x = GenSpeed();
         y = GenSpeed();
+    }
+
+    void Start()
+    {
+        /*dh = GameManager.Instance.getMoleculedH(this.name);*/
         
+        StopMoving();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (isMoving)
+        if (isMoving && !body.isKinematic)
         {
             postion = body.transform.position;
             if (postion.x > RightX && body.velocity.x > 0)
@@ -92,19 +98,20 @@ public class MoveAround : MonoBehaviour
 
     public void StartMoving()
     {
+        body.isKinematic = false;
         isMoving = true;
         x = GenSpeed();
         y = GenSpeed();
-        body.velocity = new Vector3(x, y, 0);
         body.freezeRotation = false;
         gameObject.GetComponent<TrailRenderer>().enabled = true;
     }
 
     public void StopMoving()
     {
+        body.isKinematic = true;
         isMoving = false;
-        body.velocity = new Vector3(0, 0, 0);
         body.position = originalPosition;
+        body.velocity = new Vector3(0, 0, 0);
         body.freezeRotation = true;
         body.rotation = originalRotation;
         gameObject.GetComponent<TrailRenderer>().enabled = false;

@@ -16,8 +16,8 @@ GameObject:
   - component: {fileID: -6270096525905103976}
   - component: {fileID: 1414394892033718351}
   m_Layer: 0
-  m_Name: NaOh
-  m_TagString: NaOh
+  m_Name: NaOH
+  m_TagString: NaOH
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

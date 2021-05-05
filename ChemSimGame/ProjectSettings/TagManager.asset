@@ -14,7 +14,7 @@ TagManager:
   - Na+
   - Na2SO4
   - NaCl
-  - NaOh
+  - NaOH
   - NH3
   - NH4+
   - OH-
@@ -25,6 +25,7 @@ TagManager:
   - H2O (G)
   - Na2SO4 (S)
   - Na2SO4 (Aq)
+  - NaOh
   layers:
   - Default
   - TransparentFX
