@@ -85,8 +85,8 @@ public class ReactionManager : MonoBehaviour
         reactant2Name = null;
         if (askingTargetQuestions)
         {
-            targetDhText.text = "Target ΔH: " + targetDHs[currentTarget];
-            ShowDialogue("What reaction gives a change in enthalpy of " + targetDHs[currentTarget] + "?");
+            targetDhText.text = "Target ΔH (kJ/mol): " + targetDHs[currentTarget];
+            ShowDialogue("What reaction gives a change in enthalpy of " + targetDHs[currentTarget] + " (kJ/mol)?");
         }
         productPresent = false;
         clickAboveNine = true;
@@ -356,8 +356,8 @@ public class ReactionManager : MonoBehaviour
                 currentTarget += 1;
                 if (currentTarget < targetDHs.Length)
                 {
-                    ShowDialogue("That's right!\nNow what reaction gives a change in enthalpy of " + targetDHs[currentTarget] + "?");
-                    targetDhText.text = "Target ΔH: " + targetDHs[currentTarget];
+                    ShowDialogue("That's right!\nNow what reaction gives a change in enthalpy of " + targetDHs[currentTarget] + " (kJ/mol)?");
+                    targetDhText.text = "Target ΔH (kJ/mol): " + targetDHs[currentTarget];
                 }
                 else
                 {
@@ -396,7 +396,7 @@ public class ReactionManager : MonoBehaviour
             else
             {
                 questionBox.SetActive(false);
-                ShowDialogue("The correct answer is \nΔH: " + totalDH + "\nΔG: " + totalDG + "\nΔS: " + totalDS);
+                ShowDialogue("The correct answer is \nΔH (kJ/mol): " + totalDH + "\nΔG (kJ/mol): " + totalDG + "\nΔS (J/molK): " + totalDS);
             }
         }
     }
@@ -496,9 +496,9 @@ public class ReactionManager : MonoBehaviour
     {
         string text = "";
         text += moleculeName + " ";
-        text += "ΔH: " + getMoleculedH(moleculeName) + "  ";
-        text += "ΔG: " + getMoleculedG(moleculeName) + "  ";
-        text += "ΔS: " + getMoleculedS(moleculeName) + "  ";
+        text += "ΔH (kJ/mol): " + getMoleculedH(moleculeName) + "  ";
+        text += "ΔG (kJ/mol): " + getMoleculedG(moleculeName) + "  ";
+        text += "ΔS (J/molK): " + getMoleculedS(moleculeName) + "  ";
         return text;
     }
 
