@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+
+// This script holds all of the text for the tutorial as well as keeping track of what is disabled, enabled, and where
+// the player is in the tutorial
 public class TutorialText : MonoBehaviour
 {
 
@@ -38,7 +41,7 @@ public class TutorialText : MonoBehaviour
         
     }
 
-    // Update is called once per frame
+    // Update is called once per frame 
     void Update()
     {
         reactionManager.GetComponent<ReactionManager>().clickSet(clicks > 9);

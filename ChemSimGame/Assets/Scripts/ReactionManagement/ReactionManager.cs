@@ -5,6 +5,8 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
+// ReactionManager is the backbone of this game. It holds much of the code involved in the creation, deletion, and 
+// interation of all the molecules.
 public class ReactionManager : MonoBehaviour
 {
     public bool askingTargetQuestions;
@@ -100,13 +102,17 @@ public class ReactionManager : MonoBehaviour
         }
     }
 
+
+    // addReactant is the method to go from clicking an option from the menu to having it appear on screen
     public void addReactant(GameObject reactantObject)
     {
         if (!ReactionDone)
         {
+            // If the first reactant exists and the wanted reactant is the same, as well as there not already being 3 of that type
             if (reactant1 != null && reactantObject.tag == reactant1.tag && reactant1count < 3)
             {
                 Vector3 position;
+                // Positions new added reactant in either 2nd or 3rd reactant position
                 if (reactant1count == 1)
                 {
                     position = new Vector3(-12, 3, 5);
@@ -115,13 +121,14 @@ public class ReactionManager : MonoBehaviour
                 {
                     position = new Vector3(-12, -3, 5);
                 }
+                // creates reactant, increases count, and adds to the total reactant list
                 GameObject reactantInstance = Instantiate(reactantObject, (position), reactantObject.transform.rotation);
                 reactantInstance.GetComponent<MoveAround>().isMoving = reactantsMoving;
                 reactantInstance.GetComponent<MoveAround>().dh = getMoleculedH(reactant1Name);
                 reactant1count++;
                 allReactants.Add(reactantInstance);
             }
-
+            // exact same as above, but for the second reactant
             else if (reactant2 != null && reactantObject.tag == reactant2.tag && reactant2count < 3)
             {
                 Vector3 position;
@@ -140,16 +147,19 @@ public class ReactionManager : MonoBehaviour
                 allReactants.Add(reactantInstance);
             }
 
+            // If both reactants are already selected, and player attempts to add more than three of either one of them this error shows
             else if (reactant1 != null && reactant2 != null && (reactantObject.tag == reactant2.tag || reactantObject.tag == reactant1.tag))
             {
                 ShowDialogue("You cannot add more than three of each type of reactant");
             }
 
+            // If no reactants have been selected
             else if (reactant1 == null || reactant2 == null)
             {
                 Vector3 position = new Vector3(-12 + (numReactants * 4), 0, 5);
                 GameObject reactantInstance = Instantiate(reactantObject, position, reactantObject.transform.rotation);
                 if (reactant1 == null)
+                // initializes the first reactant as whatever was selected as well as sets up the movement
                 {
                     reactant1 = reactantInstance;
                     reactant1Name = reactantObject.name;
@@ -159,6 +169,7 @@ public class ReactionManager : MonoBehaviour
                     allReactants.Add(reactant1);
                 }
                 else
+                // Same as above, but for the second reactant
                 {
                     reactant2 = reactantInstance;
                     reactant2Name = reactantObject.name;
@@ -167,20 +178,25 @@ public class ReactionManager : MonoBehaviour
                     reactant2count = 1;
                     allReactants.Add(reactant2);
                 }
+                // Shows player necessary text if any and increments number of reactant counter
                 UpdateText();
                 numReactants += 1;
 
             }
+            // Shows error if player tries to add 3rd type of reactant when 2 exist already
             else
             {
                 ShowDialogue("You cannot have more than two types of reactants");
             }
         } else
+        // shows error if player tries to add reactants while reaction is done
         {
             ShowDialogue("Please clear the reactants");
         }
     }
 
+
+    // Shows current reaction in words on bottom of screen
     private void UpdateText()
     {
         string text = "";
@@ -199,6 +215,8 @@ public class ReactionManager : MonoBehaviour
         reactantListText.text = text;
     }
 
+
+    // Gets rid of all reactants on screen as well as setting reactant info to null
     public void ClearReactants()
     {
         foreach (GameObject g in allReactants)
@@ -228,8 +246,12 @@ public class ReactionManager : MonoBehaviour
         outputNames = new List<string>();
     }
 
+
+    // This function is called when a player tries to react their reactants
     public void TryToReact()
     {
+        // Checks to make sure there are two reactants to try
+        // OR if there is just Na2SO4 (which dissasociates spontaneously) 
         if ((reactant1 != null && reactant2 != null)||( reactant1Name == "Na2SO4 (S)" && reactant2 ==null))
         {
             if (reactionTester.ReactionIsValid(reactant1Name, reactant2Name, reactant1count, reactant2count))
@@ -264,6 +286,8 @@ public class ReactionManager : MonoBehaviour
         }
     }
 
+
+    //creates product to be visible for player
     private void DoReaction(List<GameObject> outputObject)
     {
         int count = 0;
@@ -342,6 +366,8 @@ public class ReactionManager : MonoBehaviour
         }
     }
 
+
+    // Finds the DH, DG, and DS of the reaction
     private void CalculateChanges(List<GameObject> output)
     {
         Dictionary<string, int> input = new Dictionary<string, int>();
@@ -356,6 +382,8 @@ public class ReactionManager : MonoBehaviour
         totalDS = changes[2];
     }
 
+
+    // If the player is being asked to find a target value, this will check if they are right and give the appropriate response
     private void CheckTarget()
     {
         if (askingTargetQuestions)
@@ -414,6 +442,10 @@ public class ReactionManager : MonoBehaviour
     public double getMoleculedS(string name) { return GameManager.Instance.getMoleculedS(name); }
     public double getMoleculedG(string name) { return GameManager.Instance.getMoleculedG(name); }
 
+
+
+
+    // Disable() and Enable() are used to limit player interactability depending on what may on the screen
     public void Disable()
     {
         foreach (Transform child in Panel.transform)
@@ -483,6 +515,8 @@ public class ReactionManager : MonoBehaviour
         clickAboveNine = click;
     }
 
+
+    // Shows large list of values for reference
     public void ShowValues()
     {
         string text = "";
@@ -501,6 +535,8 @@ public class ReactionManager : MonoBehaviour
         ShowDialogue(text);
     }
 
+
+    
     private string ValueString(string moleculeName)
     {
         string text = "";

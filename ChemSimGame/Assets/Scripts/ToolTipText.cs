@@ -4,6 +4,8 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+
+// This script could be compiled into another
 public class ToolTipText : MonoBehaviour
 {
     // Start is called before the first frame update
