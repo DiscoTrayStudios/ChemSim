@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+
+
+// This script is to make sure players can't select the wrong dropdown options for certain reactants
+// and then activates the reaction manager to add it in
 public class StateDropDownMenu : MonoBehaviour
 {
     public List<GameObject> options;

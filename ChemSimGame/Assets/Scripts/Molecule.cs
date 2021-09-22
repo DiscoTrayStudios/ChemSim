@@ -1,5 +1,6 @@
 ﻿using System;
 
+//Molecule is an object class that is used to represent molecules that are made in-game
 public class Molecule
 {
 	private string name;

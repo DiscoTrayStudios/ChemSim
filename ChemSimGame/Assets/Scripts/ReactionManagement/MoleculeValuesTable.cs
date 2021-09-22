@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 
+
+// This holds all the information regarding reactants and their values 
 public class MoleculeValuesTable
 {
     private Dictionary<string, Molecule> reactantValues;

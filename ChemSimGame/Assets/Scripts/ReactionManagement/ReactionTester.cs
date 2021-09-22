@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class ReactionTester : MonoBehaviour
 {
-    // put each molecule in here as a public field
     public GameObject h2o;
     public GameObject h2ol;
     public GameObject h2og;
@@ -27,9 +26,8 @@ public class ReactionTester : MonoBehaviour
     public GameObject N2;
     public GameObject H2;
 
-    // List all the reactions and their outputs as GameObjects in here
-    // We use a hashmap as a multiset, with each reactant mapping
-    // to its quantity in the reaction
+    // This dictionary holds a Tuple as the key, inwhich the contents are the two reactants
+    // The values are a list containg all products
     private Dictionary<Tuple<string, string>, List<GameObject>> reactions; 
 
     // Start is called before the first frame update
@@ -57,8 +55,13 @@ public class ReactionTester : MonoBehaviour
         
     }
 
+
+    //Called from ReactionManager. Checks to see if the reaction dictionary contains the reactants and if so,
+    // it checks the amount that the player put in. It checks to make sure that no matter which reactant is entered first,
+    // it still returns whether or not it is valid in the amounts
     public bool ReactionIsValid(string reactant1Name, string reactant2Name, int reactant1count, int reactant2count)
     {
+        // Checks real fast on the NA2SO4(s) case
         if (reactant1Name == Na2SO4s.name)
         {
             if (reactant2Name == null)
@@ -70,9 +73,13 @@ public class ReactionTester : MonoBehaviour
             }
             
         }
+        // Creates tuple with reactants player put in, in order
         Tuple<string, string> pair1 = new Tuple<string, string>(reactant1Name, reactant2Name);
+
+        // checks if this tuple is in the parent reaction dictionary
         if (reactions.ContainsKey(pair1))
         {
+            // Checks to make sure there is only one of each reactant, except in the case of H2SO4 or N2
             if ((reactant1count != 1 || reactant2count != 1) ||(reactant1Name == H2SO4.name) || (reactant1Name == N2.name))
             {
                 if ((reactant1Name == H2SO4.name && reactant2Name == NaOH.name))
@@ -98,6 +105,7 @@ public class ReactionTester : MonoBehaviour
         }
         else
         {
+            // Now checks with reverse order that player put reactants in
             Tuple<string, string> pair2 = new Tuple<string, string>(reactant2Name, reactant1Name);
             if (reactions.ContainsKey(pair2))
             {
@@ -128,6 +136,8 @@ public class ReactionTester : MonoBehaviour
         }
     }
 
+
+    // If the amounts are valid then this function will be called to return the products.
     public List<GameObject> TryReaction(string reactant1Name, string reactant2Name)
     {
 

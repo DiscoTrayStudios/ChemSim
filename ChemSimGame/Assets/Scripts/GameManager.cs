@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.UI;
 
+//GameManager is mostly used to switch between scenes, along with a bit of helping other scripts share data
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
