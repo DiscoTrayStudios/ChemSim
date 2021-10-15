@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 
 //GameManager is mostly used to switch between scenes, along with a bit of helping other scripts share data
 public class GameManager : MonoBehaviour
@@ -20,6 +21,9 @@ public class GameManager : MonoBehaviour
     public GameObject creditsText;
     public GameObject backButton;
     public GameObject audioSource;
+    public AudioMixer mixer;
+    public GameObject volumeButton;
+    public GameObject volumeSlider;
 
     private MoleculeValuesTable moleculeValuesTable = new MoleculeValuesTable();
 
@@ -62,6 +66,7 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
+        volumeButton.SetActive(false);
         textBox.SetActive(false);
         startButton.SetActive(false);
         tutorialButton.SetActive(false);
@@ -72,6 +77,7 @@ public class GameManager : MonoBehaviour
 
     public void Tutorial()
     {
+        volumeButton.SetActive(false);
         textBox.SetActive(false);
         startButton.SetActive(false);
         tutorialButton.SetActive(false);
@@ -82,6 +88,7 @@ public class GameManager : MonoBehaviour
 
     public void Help()
     {
+        volumeButton.SetActive(false);
         textBox.SetActive(false);
         startButton.SetActive(false);
         tutorialButton.SetActive(false);
@@ -92,6 +99,7 @@ public class GameManager : MonoBehaviour
 
     public void BackToMenu()
     {
+        volumeButton.SetActive(true);
         textBox.SetActive(true);
         startButton.SetActive(true);
         tutorialButton.SetActive(true);
@@ -102,6 +110,7 @@ public class GameManager : MonoBehaviour
 
     public void ShowCredits()
     {
+        volumeButton.SetActive(false);
         startButton.SetActive(false);
         tutorialButton.SetActive(false);
         creditsButton.SetActive(false);
@@ -112,6 +121,7 @@ public class GameManager : MonoBehaviour
 
     public void HideCredits()
     {
+        volumeButton.SetActive(true);
         startButton.SetActive(true);
         tutorialButton.SetActive(true);
         creditsButton.SetActive(true);
@@ -172,4 +182,22 @@ public class GameManager : MonoBehaviour
 
     public Dictionary<string, Molecule> getReactionTable() { return moleculeValuesTable.getReactionValues(); }
 
+    // Volume Controls
+    // Activates the volume slider by clicking the icon
+    public void volumeOnClick()
+    {
+        if (volumeSlider.activeSelf == true)
+        {
+            volumeSlider.SetActive(false);
+        }
+        else
+        {
+            volumeSlider.SetActive(true);
+        }
+    }
+    // Sets the volume using the slider
+    public void setVolume(float sliderValue)
+    {
+        mixer.SetFloat("masterVol", (Mathf.Log10(sliderValue) * 20));
+    }
 }
