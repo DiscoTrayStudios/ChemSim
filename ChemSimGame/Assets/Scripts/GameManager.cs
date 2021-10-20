@@ -149,7 +149,7 @@ public class GameManager : MonoBehaviour
     {
         if (!SceneManager.GetActiveScene().name.Equals("MainMenu"))
         {
-            StartCoroutine(ColorLerp(new Color(0, 0, 0, 1), 0.25f));
+            StartCoroutine(ColorLerp(new Color(0, 0, 0, 1), 0.5f));
             while (!image.GetComponent<Image>().color.Equals(new Color(0, 0, 0, 1)))
             {
                 yield return null;
@@ -162,7 +162,7 @@ public class GameManager : MonoBehaviour
             yield return null;
         }
         
-        StartCoroutine(ColorLerp(finalColor, 0.25f));
+        StartCoroutine(ColorLerp(finalColor, 0.5f));
     }
     
 
