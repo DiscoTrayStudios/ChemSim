@@ -139,8 +139,12 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 631821856048616260, guid: cb7ad0a2bfd5154419e609fcac1046ce, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 631821856048616260, guid: cb7ad0a2bfd5154419e609fcac1046ce, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3
+      value: 2.65
       objectReference: {fileID: 0}
     - target: {fileID: 631821856048616260, guid: cb7ad0a2bfd5154419e609fcac1046ce, type: 3}
       propertyPath: m_LocalPosition.y
@@ -301,11 +305,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8113234217774740521, guid: 2f4800717d308a84f9b268316ca2aa56, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.58
+      value: 6.45
       objectReference: {fileID: 0}
     - target: {fileID: 8113234217774740521, guid: 2f4800717d308a84f9b268316ca2aa56, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.39
+      value: -0.63
       objectReference: {fileID: 0}
     - target: {fileID: 8113234217774740521, guid: 2f4800717d308a84f9b268316ca2aa56, type: 3}
       propertyPath: m_LocalPosition.z
@@ -377,11 +381,11 @@ RectTransform:
   m_Children:
   - {fileID: 1512314155}
   m_Father: {fileID: 1671387182}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 251.91, y: 177.21}
+  m_AnchoredPosition: {x: 247.9, y: 231.2}
   m_SizeDelta: {x: 296.18, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &925765922
@@ -539,6 +543,140 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: beebab93b13dd3048adcb79672e3f761, type: 3}
+--- !u!1 &1206119972
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1206119973}
+  - component: {fileID: 1206119975}
+  - component: {fileID: 1206119974}
+  m_Layer: 5
+  m_Name: Equation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1206119973
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1206119972}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1671387182}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 218.6, y: 185.7}
+  m_SizeDelta: {x: 216.4025, y: 52.384}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1206119974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1206119972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: "\u0394H = H<sub>products</sub> - H<sub>reactants</sub>"
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: e6458eb39f8ddeb46a50bc8a0ec35693, type: 2}
+  m_sharedMaterial: {fileID: 7166631728519268913, guid: e6458eb39f8ddeb46a50bc8a0ec35693, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4278254847
+  m_fontColor: {r: 1, g: 0.9863347, b: 0, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 26
+  m_fontSizeBase: 26
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 1
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 1
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: -71.599014, w: -23.134514}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1206119975
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1206119972}
+  m_CullTransparentMesh: 1
 --- !u!1 &1226298767
 GameObject:
   m_ObjectHideFlags: 0
@@ -626,7 +764,7 @@ GameObject:
   - component: {fileID: 1361975289}
   - component: {fileID: 1361975288}
   m_Layer: 5
-  m_Name: Text (TMP) (2)
+  m_Name: H2CO3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -648,7 +786,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 293.13, y: 68.5}
+  m_AnchoredPosition: {x: 303.5, y: 61.33}
   m_SizeDelta: {x: 213.7413, y: 52.388}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1361975288
@@ -671,10 +809,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "H2CO3\n\u0394H = -677.14 kJ/Mol"
+  m_text: "H<sub>2</sub>CO<sub>3</sub>\n\u0394H = -677.14 kJ/Mol"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 066db9e3797f657409ddf0da99b7f19c, type: 2}
-  m_sharedMaterial: {fileID: 6896605341901114744, guid: 066db9e3797f657409ddf0da99b7f19c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e6458eb39f8ddeb46a50bc8a0ec35693, type: 2}
+  m_sharedMaterial: {fileID: 7166631728519268913, guid: e6458eb39f8ddeb46a50bc8a0ec35693, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -698,10 +836,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 37.55
-  m_fontSizeBase: 20
+  m_fontSize: 21
+  m_fontSizeBase: 21
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
@@ -807,8 +945,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Back To Menu
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e6458eb39f8ddeb46a50bc8a0ec35693, type: 2}
+  m_sharedMaterial: {fileID: 7166631728519268913, guid: e6458eb39f8ddeb46a50bc8a0ec35693, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -838,7 +976,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -894,7 +1032,7 @@ GameObject:
   - component: {fileID: 1533688210}
   - component: {fileID: 1533688209}
   m_Layer: 5
-  m_Name: Text (TMP) (3)
+  m_Name: Explanation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -912,7 +1050,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1671387182}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -939,13 +1077,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Solving for \u0394H of whole equation\n\u0394H = [ \u0394H ( H2CO3 ) ]
-    - [ \u0394H ( H2O ) + \u0394H ( CO2 ) ]\n\u0394H = -698.7 - (-285.8 + -393.5)\n\u0394H
-    = -698.7 - (-679.3)\n\u0394H of whole equation = -19.4\nThe same method is used
+  m_text: "Solving for \u0394H of whole equation\n\n\n\n\nThe same method is used
     when finding \u0394S and \u0394G as well."
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 066db9e3797f657409ddf0da99b7f19c, type: 2}
-  m_sharedMaterial: {fileID: 6896605341901114744, guid: 066db9e3797f657409ddf0da99b7f19c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e6458eb39f8ddeb46a50bc8a0ec35693, type: 2}
+  m_sharedMaterial: {fileID: 7166631728519268913, guid: e6458eb39f8ddeb46a50bc8a0ec35693, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -969,10 +1105,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24.8
-  m_fontSizeBase: 29.4
+  m_fontSize: 23
+  m_fontSizeBase: 23
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
@@ -986,7 +1122,7 @@ MonoBehaviour:
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
   m_enableWordWrapping: 1
-  m_wordWrappingRatios: 0.4
+  m_wordWrappingRatios: 0.509
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
@@ -1019,7 +1155,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1533688207}
   m_CullTransparentMesh: 1
---- !u!1 &1582944573
+--- !u!1 &1580153921
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1027,45 +1163,45 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1582944574}
-  - component: {fileID: 1582944576}
-  - component: {fileID: 1582944575}
+  - component: {fileID: 1580153922}
+  - component: {fileID: 1580153924}
+  - component: {fileID: 1580153923}
   m_Layer: 5
-  m_Name: Equation
+  m_Name: Explanation (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &1582944574
+--- !u!224 &1580153922
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1582944573}
+  m_GameObject: {fileID: 1580153921}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1671387182}
-  m_RootOrder: 2
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 251.91, y: 130.43025}
-  m_SizeDelta: {x: 296.18, y: 67.9345}
+  m_AnchoredPosition: {x: 132.2, y: -169}
+  m_SizeDelta: {x: 988.4716, y: 223.2342}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1582944575
+--- !u!114 &1580153923
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1582944573}
+  m_GameObject: {fileID: 1580153921}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
@@ -1076,23 +1212,84 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f7affb6415236ed46836a1a291eff235, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1582944576
+  m_text: "\n\u0394H = [ \u0394H ( H<sub>2</sub>CO<sub>3</sub> ) ] - [ \u0394H (
+    H<sub>2</sub>O ) + \u0394H ( CO<sub>2</sub> ) ]\n\u0394H = -698.7 - (-285.8 +
+    -393.5)\n\u0394H = -698.7 - (-679.3)\n\u0394H = -19.4"
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: e6458eb39f8ddeb46a50bc8a0ec35693, type: 2}
+  m_sharedMaterial: {fileID: 7166631728519268913, guid: e6458eb39f8ddeb46a50bc8a0ec35693, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 23
+  m_fontSizeBase: 23
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 1
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.509
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 1
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 94.30009, y: 0, z: 95.4362, w: 56.807293}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1580153924
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1582944573}
+  m_GameObject: {fileID: 1580153921}
   m_CullTransparentMesh: 1
 --- !u!1 &1598691709
 GameObject:
@@ -1303,12 +1500,13 @@ RectTransform:
   m_Children:
   - {fileID: 1226298768}
   - {fileID: 2116547424}
-  - {fileID: 1582944574}
+  - {fileID: 1206119973}
   - {fileID: 2112512643}
   - {fileID: 2132960418}
   - {fileID: 1361975287}
-  - {fileID: 1533688208}
   - {fileID: 925765921}
+  - {fileID: 1533688208}
+  - {fileID: 1580153922}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1422,7 +1620,7 @@ GameObject:
   - component: {fileID: 2112512645}
   - component: {fileID: 2112512644}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: H2O
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1444,7 +1642,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -283, y: 70.27107}
+  m_AnchoredPosition: {x: -283, y: 61.46}
   m_SizeDelta: {x: 216.4025, y: 52.384}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2112512644
@@ -1467,10 +1665,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "H2O (L)\n\u0394H = -285.8 kJ/Mol"
+  m_text: "H<sub>2</sub>O (L)\n\u0394H = -285.8 kJ/Mol"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 066db9e3797f657409ddf0da99b7f19c, type: 2}
-  m_sharedMaterial: {fileID: 6896605341901114744, guid: 066db9e3797f657409ddf0da99b7f19c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e6458eb39f8ddeb46a50bc8a0ec35693, type: 2}
+  m_sharedMaterial: {fileID: 7166631728519268913, guid: e6458eb39f8ddeb46a50bc8a0ec35693, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1494,10 +1692,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 35.45
-  m_fontSizeBase: 20
+  m_fontSize: 21
+  m_fontSizeBase: 21
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
@@ -1578,8 +1776,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -148.09, y: 140.32}
-  m_SizeDelta: {x: 503.8152, y: 103.7766}
+  m_AnchoredPosition: {x: -154.7, y: 162.2}
+  m_SizeDelta: {x: 470.2, y: 103.7766}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2116547425
 MonoBehaviour:
@@ -1604,8 +1802,8 @@ MonoBehaviour:
   m_text: "The total \u0394H of an equation is equal to the sum of all \u0394H of
     the products minus the sum of all \u0394H of the reactants."
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 1073593e820af664789a86d89620e463, type: 2}
-  m_sharedMaterial: {fileID: -517429971966759057, guid: 1073593e820af664789a86d89620e463, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e6458eb39f8ddeb46a50bc8a0ec35693, type: 2}
+  m_sharedMaterial: {fileID: 7166631728519268913, guid: e6458eb39f8ddeb46a50bc8a0ec35693, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1691,7 +1889,7 @@ GameObject:
   - component: {fileID: 2132960420}
   - component: {fileID: 2132960419}
   m_Layer: 5
-  m_Name: Text (TMP) (1)
+  m_Name: CO2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1713,7 +1911,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -52, y: 70.9}
+  m_AnchoredPosition: {x: -43.1, y: 60.9}
   m_SizeDelta: {x: 214.4361, y: 52.388}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2132960419
@@ -1736,10 +1934,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "CO2\n\u0394H = -393.5 kJ/Mol"
+  m_text: "CO<sub>2</sub>\n\u0394H = -393.5 kJ/Mol"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 066db9e3797f657409ddf0da99b7f19c, type: 2}
-  m_sharedMaterial: {fileID: 6896605341901114744, guid: 066db9e3797f657409ddf0da99b7f19c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e6458eb39f8ddeb46a50bc8a0ec35693, type: 2}
+  m_sharedMaterial: {fileID: 7166631728519268913, guid: e6458eb39f8ddeb46a50bc8a0ec35693, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1763,10 +1961,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 37.1
-  m_fontSizeBase: 20
+  m_fontSize: 21
+  m_fontSizeBase: 21
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
