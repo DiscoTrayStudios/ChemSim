@@ -18,12 +18,15 @@ public class ReactionManager : MonoBehaviour
     public GameObject reactionArrow;
     private GameObject reactionArrowInstance;
 
+    public GameObject reactantsButton;
+    public GameObject reactantsScreen;
+
     public TextMeshProUGUI motionSwitchText;
     public GameObject ReactionButton;
 
     private bool reactantsMoving;
 
-    public GameObject Panel;
+    //public GameObject Panel;
     public GameObject Options;
     public GameObject OptionalOptions;
 
@@ -327,13 +330,13 @@ public class ReactionManager : MonoBehaviour
     {
         dialogueText.text = text;
         dialogueBox.SetActive(true);
-        Disable();
+        //Disable();
     }
 
     public void CloseDialogue()
     {
         dialogueBox.SetActive(false);
-        Enable();
+        //Enable();
     }
 
     // Causes molecules to start/stop moving
@@ -446,69 +449,71 @@ public class ReactionManager : MonoBehaviour
 
 
     // Disable() and Enable() are used to limit player interactability depending on what may on the screen
-    public void Disable()
-    {
-        foreach (Transform child in Panel.transform)
-        {
+    // currently uses Panel which we do not need, will need to reimplement these functions later. 
+    // These are used in ShowDialogue(), CloseDialogue(), ShowValueText(), and CloseAllValues() 
+    //public void Disable()
+    //{
+    //    foreach (Transform child in Panel.transform)
+    //    {
             
-            if (child.gameObject.GetComponent<Button>() != null)
-            {
-                child.gameObject.GetComponent<Button>().interactable = false;
-            }
-            if (child.gameObject.GetComponent<TMP_Dropdown>() != null)
-            {
-                child.gameObject.GetComponent<TMP_Dropdown>().interactable = false;
-            }
-        }
-        foreach (Transform child in Options.transform)
-        {
-            if (child.gameObject.GetComponent<Button>() != null)
-            {
-                child.gameObject.GetComponent<Button>().interactable = false;
-            }
-        }
-        if (OptionalOptions != null)
-        {
-            foreach (Transform child in OptionalOptions.transform)
-            {
-                if (child.gameObject.GetComponent<Button>() != null)
-                {
-                    child.gameObject.GetComponent<Button>().interactable = false;
-                }
-            }
-        }
-    }
-    public void Enable()
-    {
-        foreach (Transform child in Panel.transform)
-        {
-            if (child.gameObject.GetComponent<Button>() != null)
-            {
-                child.gameObject.GetComponent<Button>().interactable = true;
-            }
-            if (child.gameObject.GetComponent<TMP_Dropdown>() != null)
-            {
-                child.gameObject.GetComponent<TMP_Dropdown>().interactable = true;
-            }
-        }
-        foreach (Transform child in Options.transform)
-        {
-            if (child.gameObject.GetComponent<Button>() != null)
-            {
-                child.gameObject.GetComponent<Button>().interactable = true;
-            }
-        }
-        if (OptionalOptions != null)
-        {
-            foreach (Transform child in OptionalOptions.transform)
-            {
-                if (child.gameObject.GetComponent<Button>() != null)
-                {
-                    child.gameObject.GetComponent<Button>().interactable = true;
-                }
-            }
-        }
-    }
+    //        if (child.gameObject.GetComponent<Button>() != null)
+    //        {
+    //            child.gameObject.GetComponent<Button>().interactable = false;
+    //        }
+    //        if (child.gameObject.GetComponent<TMP_Dropdown>() != null)
+    //        {
+    //            child.gameObject.GetComponent<TMP_Dropdown>().interactable = false;
+    //        }
+    //    }
+    //    foreach (Transform child in Options.transform)
+    //    {
+    //        if (child.gameObject.GetComponent<Button>() != null)
+    //        {
+    //            child.gameObject.GetComponent<Button>().interactable = false;
+    //        }
+    //    }
+    //    if (OptionalOptions != null)
+    //    {
+    //        foreach (Transform child in OptionalOptions.transform)
+    //        {
+    //            if (child.gameObject.GetComponent<Button>() != null)
+    //            {
+    //                child.gameObject.GetComponent<Button>().interactable = false;
+    //            }
+    //        }
+    //    }
+    //}
+    //public void Enable()
+    //{
+    //    foreach (Transform child in Panel.transform)
+    //    {
+    //        if (child.gameObject.GetComponent<Button>() != null)
+    //        {
+    //            child.gameObject.GetComponent<Button>().interactable = true;
+    //        }
+    //        if (child.gameObject.GetComponent<TMP_Dropdown>() != null)
+    //        {
+    //            child.gameObject.GetComponent<TMP_Dropdown>().interactable = true;
+    //        }
+    //    }
+    //    foreach (Transform child in Options.transform)
+    //    {
+    //        if (child.gameObject.GetComponent<Button>() != null)
+    //        {
+    //            child.gameObject.GetComponent<Button>().interactable = true;
+    //        }
+    //    }
+    //    if (OptionalOptions != null)
+    //    {
+    //        foreach (Transform child in OptionalOptions.transform)
+    //        {
+    //            if (child.gameObject.GetComponent<Button>() != null)
+    //            {
+    //                child.gameObject.GetComponent<Button>().interactable = true;
+    //            }
+    //        }
+    //    }
+    //}
 
     public void clickSet(bool click)
     {
@@ -564,14 +569,27 @@ public class ReactionManager : MonoBehaviour
     {
         AllValuesBox.SetActive(true);
         GetAllValues();
-        Disable();
+        //Disable();
     }
 
     public void CloseAllValues()
     {
         AllValuesBox.SetActive(false);
-        Enable();
+        //Enable();
     }
 
+    public void ToggleReactantView()
+	{
+        if(reactantsScreen.activeInHierarchy)
+		{
+            reactantsScreen.SetActive(false);
+            reactantsButton.GetComponentInChildren<TextMeshProUGUI>().text = "Show Reactants";
+		}
+        else
+		{
+            reactantsScreen.SetActive(true);
+            reactantsButton.GetComponentInChildren<TextMeshProUGUI>().text = "Hide Reactants";
+        }
+	}
 
 }
