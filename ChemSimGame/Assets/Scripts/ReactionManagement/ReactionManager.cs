@@ -20,6 +20,7 @@ public class ReactionManager : MonoBehaviour
 
     public GameObject reactantsButton;
     public GameObject reactantsScreen;
+    public GameObject reactionButton;
     public GameObject currentValues;
     public GameObject seeAllValues;
 
