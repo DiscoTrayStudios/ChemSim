@@ -332,6 +332,14 @@ public class ReactionManager : MonoBehaviour
     {
         dialogueText.text = text;
         dialogueBox.SetActive(true);
+        if (AllValuesBox.activeInHierarchy)
+        {
+            ToggleAllValues();
+        }
+        if (reactantsScreen.activeInHierarchy)
+        {
+            ToggleReactantView();
+        }
         //Disable();
     }
 
@@ -541,14 +549,6 @@ public class ReactionManager : MonoBehaviour
                 text += "\n" + ValueString(name);
             }
             ShowDialogue(text);
-            if(AllValuesBox.activeInHierarchy)
-			{
-                ToggleAllValues();
-			}
-            if(reactantsScreen.activeInHierarchy)
-			{
-                ToggleReactantView();
-			}
         }
         else
 		{
