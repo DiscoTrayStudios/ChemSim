@@ -20,9 +20,11 @@ public class ReactionManager : MonoBehaviour
 
     public GameObject reactantsButton;
     public GameObject reactantsScreen;
+    public GameObject reactionButton;
+    public GameObject currentValues;
+    public GameObject seeAllValues;
 
     public TextMeshProUGUI motionSwitchText;
-    public GameObject ReactionButton;
 
     private bool reactantsMoving;
 
@@ -101,7 +103,7 @@ public class ReactionManager : MonoBehaviour
     void Update()
     {
         if ((!AllValuesBox.activeSelf && !dialogueBox.activeSelf) && clickAboveNine) { 
-            ReactionButton.GetComponent<Button>().interactable = !productPresent;
+            reactionButton.GetComponent<Button>().interactable = !productPresent;
         }
     }
 
@@ -165,7 +167,7 @@ public class ReactionManager : MonoBehaviour
                 // initializes the first reactant as whatever was selected as well as sets up the movement
                 {
                     reactant1 = reactantInstance;
-                    reactant1Name = reactantObject.name;
+                    reactant1Name = ConvertName(reactantObject.name);
                     reactant1.GetComponent<MoveAround>().isMoving = reactantsMoving;
                     reactant1.GetComponent<MoveAround>().dh = getMoleculedH(reactant1Name);
                     reactant1count = 1;
@@ -175,7 +177,7 @@ public class ReactionManager : MonoBehaviour
                 // Same as above, but for the second reactant
                 {
                     reactant2 = reactantInstance;
-                    reactant2Name = reactantObject.name;
+                    reactant2Name = ConvertName(reactantObject.name);
                     reactant2.GetComponent<MoveAround>().isMoving = reactantsMoving;
                     reactant2.GetComponent<MoveAround>().dh = getMoleculedH(reactant2Name);
                     reactant2count = 1;
@@ -330,6 +332,14 @@ public class ReactionManager : MonoBehaviour
     {
         dialogueText.text = text;
         dialogueBox.SetActive(true);
+        if (AllValuesBox.activeInHierarchy)
+        {
+            ToggleAllValues();
+        }
+        if (reactantsScreen.activeInHierarchy)
+        {
+            ToggleReactantView();
+        }
         //Disable();
     }
 
@@ -522,28 +532,35 @@ public class ReactionManager : MonoBehaviour
 
 
     // Shows large list of values for reference
-    public void ShowValues()
+    public void ToggleValues()
     {
-        string text = "";
-        if (reactant1Name != null)
-        {
-            text += ValueString(reactant1Name);
+        if (!dialogueBox.activeInHierarchy) {
+            string text = "";
+            if (reactant1Name != null)
+            {
+                text += ValueString(reactant1Name);
+            }
+            if (reactant2Name != null)
+            {
+                text += "\n" + ValueString(reactant2Name);
+            }
+            foreach (string name in outputNames)
+            {
+                text += "\n" + ValueString(name);
+            }
+            ShowDialogue(text);
         }
-        if (reactant2Name != null)
-        {
-            text += "\n" + ValueString(reactant2Name);
-        }
-        foreach (string name in outputNames)
-        {
-            text += "\n" + ValueString(name);
-        }
-        ShowDialogue(text);
+        else
+		{
+            CloseDialogue();
+		}
     }
 
 
     
     private string ValueString(string moleculeName)
     {
+        moleculeName = ConvertName(moleculeName);
         string text = "";
         text += moleculeName + " ";
         text += "ΔH (kJ/mol): " + getMoleculedH(moleculeName) + "  ";
@@ -565,17 +582,27 @@ public class ReactionManager : MonoBehaviour
     }
 
 
-    public void ShowValueText()
+    public void ToggleAllValues()
     {
-        AllValuesBox.SetActive(true);
-        GetAllValues();
-        //Disable();
-    }
-
-    public void CloseAllValues()
-    {
-        AllValuesBox.SetActive(false);
-        //Enable();
+        if (AllValuesBox.activeInHierarchy)
+        {
+            AllValuesBox.SetActive(false);
+            seeAllValues.GetComponentInChildren<TextMeshProUGUI>().text = "See All Values";
+        }
+        else
+        {
+            AllValuesBox.SetActive(true);
+            GetAllValues();
+            seeAllValues.GetComponentInChildren<TextMeshProUGUI>().text = "Hide All Values";
+            if (dialogueBox.activeInHierarchy)
+            {
+                ToggleValues();
+            }
+            if (reactantsScreen.activeInHierarchy)
+            {
+                ToggleReactantView();
+            }
+        }
     }
 
     public void ToggleReactantView()
@@ -589,7 +616,67 @@ public class ReactionManager : MonoBehaviour
 		{
             reactantsScreen.SetActive(true);
             reactantsButton.GetComponentInChildren<TextMeshProUGUI>().text = "Hide Reactants";
+            if (AllValuesBox.activeInHierarchy)
+            {
+                ToggleAllValues();
+            }
+            if (dialogueBox.activeInHierarchy)
+            {
+                ToggleValues();
+            }
         }
 	}
+
+    // It is being done this way because "<" and ">" cannot be used when naming a file. So we can't name our Prefabs the proper thing.
+    public string ConvertName(string name)
+	{
+        if(name == "H2O (L)")
+		{
+            name = "H<sub>2</sub>O(l)";
+		}
+        else if (name == "H2O (G)")
+        {
+            name = "H<sub>2</sub>O(g)";
+        }
+        else if (name == "CO2")
+        {
+            name = "CO<sub>2</sub>";
+        }
+        //HCl needs no change, so it is skipped
+        else if (name == "H2SO4")
+        {
+            name = "H<sub>2</sub>SO<sub>4</sub>";
+        }
+        //NaOH needs no change
+        else if (name == "NH3")
+        {
+            name = "NH<sub>3</sub>";
+        }
+        else if (name == "N2")
+        {
+            name = "N<sub>3</sub>";
+        }
+        else if (name == "Na2SO4 (Aq)")
+        {
+            name = "Na<sub>2</sub>SO<sub>4</sub>(aq)";
+        }
+        else if (name == "Na2SO4 (S)")
+        {
+            name = "Na<sub>2</sub>SO<sub>4</sub>(s)";
+        }
+        else if (name == "H2")
+		{
+            name = "H<sub>2</sub>";
+		}
+        else if (name == "NH4+")
+		{
+            name = "NH<sub>4</sub>+";
+		}
+        else if (name == "H2CO3")
+		{
+            name = "H<sub>2</sub>CO<sub>3</sub>";
+		}
+        return name;
+    }
 
 }

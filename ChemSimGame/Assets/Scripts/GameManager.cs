@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
     public GameObject helpButton;
     public GameObject creditsText;
     public GameObject backButton;
+
+    // Audio
     public GameObject audioSource;
     public AudioMixer mixer;
     public GameObject volumeButton;
@@ -122,12 +124,10 @@ public class GameManager : MonoBehaviour
         helpButton.SetActive(false);
         creditsText.SetActive(true);
         backButton.SetActive(true);
-        canvas.SetActive(false);
     }
 
     public void HideCredits()
     {
-        canvas.SetActive(true);
         volumeButton.SetActive(true);
         startButton.SetActive(true);
         tutorialButton.SetActive(true);
