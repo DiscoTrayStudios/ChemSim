@@ -72,6 +72,7 @@ public class GameManager : MonoBehaviour
         tutorialButton.SetActive(false);
         creditsButton.SetActive(false);
         helpButton.SetActive(false);
+        canvas.SetActive(false);
         FadeOut("Play");
     }
 
@@ -83,6 +84,7 @@ public class GameManager : MonoBehaviour
         tutorialButton.SetActive(false);
         creditsButton.SetActive(false);
         helpButton.SetActive(false);
+        canvas.SetActive(false);
         FadeOut("Tutorial");
     }
 
@@ -94,17 +96,20 @@ public class GameManager : MonoBehaviour
         tutorialButton.SetActive(false);
         creditsButton.SetActive(false);
         helpButton.SetActive(false);
+        canvas.SetActive(false);
         FadeOut("Help");
     }
 
     public void BackToMenu()
     {
+        canvas.SetActive(true);
         volumeButton.SetActive(true);
         textBox.SetActive(true);
         startButton.SetActive(true);
         tutorialButton.SetActive(true);
         creditsButton.SetActive(true);
         helpButton.SetActive(true);
+
         FadeIn("MainMenu");
     }
 
@@ -117,10 +122,12 @@ public class GameManager : MonoBehaviour
         helpButton.SetActive(false);
         creditsText.SetActive(true);
         backButton.SetActive(true);
+        canvas.SetActive(false);
     }
 
     public void HideCredits()
     {
+        canvas.SetActive(true);
         volumeButton.SetActive(true);
         startButton.SetActive(true);
         tutorialButton.SetActive(true);

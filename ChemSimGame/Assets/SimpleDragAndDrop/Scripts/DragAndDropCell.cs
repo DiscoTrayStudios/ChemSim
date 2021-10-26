@@ -408,5 +408,8 @@ public class DragAndDropCell : MonoBehaviour, IDropHandler
 		}
 	}
 
-    
+    public void OnMouseDown()
+    {
+        myDadItem.spawn();
+    }
 }
