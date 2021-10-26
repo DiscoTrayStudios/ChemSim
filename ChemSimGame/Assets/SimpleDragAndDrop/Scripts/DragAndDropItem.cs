@@ -44,21 +44,21 @@ public class DragAndDropItem : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 			sourceCell = GetCell();                       							// Remember source cell
 			draggedItem = this;                                             		// Set as dragged item
 			// Create item's icon
-			icon = new GameObject();
-			icon.transform.SetParent(canvas.transform);
-			icon.name = "Icon";
-			Image myImage = GetComponent<Image>();
-			myImage.raycastTarget = false;                                        	// Disable icon's raycast for correct drop handling
-			Image iconImage = icon.AddComponent<Image>();
-			iconImage.raycastTarget = false;
-			iconImage.sprite = myImage.sprite;
-			RectTransform iconRect = icon.GetComponent<RectTransform>();
-			// Set icon's dimensions
-			RectTransform myRect = GetComponent<RectTransform>();
-			iconRect.pivot = new Vector2(0.5f, 0.5f);
-			iconRect.anchorMin = new Vector2(0.5f, 0.5f);
-			iconRect.anchorMax = new Vector2(0.5f, 0.5f);
-			iconRect.sizeDelta = new Vector2(myRect.rect.width, myRect.rect.height);
+			//icon = new GameObject();
+			//icon.transform.SetParent(canvas.transform);
+			//icon.name = "Icon";
+			//Image myImage = GetComponent<Image>();
+			//myImage.raycastTarget = false;                                        	// Disable icon's raycast for correct drop handling
+			//Image iconImage = icon.AddComponent<Image>();
+			//iconImage.raycastTarget = false;
+			//iconImage.sprite = myImage.sprite;
+			//RectTransform iconRect = icon.GetComponent<RectTransform>();
+			//// Set icon's dimensions
+			//RectTransform myRect = GetComponent<RectTransform>();
+			//iconRect.pivot = new Vector2(0.5f, 0.5f);
+			//iconRect.anchorMin = new Vector2(0.5f, 0.5f);
+			//iconRect.anchorMax = new Vector2(0.5f, 0.5f);
+			//iconRect.sizeDelta = new Vector2(myRect.rect.width, myRect.rect.height);
 
 			if (OnItemDragStartEvent != null)
 			{
@@ -76,7 +76,9 @@ public class DragAndDropItem : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 		if (icon != null)
 		{
 			//icon.transform.position = Input.mousePosition;                          // Item's icon follows to cursor in screen pixels
+			
 		}
+		
 	}
 
 	/// <summary>
@@ -87,7 +89,6 @@ public class DragAndDropItem : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 	{
 		//Would reather have it be clicked or dragged??
 		Debug.Log("dropped");
-		reactionManager.GetComponent<ReactionManager>().addReactant(Molecule);
 		ResetConditions();
 	}
 
@@ -137,5 +138,13 @@ public class DragAndDropItem : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 	void OnDisable()
 	{
 		ResetConditions();
+	}
+
+    
+
+	public void spawn()
+    {
+		reactionManager.GetComponent<ReactionManager>().addReactant(Molecule);
+
 	}
 }
