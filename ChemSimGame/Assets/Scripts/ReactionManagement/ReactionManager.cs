@@ -20,9 +20,11 @@ public class ReactionManager : MonoBehaviour
 
     public GameObject reactantsButton;
     public GameObject reactantsScreen;
+    public GameObject reactionButton;
+    public GameObject currentValues;
+    public GameObject seeAllValues;
 
     public TextMeshProUGUI motionSwitchText;
-    public GameObject ReactionButton;
 
     private bool reactantsMoving;
 
@@ -101,7 +103,7 @@ public class ReactionManager : MonoBehaviour
     void Update()
     {
         if ((!AllValuesBox.activeSelf && !dialogueBox.activeSelf) && clickAboveNine) { 
-            ReactionButton.GetComponent<Button>().interactable = !productPresent;
+            reactionButton.GetComponent<Button>().interactable = !productPresent;
         }
     }
 
@@ -522,22 +524,28 @@ public class ReactionManager : MonoBehaviour
 
 
     // Shows large list of values for reference
-    public void ShowValues()
+    public void ToggleValues()
     {
-        string text = "";
-        if (reactant1Name != null)
-        {
-            text += ValueString(reactant1Name);
+        if (!dialogueBox.activeInHierarchy) {
+            string text = "";
+            if (reactant1Name != null)
+            {
+                text += ValueString(reactant1Name);
+            }
+            if (reactant2Name != null)
+            {
+                text += "\n" + ValueString(reactant2Name);
+            }
+            foreach (string name in outputNames)
+            {
+                text += "\n" + ValueString(name);
+            }
+            ShowDialogue(text);
         }
-        if (reactant2Name != null)
-        {
-            text += "\n" + ValueString(reactant2Name);
-        }
-        foreach (string name in outputNames)
-        {
-            text += "\n" + ValueString(name);
-        }
-        ShowDialogue(text);
+        else
+		{
+            CloseDialogue();
+		}
     }
 
 
@@ -566,17 +574,19 @@ public class ReactionManager : MonoBehaviour
     }
 
 
-    public void ShowValueText()
+    public void ToggleAllVaLues()
     {
-        AllValuesBox.SetActive(true);
-        GetAllValues();
-        //Disable();
-    }
-
-    public void CloseAllValues()
-    {
-        AllValuesBox.SetActive(false);
-        //Enable();
+        if (AllValuesBox.activeInHierarchy)
+        {
+            AllValuesBox.SetActive(false);
+            seeAllValues.GetComponentInChildren<TextMeshProUGUI>().text = "See All Values";
+        }
+        else
+        {
+            AllValuesBox.SetActive(true);
+            GetAllValues();
+            seeAllValues.GetComponentInChildren<TextMeshProUGUI>().text = "Hide All Values";
+        }
     }
 
     public void ToggleReactantView()
