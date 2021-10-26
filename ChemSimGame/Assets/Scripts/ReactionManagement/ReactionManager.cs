@@ -627,6 +627,7 @@ public class ReactionManager : MonoBehaviour
         }
 	}
 
+    // It is being done this way because "<" and ">" cannot be used when naming a file. So we can't name our Prefabs the proper thing.
     public string ConvertName(string name)
 	{
         if(name == "H2O (L)")

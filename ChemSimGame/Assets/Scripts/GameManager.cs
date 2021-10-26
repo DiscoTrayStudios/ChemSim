@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
     public GameObject helpButton;
     public GameObject creditsText;
     public GameObject backButton;
+
+    // Audio
     public GameObject audioSource;
     public AudioMixer mixer;
     public GameObject volumeButton;
