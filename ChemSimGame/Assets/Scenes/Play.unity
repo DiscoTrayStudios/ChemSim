@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.00022234098, g: 0.0010647452, b: 0.0022249902, a: 1}
+  m_IndirectSpecularColor: {r: 0.0001970736, g: 0.0010639091, b: 0.0022099072, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6052,6 +6052,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HCl (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6493642671186161655, guid: beb10ad2a36828a459a48be18127b363, type: 3}
+      propertyPath: Mute
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6744960608637485787, guid: beb10ad2a36828a459a48be18127b363, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -7165,6 +7169,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -1521205910034359500, guid: 0e22831b2550da544a1ba613078d1583, type: 3}
+      propertyPath: Mute
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1163368589970778369, guid: 0e22831b2550da544a1ba613078d1583, type: 3}
       propertyPath: m_Name
       value: H2O (L)
@@ -7403,6 +7411,10 @@ PrefabInstance:
     - target: {fileID: 2507690675012552130, guid: fc88690cba2c1e74f9e3bf858fd1dbc5, type: 3}
       propertyPath: m_Name
       value: NH3 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2931527484008937401, guid: fc88690cba2c1e74f9e3bf858fd1dbc5, type: 3}
+      propertyPath: Mute
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4518367636818874384, guid: fc88690cba2c1e74f9e3bf858fd1dbc5, type: 3}
       propertyPath: m_RootOrder
@@ -8176,6 +8188,10 @@ PrefabInstance:
     - target: {fileID: -7745339057680804435, guid: 3547095c4bf7b8649967723ed9fe8417, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6270096525905103976, guid: 3547095c4bf7b8649967723ed9fe8417, type: 3}
+      propertyPath: Mute
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1579311571668383488, guid: 3547095c4bf7b8649967723ed9fe8417, type: 3}
       propertyPath: m_Name
@@ -9612,6 +9628,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -4628321004094978876, guid: 5cd8226f8f61aa04fb0047c08b1bdd85, type: 3}
+      propertyPath: Mute
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2631993866247034712, guid: 5cd8226f8f61aa04fb0047c08b1bdd85, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -10443,6 +10463,10 @@ PrefabInstance:
     - target: {fileID: -6384866637588277423, guid: b17ba584772edf642b91278e865e470d, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -1423685369395411704, guid: b17ba584772edf642b91278e865e470d, type: 3}
+      propertyPath: Mute
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3357616858842148960, guid: b17ba584772edf642b91278e865e470d, type: 3}
       propertyPath: m_Enabled

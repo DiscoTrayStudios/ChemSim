@@ -165,7 +165,7 @@ public class ReactionManager : MonoBehaviour
                 // initializes the first reactant as whatever was selected as well as sets up the movement
                 {
                     reactant1 = reactantInstance;
-                    reactant1Name = reactantObject.name;
+                    reactant1Name = ConvertName(reactantObject.name);
                     reactant1.GetComponent<MoveAround>().isMoving = reactantsMoving;
                     reactant1.GetComponent<MoveAround>().dh = getMoleculedH(reactant1Name);
                     reactant1count = 1;
@@ -175,7 +175,7 @@ public class ReactionManager : MonoBehaviour
                 // Same as above, but for the second reactant
                 {
                     reactant2 = reactantInstance;
-                    reactant2Name = reactantObject.name;
+                    reactant2Name = ConvertName(reactantObject.name);
                     reactant2.GetComponent<MoveAround>().isMoving = reactantsMoving;
                     reactant2.GetComponent<MoveAround>().dh = getMoleculedH(reactant2Name);
                     reactant2count = 1;
@@ -544,6 +544,7 @@ public class ReactionManager : MonoBehaviour
     
     private string ValueString(string moleculeName)
     {
+        moleculeName = ConvertName(moleculeName);
         string text = "";
         text += moleculeName + " ";
         text += "ΔH (kJ/mol): " + getMoleculedH(moleculeName) + "  ";
@@ -591,5 +592,56 @@ public class ReactionManager : MonoBehaviour
             reactantsButton.GetComponentInChildren<TextMeshProUGUI>().text = "Hide Reactants";
         }
 	}
+
+    public string ConvertName(string name)
+	{
+        if(name == "H2O (L)")
+		{
+            name = "H<sub>2</sub>O(l)";
+		}
+        else if (name == "H2O (G)")
+        {
+            name = "H<sub>2</sub>O(g)";
+        }
+        else if (name == "CO2")
+        {
+            name = "CO<sub>2</sub>";
+        }
+        //HCl needs no change, so it is skipped
+        else if (name == "H2SO4")
+        {
+            name = "H<sub>2</sub>SO<sub>4</sub>";
+        }
+        //NaOH needs no change
+        else if (name == "NH3")
+        {
+            name = "NH<sub>3</sub>";
+        }
+        else if (name == "N2")
+        {
+            name = "N<sub>3</sub>";
+        }
+        else if (name == "Na2SO4 (Aq)")
+        {
+            name = "Na<sub>2</sub>SO<sub>4</sub>(aq)";
+        }
+        else if (name == "Na2SO4 (S)")
+        {
+            name = "Na<sub>2</sub>SO<sub>4</sub>(s)";
+        }
+        else if (name == "H2")
+		{
+            name = "H<sub>2</sub>";
+		}
+        else if (name == "NH4+")
+		{
+            name = "NH<sub>4</sub>+";
+		}
+        else if (name == "H2CO3")
+		{
+            name = "H<sub>2</sub>CO<sub>3</sub>";
+		}
+        return name;
+    }
 
 }
