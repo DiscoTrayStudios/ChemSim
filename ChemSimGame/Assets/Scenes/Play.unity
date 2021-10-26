@@ -6840,8 +6840,8 @@ MonoBehaviour:
   reactionArrow: {fileID: 256562302137616894, guid: cb7ad0a2bfd5154419e609fcac1046ce, type: 3}
   reactantsButton: {fileID: 1629893871}
   reactantsScreen: {fileID: 438551467}
-  reactionButton: {fileID: 0}
-  currentValues: {fileID: 0}
+  reactionButton: {fileID: 1079128737}
+  currentValues: {fileID: 1937388202}
   seeAllValues: {fileID: 1965451075}
   motionSwitchText: {fileID: 1174721096}
   Options: {fileID: 1185189100}
