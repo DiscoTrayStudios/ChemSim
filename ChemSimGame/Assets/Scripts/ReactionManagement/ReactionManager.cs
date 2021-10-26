@@ -541,6 +541,14 @@ public class ReactionManager : MonoBehaviour
                 text += "\n" + ValueString(name);
             }
             ShowDialogue(text);
+            if(AllValuesBox.activeInHierarchy)
+			{
+                ToggleAllValues();
+			}
+            if(reactantsScreen.activeInHierarchy)
+			{
+                ToggleReactantView();
+			}
         }
         else
 		{
@@ -574,7 +582,7 @@ public class ReactionManager : MonoBehaviour
     }
 
 
-    public void ToggleAllVaLues()
+    public void ToggleAllValues()
     {
         if (AllValuesBox.activeInHierarchy)
         {
@@ -586,6 +594,14 @@ public class ReactionManager : MonoBehaviour
             AllValuesBox.SetActive(true);
             GetAllValues();
             seeAllValues.GetComponentInChildren<TextMeshProUGUI>().text = "Hide All Values";
+            if (dialogueBox.activeInHierarchy)
+            {
+                ToggleValues();
+            }
+            if (reactantsScreen.activeInHierarchy)
+            {
+                ToggleReactantView();
+            }
         }
     }
 
@@ -600,6 +616,14 @@ public class ReactionManager : MonoBehaviour
 		{
             reactantsScreen.SetActive(true);
             reactantsButton.GetComponentInChildren<TextMeshProUGUI>().text = "Hide Reactants";
+            if (AllValuesBox.activeInHierarchy)
+            {
+                ToggleAllValues();
+            }
+            if (dialogueBox.activeInHierarchy)
+            {
+                ToggleValues();
+            }
         }
 	}
 

@@ -11319,7 +11319,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1300517975}
         m_TargetAssemblyTypeName: ReactionManager, Assembly-CSharp
-        m_MethodName: ToggleAllVaLues
+        m_MethodName: ToggleAllValues
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
