@@ -412,4 +412,12 @@ public class DragAndDropCell : MonoBehaviour, IDropHandler
     {
         myDadItem.spawn();
     }
+    public void OnMouseEnter()
+    {
+        Debug.Log("SDSSS");
+    }
+    public void OnMouseExit()
+    {
+        Debug.Log("Exit");
+    }
 }

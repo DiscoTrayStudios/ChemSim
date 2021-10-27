@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.0001970736, g: 0.0010639091, b: 0.0022099072, a: 1}
+  m_IndirectSpecularColor: {r: 0.00022234098, g: 0.0010647452, b: 0.0022249902, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1846,7 +1846,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &438551468
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1875,7 +1875,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 142, y: -238}
+  m_AnchoredPosition: {x: 142, y: 41}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &468018094
@@ -5193,7 +5193,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 25.646, y: -68.9768}
+  m_AnchoredPosition: {x: 25.646, y: 244}
   m_SizeDelta: {x: 590.46, y: 280.9447}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &987588913
@@ -6800,7 +6800,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dac6e4404032d440a7b8c577490bc23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  h2o: {fileID: 6498010411249190327, guid: e8953e7580f8b9b42b4a0ea2338a7654, type: 3}
   h2ol: {fileID: 1163368589970778369, guid: 0e22831b2550da544a1ba613078d1583, type: 3}
   h2og: {fileID: 3357616858842148974, guid: b17ba584772edf642b91278e865e470d, type: 3}
   co2: {fileID: 4689005507519016207, guid: 2284b2556f0077e4d96a9d0ef184a62c, type: 3}
@@ -6813,13 +6812,13 @@ MonoBehaviour:
   NH4: {fileID: 3163038551494923705, guid: 1e701aacc030ed347a0da6d7a7630717, type: 3}
   OH: {fileID: 6243543659173120258, guid: 568c9f7ecce458041b6d827b5230e309, type: 3}
   H2SO4: {fileID: 2631993866247034718, guid: 5cd8226f8f61aa04fb0047c08b1bdd85, type: 3}
-  Na2SO4: {fileID: 1053670752373741847, guid: 5191e01506a120c478e1a92a833c2c5e, type: 3}
   Na2SO4aq: {fileID: 500092757015045034, guid: 984811464c7593d40a3257c0c0c8c75b, type: 3}
   Na2SO4s: {fileID: 3238279661727902558, guid: b23089a91f09dfe4bb42d44dd72abb56, type: 3}
   Na: {fileID: 9001261390796779028, guid: 3042651e37c19f24081b202205816fae, type: 3}
   SO4: {fileID: 301434620038081552, guid: d333997397e28834282e63f206f26dc8, type: 3}
   N2: {fileID: 1186216718480063127, guid: 4d1001cb4e9fc4d43a1e938884b6ca3c, type: 3}
   H2: {fileID: 751842331239878085, guid: 69ee84f96ee788647bafccbc10531701, type: 3}
+  all: []
 --- !u!114 &1300517975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7046,7 +7045,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1563523420956243410, guid: 0e22831b2550da544a1ba613078d1583, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5084351760524571404, guid: 0e22831b2550da544a1ba613078d1583, type: 3}
       propertyPath: m_Enabled
