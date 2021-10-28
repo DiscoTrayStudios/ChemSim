@@ -139,11 +139,11 @@ public class ReactionManager : MonoBehaviour
                 Vector3 position;
                 if (reactant2count == 1)
                 {
-                    position = new Vector3(-8, 3, 5);
+                    position = new Vector3(-6, 3, 5);
                 }
                 else
                 {
-                    position = new Vector3(-8, -3, 5);
+                    position = new Vector3(-6, -3, 5);
                 }
                 GameObject reactantInstance = Instantiate(reactantObject, (position), reactantObject.transform.rotation);
                 reactantInstance.GetComponent<MoveAround>().isMoving = reactantsMoving;
@@ -161,7 +161,7 @@ public class ReactionManager : MonoBehaviour
             // If no reactants have been selected
             else if (reactant1 == null || reactant2 == null)
             {
-                Vector3 position = new Vector3(-12 + (numReactants * 4), 0, 5);
+                Vector3 position = new Vector3(-12 + (numReactants * 6), 0, 5);
                 GameObject reactantInstance = Instantiate(reactantObject, position, reactantObject.transform.rotation);
                 if (reactant1 == null)
                 // initializes the first reactant as whatever was selected as well as sets up the movement
@@ -668,14 +668,26 @@ public class ReactionManager : MonoBehaviour
 		{
             name = "H<sub>2</sub>";
 		}
-        else if (name == "NH4+")
-		{
-            name = "NH<sub>4</sub>+";
-		}
         else if (name == "H2CO3")
 		{
             name = "H<sub>2</sub>CO<sub>3</sub>";
 		}
+        else if (name == "SO42-")
+        {
+            name = "SO<sub>4</sub><sup>2-</sup>";
+        }
+        else if (name == "NH4")
+        {
+            name = "NH<sub>2</sub><sup>+</sup>";
+        }
+        else if (name == "OH-")
+        {
+            name = "OH<sup>-</sup>";
+        }
+        else if (name == "Na+")
+        {
+            name = "Na<sup>+</sup>";
+        }
         return name;
     }
 

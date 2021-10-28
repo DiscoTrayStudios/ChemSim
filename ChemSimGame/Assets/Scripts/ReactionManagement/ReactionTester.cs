@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class ReactionTester : MonoBehaviour
 {
-    public GameObject h2o;
     public GameObject h2ol;
     public GameObject h2og;
     public GameObject co2;
@@ -18,7 +17,6 @@ public class ReactionTester : MonoBehaviour
     public GameObject NH4;
     public GameObject OH;
     public GameObject H2SO4;
-    public GameObject Na2SO4;
     public GameObject Na2SO4aq;
     public GameObject Na2SO4s;
     public GameObject Na;
@@ -26,15 +24,42 @@ public class ReactionTester : MonoBehaviour
     public GameObject N2;
     public GameObject H2;
 
+     
+
     // This dictionary holds a Tuple as the key, inwhich the contents are the two reactants
     // The values are a list containg all products
-    private Dictionary<Tuple<string, string>, List<GameObject>> reactions; 
+    private Dictionary<Tuple<string, string>, List<GameObject>> reactions;
+    public List<GameObject> all;
 
     // Start is called before the first frame update
     void Start()
     {
+        all.Add(h2ol);
+        all.Add(h2og);
+        all.Add(co2);
+        all.Add(H2CO3);
+        all.Add(HCl);
+        all.Add(ClOH3);
+        all.Add(NaOH);
+        all.Add(NaCl);
+        all.Add(NH3);
+        all.Add(NH4);
+        all.Add(OH);
+        all.Add(H2SO4);
+        all.Add(Na2SO4aq);
+        all.Add(Na2SO4s);
+        all.Add(Na);
+        all.Add(SO4);
+        all.Add(N2);
+        all.Add(H2);
+
+        foreach(GameObject i in all)
+        {
+            i.name = this.GetComponentInParent<ReactionManager>().ConvertName(i.name);
+        }
+
         reactions = new Dictionary<Tuple<string, string>, List<GameObject>> {
-            { new Tuple<string, string>("reactant1", "reactant2"), new List<GameObject>(){h2o } },
+            
             { new Tuple<string, string>(h2ol.name, co2.name),  new List<GameObject>(){H2CO3 } }, // Test reaction
             { new Tuple<string, string>(h2og.name, co2.name),  new List<GameObject>(){H2CO3 } },
             { new Tuple<string, string>(h2ol.name, HCl.name),   new List<GameObject>(){ClOH3 } },
