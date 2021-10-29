@@ -340,6 +340,7 @@ public class ReactionManager : MonoBehaviour
     // Causes molecules to start/stop moving
     public void ChangeMotion()
     {
+        Debug.Log("???");
         reactantsMoving = !reactantsMoving;
         if (reactantsMoving)
         {
