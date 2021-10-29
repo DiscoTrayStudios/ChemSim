@@ -328,7 +328,7 @@ public class DragAndDropCell : MonoBehaviour, IDropHandler
 		Image bg = GetComponent<Image>();
 		if (bg != null)
 		{
-			bg.color = myDadItem != null ? full : empty;
+			//bg.color = myDadItem != null ? full : empty;
 		}
 	}
 

@@ -18,11 +18,10 @@ public class ReactionManager : MonoBehaviour
     public GameObject reactionArrow;
     private GameObject reactionArrowInstance;
 
-    public GameObject reactantsButton;
-    public GameObject reactantsScreen;
     public GameObject reactionButton;
     public GameObject currentValues;
-    public GameObject seeAllValues;
+    public GameObject hoverBackground;
+    public TextMeshProUGUI hoverText;
 
     public TextMeshProUGUI motionSwitchText;
 
@@ -67,9 +66,6 @@ public class ReactionManager : MonoBehaviour
     private bool productPresent;
     private bool clickAboveNine;
 
-    public GameObject AllValuesText;
-    public GameObject AllValuesBox;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -102,9 +98,9 @@ public class ReactionManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if ((!AllValuesBox.activeSelf && !dialogueBox.activeSelf) && clickAboveNine) { 
-            reactionButton.GetComponent<Button>().interactable = !productPresent;
-        }
+        //if ((!AllValuesBox.activeSelf && !dialogueBox.activeSelf) && clickAboveNine) { 
+        //    reactionButton.GetComponent<Button>().interactable = !productPresent;
+        //}
     }
 
 
@@ -332,14 +328,6 @@ public class ReactionManager : MonoBehaviour
     {
         dialogueText.text = text;
         dialogueBox.SetActive(true);
-        if (AllValuesBox.activeInHierarchy)
-        {
-            ToggleAllValues();
-        }
-        if (reactantsScreen.activeInHierarchy)
-        {
-            ToggleReactantView();
-        }
         //Disable();
     }
 
@@ -556,9 +544,21 @@ public class ReactionManager : MonoBehaviour
 		}
     }
 
+    public void CurrValue(string reactantName)
+	{
+        hoverText.text = ValueString(reactantName);
+        hoverBackground.SetActive(true);
 
+	}
+
+    public void hideHover()
+	{
+        hoverText.text = "";
+        hoverBackground.SetActive(false);
+
+	}
     
-    private string ValueString(string moleculeName)
+    public string ValueString(string moleculeName)
     {
         moleculeName = ConvertName(moleculeName);
         string text = "";
@@ -569,63 +569,18 @@ public class ReactionManager : MonoBehaviour
         return text;
     }
 
-    public void GetAllValues()
-    {
-        string text = "";
-        Dictionary<string, Molecule> reactionValues = GameManager.Instance.getReactionTable();
-        foreach (KeyValuePair<string,Molecule> pair in reactionValues)
-        {
-            text += ValueString(pair.Key);
-            text += "\n";
-        }
-        AllValuesText.GetComponent<TMP_Text>().text = text;
-    }
+    //public void GetAllValues()
+    //{
+    //    string text = "";
+    //    Dictionary<string, Molecule> reactionValues = GameManager.Instance.getReactionTable();
+    //    foreach (KeyValuePair<string,Molecule> pair in reactionValues)
+    //    {
+    //        text += ValueString(pair.Key);
+    //        text += "\n";
+    //    }
+    //    AllValuesText.GetComponent<TMP_Text>().text = text;
+    //}
 
-
-    public void ToggleAllValues()
-    {
-        if (AllValuesBox.activeInHierarchy)
-        {
-            AllValuesBox.SetActive(false);
-            seeAllValues.GetComponentInChildren<TextMeshProUGUI>().text = "See All Values";
-        }
-        else
-        {
-            AllValuesBox.SetActive(true);
-            GetAllValues();
-            seeAllValues.GetComponentInChildren<TextMeshProUGUI>().text = "Hide All Values";
-            if (dialogueBox.activeInHierarchy)
-            {
-                ToggleValues();
-            }
-            if (reactantsScreen.activeInHierarchy)
-            {
-                ToggleReactantView();
-            }
-        }
-    }
-
-    public void ToggleReactantView()
-	{
-        if(reactantsScreen.activeInHierarchy)
-		{
-            reactantsScreen.SetActive(false);
-            reactantsButton.GetComponentInChildren<TextMeshProUGUI>().text = "Show Reactants";
-		}
-        else
-		{
-            reactantsScreen.SetActive(true);
-            reactantsButton.GetComponentInChildren<TextMeshProUGUI>().text = "Hide Reactants";
-            if (AllValuesBox.activeInHierarchy)
-            {
-                ToggleAllValues();
-            }
-            if (dialogueBox.activeInHierarchy)
-            {
-                ToggleValues();
-            }
-        }
-	}
 
     // It is being done this way because "<" and ">" cannot be used when naming a file. So we can't name our Prefabs the proper thing.
     public string ConvertName(string name)
@@ -654,7 +609,7 @@ public class ReactionManager : MonoBehaviour
         }
         else if (name == "N2")
         {
-            name = "N<sub>3</sub>";
+            name = "N<sub>2</sub>";
         }
         else if (name == "Na2SO4 (Aq)")
         {
