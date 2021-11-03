@@ -15,8 +15,8 @@ public class TutorialText : MonoBehaviour
     public TextMeshProUGUI buttons;
     public TextMeshProUGUI display;
     public GameObject backToMenuButton;
-    public GameObject H2ODropdown;
-    public GameObject CO2Button;
+    public GameObject H2OCell;
+    public GameObject CO2Cell;
     public GameObject tryReactionButton;
     public GameObject allReactants;
     public GameObject allOptions;
@@ -25,6 +25,7 @@ public class TutorialText : MonoBehaviour
 
     public GameObject next;
     public GameObject last;
+    public Color defaultColor;
 
     private int clicks;
     private bool co2Clicked;
@@ -33,6 +34,7 @@ public class TutorialText : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log("Tut");
         clicks = 0;
         co2Clicked = false;
         h2oClicked = false;
@@ -52,13 +54,13 @@ public class TutorialText : MonoBehaviour
         if (clicks == 0)
         {
             clearText();
-            main.text = "Welcome to the ChemSim Tutorial! We're going to go over some of the basics so you can get more comfortable with the system. Please use the buttons in the bottom right to navigate through the tutorial!";
+            main.text = "Welcome to the ChemSim Tutorial! We're going to go over some of the basics so you can get more comfortable with the system. Please use the buttons in the top right to navigate through the tutorial!";
             Disable();
         }
         else if (clicks == 1)
         {
             clearText();
-            reactants.text = "These is all of the reactants that you can use! Hover over a button or dropdown menu option to see all the values for that compound.";
+            reactants.text = "These are all of the reactants that you can use! Hover over a button or dropdown menu option to see all the values for that compound.";
             Disable();
         }
         else if (clicks == 2)
@@ -78,9 +80,9 @@ public class TutorialText : MonoBehaviour
             clearText();
             reactants.text = "Lets try making a reaction! Try selecting the liquid state of H2O.";
             Disable();
-            H2ODropdown.GetComponent<Image>().color = Color.yellow;
-            H2ODropdown.GetComponent<TMP_Dropdown>().interactable = true;
-            H2ODropdown.GetComponent<TMP_Dropdown>().onValueChanged.AddListener(delegate
+            H2OCell.GetComponent<Image>().color = Color.yellow;
+            H2OCell.GetComponent<Button>().interactable = true;
+            H2OCell.GetComponent<Button>().onClick.AddListener(delegate
             {
                 H2OPressed();
             });
@@ -89,16 +91,16 @@ public class TutorialText : MonoBehaviour
         else if (clicks == 5)
         {
 
-            H2ODropdown.GetComponent<Image>().color = Color.yellow;
+            H2OCell.GetComponent<Image>().color = Color.yellow;
             if (h2oClicked)
             {
-                H2ODropdown.GetComponent<Image>().color = Color.white;
+                H2OCell.GetComponent<Image>().color = defaultColor;
                 clearText();
                 reactants.text = "Great! Now press on the CO2 button.";
                 Disable();
-                CO2Button.GetComponent<Image>().color = Color.yellow;
-                CO2Button.GetComponent<Button>().interactable = true;
-                CO2Button.GetComponent<Button>().onClick.AddListener(CO2Pressed);
+                CO2Cell.GetComponent<Image>().color = Color.yellow;
+                CO2Cell.GetComponent<Button>().interactable = true;
+                CO2Cell.GetComponent<Button>().onClick.AddListener(CO2Pressed);
             }
             else
             {
@@ -109,10 +111,10 @@ public class TutorialText : MonoBehaviour
         else if (clicks == 6)
         {
 
-            CO2Button.GetComponent<Image>().color = Color.yellow;
+            CO2Cell.GetComponent<Image>().color = Color.yellow;
             if (co2Clicked)
             {
-                CO2Button.GetComponent<Image>().color = Color.white;
+                CO2Cell.GetComponent<Image>().color = defaultColor;
                 clearText();
                 buttons.text = "Lets see what happens when we press the Try Reaction button";
                 Disable();
@@ -131,7 +133,7 @@ public class TutorialText : MonoBehaviour
             tryReactionButton.GetComponent<Image>().color = Color.yellow;
             if (reactionClicked)
             {
-                tryReactionButton.GetComponent<Image>().color = Color.white;
+                tryReactionButton.GetComponent<Image>().color = defaultColor;
                 clearText();
                 main.text = "Good Job! You just made your first reaction! Before we are done, there is another important piece of information to help you use this tool.";
                 Disable();
@@ -177,7 +179,7 @@ public class TutorialText : MonoBehaviour
 
     public void Disable()
     {
-        foreach(Transform child in allReactants.transform)
+        foreach (Transform child in allReactants.transform)
         {
             if (child.gameObject.GetComponent<Button>() != null)
             {
@@ -250,6 +252,7 @@ public class TutorialText : MonoBehaviour
 
     public void forward()
     {
+        Debug.Log("SJDKLFJSDLFJ");
         clicks++;
         if (clicks >10)
         {
@@ -288,8 +291,8 @@ public class TutorialText : MonoBehaviour
 
     private void setToWhite()
     {
-        tryReactionButton.GetComponent<Image>().color = Color.white;
-        H2ODropdown.GetComponent<Image>().color = Color.white;
-        CO2Button.GetComponent<Image>().color = Color.white;
+        tryReactionButton.GetComponent<Image>().color = defaultColor;
+        H2OCell.GetComponent<Image>().color = defaultColor;
+        CO2Cell.GetComponent<Image>().color = defaultColor;
     }
 }
