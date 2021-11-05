@@ -35,8 +35,8 @@ public class MoveAround : MonoBehaviour
         random = new System.Random();
         RightX = -2;
         LeftX = -14;
-        UpY = 6;
-        DownY = -2;
+        UpY = 5;
+        DownY = -4;
         body = GetComponent<Rigidbody>();
         originalx = transform.position.x;
         originaly = transform.position.y;

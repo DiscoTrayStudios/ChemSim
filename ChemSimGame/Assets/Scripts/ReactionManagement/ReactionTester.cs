@@ -87,8 +87,11 @@ public class ReactionTester : MonoBehaviour
     public bool ReactionIsValid(string reactant1Name, string reactant2Name, int reactant1count, int reactant2count)
     {
         // Checks real fast on the NA2SO4(s) case
+        Debug.Log(reactant1Name);
+        Debug.Log(Na2SO4s.name);
         if (reactant1Name == Na2SO4s.name)
         {
+            Debug.Log(1);
             if (reactant2Name == null)
             {
                 if (reactant1count == 1)

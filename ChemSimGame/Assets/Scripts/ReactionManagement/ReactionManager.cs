@@ -253,14 +253,14 @@ public class ReactionManager : MonoBehaviour
     {
         // Checks to make sure there are two reactants to try
         // OR if there is just Na2SO4 (which dissasociates spontaneously) 
-        if ((reactant1 != null && reactant2 != null)||( reactant1Name == "Na2SO4 (S)" && reactant2 ==null))
+        Debug.Log(reactant1Name);
+        if ((reactant1 != null && reactant2 != null)||( reactant1Name == "Na<sub>2</sub>SO<sub>4</sub>(s)" && reactant2 ==null))
         {
             if (reactionTester.ReactionIsValid(reactant1Name, reactant2Name, reactant1count, reactant2count))
             {
                 List<GameObject> output = reactionTester.TryReaction(reactant1Name, reactant2Name);
                 if (output != null)
                 {
-                    productPresent = true;
                     DoReaction(output);
                     UpdateText();
                     CalculateChanges(output);
@@ -297,28 +297,32 @@ public class ReactionManager : MonoBehaviour
         reactionArrowInstance = Instantiate(reactionArrow, arrowPosition, reactionArrow.transform.rotation);
         Vector3 outputPosition = new Vector3(5, 0, 5);
         outputName = "";
-        foreach (GameObject molecule in outputObject)
+        if (!productPresent)
         {
-            reactionOutput = Instantiate(molecule, outputPosition, molecule.transform.rotation);
-            MoveAround moveScript = reactionOutput.GetComponent<MoveAround>();
-            moveScript.isMoving = reactantsMoving;
-            moveScript.dh = getMoleculedH(molecule.name);
-            outputName += molecule.name + " + ";
-            outputNames.Add(molecule.name);
-            outputList.Add(reactionOutput);
-            if (molecule.name.Equals("H2O (L)") || molecule.name.Equals("Na2SO4 (Aq)") || molecule.name.Equals("NH3"))
+            foreach (GameObject molecule in outputObject)
             {
-                moveScript.reactant = false;
+                reactionOutput = Instantiate(molecule, outputPosition, molecule.transform.rotation);
+                MoveAround moveScript = reactionOutput.GetComponent<MoveAround>();
+                moveScript.isMoving = reactantsMoving;
+                moveScript.dh = getMoleculedH(molecule.name);
+                outputName += molecule.name + " + ";
+                outputNames.Add(molecule.name);
+                outputList.Add(reactionOutput);
+                if (molecule.name.Equals("H2O (L)") || molecule.name.Equals("Na2SO4 (Aq)") || molecule.name.Equals("NH3"))
+                {
+                    moveScript.reactant = false;
+                }
+                if (count == 0)
+                {
+                    outputPosition.y = 2;
+                }
+                else
+                {
+                    outputPosition.y = -2;
+                }
+                count += 1;
             }
-            if (count == 0)
-            {
-                outputPosition.y = 2;
-            }
-            else
-            {
-                outputPosition.y = -2;
-            }
-            count += 1;
+            productPresent = true;
         }
         outputName = outputName.Substring(0, outputName.Length-3);
         ReactionDone = true;
@@ -632,7 +636,7 @@ public class ReactionManager : MonoBehaviour
         {
             name = "SO<sub>4</sub><sup>2-</sup>";
         }
-        else if (name == "NH4")
+        else if (name == "NH4+")
         {
             name = "NH<sub>2</sub><sup>+</sup>";
         }
