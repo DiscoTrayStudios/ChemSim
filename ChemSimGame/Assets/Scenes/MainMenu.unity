@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.0001970736, g: 0.0010639091, b: 0.0022099072, a: 1}
+  m_IndirectSpecularColor: {r: 0.00022422629, g: 0.0010738254, b: 0.0022441752, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1980,7 +1980,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 59, y: -7}
+  m_AnchoredPosition: {x: 532, y: -71}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1561709746
@@ -2136,6 +2136,11 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Game designed by Jonathon Qualls, Ian Campbell, Sammy Gaskins, Mitchell
     Rotenberry, and Paxton Higgerson
+
+
+    Special Thanks To: Dr. Caitlin Scott and
+    Disco Tray Studios
+
 
     <sub>Skybox designed by Sam Hocevar'
   m_isRightToLeft: 0

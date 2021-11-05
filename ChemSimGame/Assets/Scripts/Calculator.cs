@@ -24,11 +24,14 @@ public class Calculator
         {
             for (int i=0;i< inputNames[name];i++)
             {
+                Debug.Log("__");
                 Debug.Log(name);
+                Debug.Log(GameManager.Instance.getMoleculedH(name));
                 totalInputH += GameManager.Instance.getMoleculedH(name);
                 totalInputG += GameManager.Instance.getMoleculedG(name);
                 totalInputS += GameManager.Instance.getMoleculedS(name);
                 Debug.Log(totalInputH);
+                Debug.Log("__");
             }
         }
         foreach (GameObject g in output)
